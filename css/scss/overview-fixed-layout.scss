@@ -1,0 +1,15 @@
+/* restrict full-width after 1600px */
+div#primary.overview-sidebar-layout {
+  @media screen and (min-width: 1600px){
+    width: 980px;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+}
+div#primary.overview-full-layout {
+  @media screen and (min-width: 1200px) {
+    width: 1150px;
+    max-width: 1150px;
+    margin: 0 auto;
+  }
+}

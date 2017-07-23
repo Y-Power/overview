@@ -1,0 +1,15 @@
+#masthead nav#site-navigation {
+    top: 32px;
+}
+
+@media screen and (max-width: 780px){
+    #masthead nav#site-navigation {
+        top: 40px;
+    }
+}
+
+@media screen and (max-width: 599px){
+    #masthead nav#site-navigation {
+        position: absolute;
+    }
+}

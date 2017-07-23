@@ -1,0 +1,1025 @@
+@import 'overview_scss_vars';
+  
+  /* OverView Styles
+_______________________________________ */
+
+html {
+  font-size: 16px;
+}  
+
+body {
+  font-size: 1.1rem;
+  font-family: $ov-main-font;
+}
+
+/* body links */
+body a {
+  text-decoration: none;
+  color: $ov-main-color;
+  @include ov-transition(.4s color linear);
+}
+
+body a:visited {
+  color: $ov-main-color;
+}
+  
+body a:hover {
+  color: $ov-main-color-hover;
+  @include ov-transition(.4s color linear);
+}
+
+input[type=button],
+input[type=search],
+input[type=select],
+select,
+input[type=submit]{
+  @include overview-standard-button();
+}
+
+input[type=search],
+input[type=search]:focus {
+  color: $ov-main-dark-color;
+  background-color: $ov-main-bright-color;
+}
+
+
+/* OverView header title */
+.site-title {
+  font-weight: normal;
+  @media screen and (max-width: 767px){
+    margin-bottom: 0;
+  }
+}
+p.site-title {
+  margin: 21px 0;
+}
+header#masthead div.site-branding h1.site-title a,
+header#masthead div.site-branding p.site-title a {
+  color: $ov-main-color;
+  font-size: 44px;
+  word-wrap: break-word;
+  @supports (overflow-wrap: break-word){
+    overflow-wrap: break-word;
+  }
+  @media screen and (max-width: 767px){
+    font-size: 38px;
+  }
+}
+header#masthead div.site-branding h1.site-title a,
+header#masthead div.site-branding p.site-title a,
+header#masthead div.site-branding p.site-description {
+  padding-left: 30px;
+  @media screen and (max-width: 767px){
+    padding: 8px;
+  }
+}
+header#masthead div.site-branding p.site-description {
+  padding-right: 12px;
+  font-style: italic;
+  font-size: 22px;
+  color: $ov-main-dark-color;
+  @media screen and (max-width: 767px){
+    margin-top: 0;
+    padding-top: 0;
+    font-size: 20px;
+    padding-right: 8px;
+  }
+}
+
+/* OverView NAVBAR */
+nav#site-navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 12px;
+    z-index: 999;
+    background: rgb(248,248,248); /* Old browsers */
+    background: -moz-linear-gradient(45deg, rgba(248,248,248,1) 0%, $ov-main-color-gradient 18%, $ov-main-color 25%, $ov-main-color 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, rgba(248,248,248,1) 0%, $ov-main-color-gradient 18%,$ov-main-color 25%,$ov-main-color 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, rgba(248,248,248,1) 0%, $ov-main-color-gradient 18%,$ov-main-color 25%,$ov-main-color 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f8f8', endColorstr='$ov-main-color',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  @include ov-box-shadow(0 3px 3px 0 #666);
+}
+
+nav#site-navigation.toggled {
+    /*max-height: 260px;*/
+}
+
+nav#site-navigation a#overview-navbar-site-logo {
+    display: inline-block;
+    width: 18%;
+}
+
+nav#site-navigation a#overview-navbar-site-logo img {
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 0;
+  max-width: 18%;
+  @include ov-transform(translate(18%, -50%));
+  @media screen and (max-width: 599px){
+    position: relative;
+    min-width: 80px;
+    max-width: 80px;
+    margin-top: 3px;
+  }
+}
+
+/* no logo img navbar title fallback */
+p.overview-navbar-nologo-fallback {
+  max-width: 100%;
+  font-size: 22px;
+  color: $ov-main-dark-color;
+  @include ov-text-shadow(0 0 1px);
+  @media screen and (max-width: 599px){
+    display: inline-block;
+    margin-top: 3px;
+    max-width: 100%;
+    font-size: 16px;
+  }
+}
+
+nav#site-navigation div,
+nav#site-navigation button.menu-toggle {
+    float: right;
+}
+
+nav#site-navigation button.menu-toggle {
+  width: 38px;
+  height: 33px;
+  padding-top: 3px;
+  padding-left: 8px;
+  color: $ov-main-dark-color;
+  background-color: transparent;
+}
+
+nav#site-navigation button.menu-toggle:hover,
+nav#site-navigation button.menu-toggle:focus {
+  background-color: $ov-main-alt-color;
+}
+
+nav#site-navigation div {
+    max-width: 80%;
+}
+
+nav#site-navigation div ul.nav-menu li {
+    margin-left: 20px;
+    color: $ov-main-bright-color;
+    @include ov-border-radius(4px 4px 0 0);
+    @include ov-transition(.1s background-color ease-in);
+}
+
+nav#site-navigation div ul.nav-menu li:hover {
+    color: $ov-main-color;
+    background-color: $ov-main-bright-color;
+}
+  
+nav#site-navigation div ul.nav-menu li a {
+    padding: 6px;
+    color: inherit;
+    background-color: transparent;
+}
+
+button.overview-sub-menu-down-arrow,
+li.page_item_has_children a,
+li.menu-item-has-children a {
+  display: inline-block;
+}
+
+button.overview-sub-menu-down-arrow {
+  padding-left: 0;
+  color: $ov-main-bright-color;
+  background-color: transparent;
+}
+
+ul.sub-menu button.overview-sub-menu-down-arrow,
+ul.children button.overview-sub-menu-down-arrow {
+  color: $ov-main-dark-color;
+}
+
+ul.sub-menu li.page_item_has_children a,
+ul.sub-menu li.menu-item-has-children a {
+  width: 179px;
+}
+
+/* JS sub-menus adjustments */
+li.page_item_has_children > ul.sub-menu.flipped-mobile-menu,
+li.menu-item-has-children > ul.sub-menu.flipped-mobile-menu {
+  display: block;
+}
+
+li.page_item_has_children > ul.sub-menu.flipped-menu,
+li.menu-item-has-children > ul.sub-menu.flipped-menu {
+  left: -90%;
+  max-width: 200px;
+}
+
+li.page_item_has_children > ul.sub-menu.flipped-menu li,
+li.menu-item-has-children > ul.sub-menu.flipped-menu li {
+  width: 100%;
+}
+
+li.page_item_has_children > ul.sub-menu.flipped-menu li:first-of-type,
+li.menu-item-has-children > ul.sub-menu.flipped-menu li:first-of-type {
+  margin-top: 18px;
+}
+
+
+nav#site-navigation div ul.nav-menu li.page_item_has_children button.overview-sub-menu-down-arrow,
+nav#site-navigation div ul.nav-menu li.menu-item-has-children button.overview-sub-menu-down-arrow {
+  border-color: transparent;
+}
+
+nav#site-navigation div ul.nav-menu li ul.children,
+nav#site-navigation div ul.nav-menu li ul.sub-menu {
+  margin-top: 12px;
+}
+
+nav#site-navigation div ul.nav-menu li.page_item_has_children ul.sub-menu li,
+nav#site-navigation div ul.nav-menu li.menu-item-has-children ul.sub-menu li {
+    margin-left: 0;
+    font-size: .9em;
+    color: $ov-main-color;
+    background-color: $ov-main-bright-color;
+    @include ov-border-radius(0);
+}
+
+nav#site-navigation div ul.nav-menu li.page_item_has_children ul.sub-menu li:hover,
+nav#site-navigation div ul.nav-menu li.menu-item-has-children ul.sub-menu li:hover {
+    color: $ov-main-bright-color;
+    background-color: $ov-main-color;
+}
+
+nav#site-navigation>div ul.nav-menu li.page_item_has_children ul.children li ul.children,
+nav#site-navigation div ul.nav-menu li.menu-item-has-children ul.sub-menu li ul.sub-menu {
+  
+}
+
+nav#site-navigation div ul.nav-menu li.page_item_has_children ul.children li ul.children li,
+nav#site-navigation div ul.nav-menu li.page_item_has_children ul.children li ul.children li.page_item_has_children ul.children li,
+nav#site-navigation div ul.nav-menu li.menu-item-has-children ul.sub-menu li ul.sub-menu li,
+nav#site-navigation div ul.nav-menu li.menu-item-has-children ul.sub-menu li ul.sub-menu li.menu-item-has-children ul.sub-menu li {
+    font-size: 1em;
+}
+
+/* OverView header image */
+header#masthead div#overview-header-image-container img {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.site-branding {
+  display: inline-block;
+  max-width: 60%;
+  @media screen and (max-width: 767px){
+    text-align: center;
+  }
+}
+
+/* OverView site branding description */
+p.site-branding-description-p {
+  width: 39%;
+  float: right;
+  clear: both;
+  margin: 40px 1% 12px 0;
+  padding: 12px 12px 14px 12px;
+  text-align: center;
+  font-style: italic;
+  color: $ov-main-dark-color;
+  background-color: $ov-main-alt-color;
+  @include ov-border-radius(6px);
+  @include ov-box-shadow(0 0 6px 1px $ov-structure-dark-color);
+}
+
+  
+/* OvewrView customizer  */
+
+/* OverView WordPres main layouts */
+
+/* NO GRID full-width */
+
+/* NO GRID sidebar */
+  
+/* main layout containers - CSS grid support tests */
+
+/* if there's grid support, clear WP content layout fixes */
+.site-content:before,
+.site-content:after {
+  @supports (display: grid){
+    content: none;
+  }
+}
+
+#content.overview-content-and-sidebar-layout {
+  @include ov-site-content-and-sidebar();
+}
+
+
+/* OverView full-width layout */
+.overview-full-layout {
+  @include ov-full-layout();
+}
+
+/* OverView WordPress back-end styles */
+body#tinymce {
+  @include ov-full-layout();
+}
+
+/* OverView sidebar layout */
+.overview-sidebar-layout {
+  @include ov-sidebar-layout();
+}
+
+.overview-sidebar-main-container {
+  @include ov-sidebar-container();
+}
+
+/* OverView WordPress indexed posts */
+article.overview-standard-indexed-entry {
+  @include ov-default-post-list($ov-structure-light-color);
+}
+
+article.overview-standard-indexed-entry-no-featured-img {
+  @include ov-default-post-list-no-featured-img($ov-structure-light-color);
+}
+  
+/* standard pages */
+header.page-header h1.page-title {
+  padding-left: 30px;
+  background-color: $ov-structure-light-color;
+  @media screen and (max-width: 767px){
+    text-align: center;
+  }
+}
+
+/* posts meta */
+div.overview-default-post-entry-meta {
+  @include overview-post-meta-container();
+}
+
+/* post categories and tags */
+footer.overview-default-entry-footer span.cat-links {
+  @include overview-post-cats-tags();
+}
+footer.overview-default-entry-footer span.tags-links {
+  @include overview-post-cats-tags();
+}
+
+/* comments links */
+footer.overview-default-entry-footer span.comments-link {
+   @include overview-comments-links();
+}
+
+/* comments */
+#comments {
+  @include overview-comments-container();
+}
+
+/* WordPress Navigation */
+.site-main .post-navigation {
+  margin-top: 12px;
+}
+
+@supports (display: flex) or (display: -webkit-flex){
+  div.nav-links {
+    display: -webkit-flex;
+    -webkit-flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0 25px;
+    @media screen and (max-width: 767px){
+      padding: 0;
+    }
+  }
+} 
+  
+div.nav-links .nav-previous,
+div.nav-links .nav-next {
+  @include overview-standard-button();
+  margin-bottom: 12px;
+  padding: 12px;
+  font-size: 1.2em;
+  &:hover {
+    a {
+      color: $ov-main-color;
+    }
+  }
+  a {
+    color: $ov-main-bright-color;
+    &:hover {
+      color: $ov-main-color;
+    }
+    i.overview-navigation-icon {
+      display: block;
+    }
+    span.overview-navigation-direction-span {
+      font-weight: bold;
+      font-style: italic;
+    }
+    @media screen and (max-width: 767px){
+    word-wrap: break-word;
+      @supports (overflow-wrap: break-word){
+        overflow-wrap: break-word;
+      }
+    }
+  }
+}
+
+div.page-links {
+  a {
+    padding: 4px 8px;
+    border: 1px solid $ov-structure-dark-color;
+  }
+}
+
+
+/* OverView front page template main containers */
+
+@mixin overview-dark-display(){
+  background: rgb(150,150,150); /* Old browsers */
+  background: -moz-linear-gradient(-45deg, rgba(150,150,150,1) 0%, rgba(48,48,48,1) 40%, rgba(66,66,66,1) 82%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, rgba(150,150,150,1) 0%,rgba(48,48,48,1) 40%,rgba(66,66,66,1) 82%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, rgba(150,150,150,1) 0%,rgba(48,48,48,1) 40%,rgba(66,66,66,1) 82%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#969696', endColorstr='#424242',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+@mixin overview-brigth-display(){
+   background: none;
+}
+
+div.overview-dark-display {
+  @include overview-dark-display();
+}
+
+div.overview-brigth-display {
+  @include overview-brigth-display();
+}
+
+div.overview-single-box-container {
+  width: 100%;
+  height: 500px;
+  padding: 0 12px;
+  @include ov-box-shadow(0 0 6px 0 #222);
+}
+
+div.overview-single-box-container-splash-screen {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    z-index: -1;
+    @include ov-transition(background-color 1s linear);
+    @include ov-transition(opacity .8s linear);
+    @include ov-transition(height .2s linear);
+}
+
+  
+/* WordPress content's elements */
+#content blockquote,
+#tinymce blockquote,
+#content q,
+#tinymce blockquote,
+#content p > q,
+#tinymce p > q {
+  @include overview-content-quote();
+}
+
+#content cite,
+#tinymce cite,
+#content p > cite,
+#tinymce p > cite{
+  @include overview-content-cite();
+}
+
+table:not(#wp-calendar) {
+  @include overview-content-table();
+}
+
+address {
+  @include overview-content-address();
+}
+
+
+  
+/* OverView WordPress widgets */
+
+/* menus */
+div.overview-sidebar-main-container section.widget_nav_menu,
+div.overview-footer-widgets-container section.widget_nav_menu {
+  overflow-x: auto;
+}
+
+/* lists */
+section.widget > ul,
+section.widget_nav_menu div ul {
+  @include overview-sidebar-widget-list();
+}
+
+/* calendar */
+div.calendar_wrap {
+  text-align: center;
+  table caption {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+  }
+  table thead {
+    height: 40px;
+    border-bottom: 1px solid $ov-main-alt-color;
+  }
+  table tbody tr,
+  table tbody td {
+    padding: 4px;
+    border: 1px solid $ov-structure-dark-color;
+    @media screen and (max-width: 480px){
+      padding: 1px;
+    }
+    a {
+      font-weight: bold;
+    }
+  }
+  tfoot {
+    height: 40px;
+    border-top: 1px solid $ov-main-alt-color;
+    tr td#prev,
+    tr td#next {
+      height: 50px;
+      line-height: 50px;
+      a {
+        padding: 6px 20px 9px 20px;
+        border: 1px solid $ov-main-color;
+        @include ov-border-radius(3px);
+        @media screen and (max-width: 480px){
+          padding: 6px;
+        }
+        &:hover {
+          color: $ov-structure-light-color;
+          background-color: $ov-main-color;
+        }
+      }
+    }
+  }
+}
+
+/* tag cloud */
+.widget_tag_cloud .tagcloud {
+  text-align: center;
+}
+
+
+/* OverView front page template POSTS DISPLAY */
+
+/* title */
+h2.overview-front-page-title {
+  margin: 0;
+  padding: 12px;
+  text-align: center;
+  font-weight: normal;
+  color: #444;
+  background-color: $ov-structure-light-color;
+  @include ov-box-shadow(0 0 6px 0 $ov-structure-dark-color);
+}
+
+/* container */
+div#overview-front-page-section-content-container {
+    width: 100%;
+    padding: 0 12px;
+}
+
+/* image */
+div.overview-front-page-posts-section-img-container {
+    position: relative;
+    display: inline-block;
+    width: 40%;
+    height: 480px;
+    max-height: 480px;
+    margin-top: 10px;
+}
+img#overview-front-page-posts-section-img,
+div.overview-front-page-posts-section-img-container i.fa,
+div.overview-front-page-posts-section-img-container i.fa-spinner {
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    max-width: 100%;
+    max-height: 480px;
+    @include ov-transform(translate(-50%, -50%));
+    @include ov-box-shadow(0 0 6px 0 #222);
+    z-index: 10;
+}
+/* default img fallback */
+div.overview-front-page-posts-section-img-container i.fa,
+div.overview-front-page-posts-section-img-container i.overview-posts-display-featured-img-loading-spinner {
+    color: #4a576d;
+    @include ov-box-shadow(none);
+}
+
+/* title */
+div.overview-dark-display div#overview-front-page-section-content-container div.overview-front-page-section-content-container h2#overview-front-page-posts-section-title {
+  color: $ov-main-bright-color;
+}
+
+h2#overview-front-page-posts-section-title {
+    max-height: 120px;
+    text-align: center;
+    font-size: 26px;
+    overflow-y: auto;
+    @include ov-text-shadow(0 0 1px);
+    @include ov-transition(.2s color linear);
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+}
+
+h2#overview-front-page-posts-section-title:hover {
+    color: $ov-main-alt-color;
+    @include ov-transition(.2s color linear);
+}
+
+/* tags */
+div#overview-front-page-posts-section-tags {
+  width: 100%;
+  max-width: 100%;
+  max-height: 80px;
+  overflow-y: auto;
+  text-align: center;
+}
+
+div#overview-front-page-posts-section-tags i.fa-tags {
+  margin-right: 6px;
+  color: #999;
+}
+
+div#overview-front-page-posts-section-tags a {
+  display: inline-block;
+  margin: 3px;
+  padding: 3px 6px;
+  color: $ov-main-dark-color;
+  background-color: $ov-main-alt-color;
+  @include ov-transition(.3s background-color ease-in);
+  @include ov-border-radius(3px 3px 0 0);
+}
+
+div#overview-front-page-posts-section-tags a:hover {
+  background-color: $ov-main-bright-color;
+  @include ov-transition(.3s background-color ease-in);
+}
+
+/* meta */
+div.overview-dark-display div#overview-front-page-section-content-container div.overview-front-page-section-content-container div#overview-front-page-posts-section-metas {
+    background: -moz-linear-gradient(top, rgba(229,233,234,0) 0%, rgba(253,255,255,1) 12%, rgba(181,195,221,1) 30%, rgba(190,201,222,1) 54%, rgba(206,211,221,1) 75%, rgba(212,215,219,1) 91%, rgba(247,247,247,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(229,233,234,0) 0%,rgba(253,255,255,1) 12%,rgba(181,195,221,1) 30%,rgba(190,201,222,1) 54%,rgba(206,211,221,1) 75%,rgba(212,215,219,1) 91%,rgba(247,247,247,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(229,233,234,0) 0%,rgba(253,255,255,1) 12%,rgba(181,195,221,1) 30%,rgba(190,201,222,1) 54%,rgba(206,211,221,1) 75%,rgba(212,215,219,1) 91%,rgba(247,247,247,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00e5e9ea', endColorstr='#f7f7f7',GradientType=0 ); /* IE6-9 */  
+}
+
+div.overview-bright-display div#overview-front-page-section-content-container div.overview-front-page-section-content-container div#overview-front-page-posts-section-metas {
+  
+}
+
+div#overview-front-page-posts-section-metas {
+    width: 100%;
+    max-width: 100%;
+    min-height: 52px;
+    max-height: 180px;
+    padding: 3px;
+    overflow-y: auto;
+}
+
+div#overview-front-page-posts-section-metas div {
+    display: inline-block;
+    margin-top: 12px;
+}
+
+div#overview-front-page-posts-section-metas div i,
+div#overview-front-page-posts-section-metas div a i {
+    margin: 3px 3px 3px 12px;
+}
+
+div.overview-front-page-posts-section-metas-categories {
+
+}
+
+a.overview-front-page-posts-category-link {
+    display: inline-block;
+    margin: 6px;
+    padding: 2px;
+    background-color: $ov-main-bright-color;
+    border: 1px solid;
+    @include ov-border-radius(3px);
+}
+
+/* content */
+div.overview-front-page-section-content-container {
+    display: inline-block;
+    float: right;
+    width: 55%;
+    height: 480px;
+    padding-left: 12px;
+    line-height: 1.5;
+}
+div#overview-front-page-posts-section-content {
+    padding: 12px 18px;
+    overflow-y: auto;
+    background-color: #fff;
+    @include ov-border-radius(0 0 3px 3px);
+    @include ov-box-shadow(0 -1px 3px 0 $ov-main-dark-color);
+}
+
+div#overview-front-page-posts-section-content * {
+    max-width: 100%;
+}
+
+div.overview-front-page-section-content-container a {
+    text-decoration: none;
+}
+
+
+/* posts display navigation */
+div.overview-front-page-display-navigation-container {
+    width: 100%;
+    padding: 9px 0 9px 44%;
+    text-align: center;
+    background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(230,231,237,0.5) 21%, rgba(158,162,170,1) 49%, rgba(230,231,237,0.5) 80%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(230,231,237,0.5) 21%,rgba(158,162,170,1) 49%,rgba(230,231,237,0.5) 80%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(230,231,237,0.5) 21%,rgba(158,162,170,1) 49%,rgba(230,231,237,0.5) 80%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+    @include ov-transition(.2s background-color ease-in);
+}
+div.overview-front-page-display-navigation-container:hover {
+    background-color: $ov-main-alt-color;
+    @include ov-transition(.2s background-color ease-in);
+}
+div.overview-front-page-display-navigation div {
+    display: inline-block;
+    width: 35%;
+}
+div.overview-front-page-display-navigation div button,
+div.overview-front-page-display-navigation-mobile div button {
+    width: 100px;
+    height: 60px;
+    padding: 0;
+    line-height: 41px;
+    font-size: 22px;
+    color: $ov-main-alt-color;
+    background-color: $ov-main-color;
+    @include ov-box-shadow(0 0 6px 0 $ov-main-dark-color);
+    @include ov-transition(.3s color linear);
+    @include ov-transition(.3s background linear);
+}
+div.overview-front-page-display-navigation div button:hover,
+div.overview-front-page-display-navigation-mobile div button:hover {
+    color: $ov-main-bright-color; /* rgba(190, 190, 190, .9) */
+    background-color: $ov-main-color-hover; /* #255EC6 */
+    @include ov-transition(.3s color linear);
+    @include ov-transition(.3s background linear);
+}
+div.overview-front-page-display-navigation div button i,
+div.overview-front-page-display-navigation-mobile div button i {
+    @include ov-text-shadow(0 0 4px);
+}
+
+/* posts display MOBILE navigation */
+div.overview-front-page-display-navigation-mobile-container {
+    display: none;
+}
+
+
+/* OverView jQuery classes */
+
+/* OV posts display navigation */
+div.overview-front-page-display-navigation div button.ov-nav-disabled,
+div.overview-front-page-display-navigation-mobile div button.ov-nav-disabled {
+    color: $ov-main-dark-color;
+    background-color: $ov-main-bright-color;
+    opacity: .4;
+}
+div.overview-front-page-display-navigation div button.ov-nav-disabled[disabled]:hover,
+div.overview-front-page-display-navigation-mobile div button.ov-nav-disabled[disabled]:hover {
+    cursor: not-allowed;
+}
+
+/* default posts display fallback img background */
+.overview-posts-display-default-image-fallback {
+    background: -moz-linear-gradient(top, rgba(202,211,228,0) 1%, rgba(202,211,228,1) 22%, rgba(174,187,214,1) 79%, rgba(173,187,214,0.95) 80%, rgba(202,211,228,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(202,211,228,0) 1%,rgba(202,211,228,1) 22%,rgba(174,187,214,1) 79%,rgba(173,187,214,0.95) 80%,rgba(202,211,228,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(202,211,228,0) 1%,rgba(202,211,228,1) 22%,rgba(174,187,214,1) 79%,rgba(173,187,214,0.95) 80%,rgba(202,211,228,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00cad3e4', endColorstr='#00cad3e4',GradientType=0 ); /* IE6-9 */
+}
+
+/* OverView splash screen */
+.overview-splash-active {
+    @include ov-animation(3s linear 0s infinite overview_splash_screen);
+    @include ov-transition(background-color 1s linear);
+    @include ov-transition(opacity .8s linear);
+    @include ov-transition(height .2s linear);
+}
+.overview-splash-active-fadeout {
+    background-color: transparent;
+    @include ov-transition(background-color 1s linear);
+    @include ov-transition(opacity .8s linear);
+    @include ov-transition(height .2s linear);
+}
+
+/* Overview WordPress footer */
+footer.overview-footer-container {
+  @include ov-standard-footer();
+}
+
+/* OverView ANIMATIONS */
+
+/* splash screen */
+@-o-keyframes overview_splash_screen {
+    0% {
+        z-index: 50;
+        opacity: 1;
+        background-color: rgba(22, 22, 22, 1);
+    }
+    50% {
+        z-index: 50;
+        opacity: 1;
+        background-color: rgba(195, 195, 195, .85);
+    }
+    100% {
+        z-index: 50;
+        opacity: 1;
+        background-color: rgba(22, 22, 22, 1);
+    }
+}
+@-moz-keyframes overview_splash_screen {
+    0% {
+        z-index: 50;
+        opacity: 1;
+        background-color: rgba(22, 22, 22, 1);
+    }
+    50% {
+        z-index: 50;
+        opacity: 1;
+        background-color: rgba(195, 195, 195, .85);
+    }
+    100% {
+        z-index: 50;
+        opacity: 1;
+        background-color: rgba(22, 22, 22, 1);
+    }
+}
+@-webkit-keyframes overview_splash_screen {
+    0% {
+        z-index: 50;
+        opacity: 1;
+        background-color: rgba(22, 22, 22, 1);
+    }
+    50% {
+        z-index: 50;
+        opacity: 1;
+        background-color: rgba(195, 195, 195, .85);
+    }
+    100% {
+        z-index: 50;
+        opacity: 1;
+        background-color: rgba(22, 22, 22, 1);
+    }
+}
+@keyframes overview_splash_screen {
+    0% {
+        z-index: 50;
+        opacity: 1;
+        background-color: rgba(22, 22, 22, 1);
+    }
+    50% {
+        z-index: 50;
+        @include ov-animation(3s linear 0s infinite overview_splash_screen);
+        @include ov-transition(background-color 1s linear);
+        @include ov-transition(opacity .8s linear);
+        @include ov-transition(height .2s linear);
+    }
+}
+
+
+/* OverView MEDIA QUERIES */
+
+@media screen and (max-width: 767px){
+
+    /* navbar logo */
+    nav#site-navigation a#overview-navbar-site-logo {
+      height: 30px;
+    }
+    nav#site-navigation a#overview-navbar-site-logo img {
+      max-width: 18%;
+      max-height: auto;
+    }
+    /* site branding description */
+    .site-branding {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+    }
+    /* site branding description */
+    p.site-branding-description-p {
+        width: 100%;
+        float: none;
+        @include ov-border-radius(0);
+    }
+    /* posts display elements */
+    div.overview-single-box-container,
+    div#overview-front-page-section-content-container {
+        height: auto;
+        max-height: none;
+    }
+    div.overview-front-page-posts-section-img-container {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: 360px;
+        max-height: 300px;
+        margin: 0 auto;
+        padding: 0;
+    }
+    /* posts display featured image */
+    img#overview-front-page-posts-section-img {
+        max-height: 260px;
+    }
+    div.overview-front-page-section-content-container {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        max-height: none;
+        padding-left: 0;
+        padding-bottom: 18px;
+    }
+    /* posts display default fallback img container */
+    div.overview-front-page-posts-section-img-container.overview-posts-display-default-image-fallback {
+        background: none;
+    }
+    div.overview-front-page-posts-section-img-container i.fa {
+        color: $ov-main-alt-color;
+    }
+    div.overview-front-page-section-content-container {
+        float: none;
+    }
+    /* posts display title */
+    h2#overview-front-page-posts-section-title {
+        max-height: none;
+    }
+    /* posts display meta */
+    div#overview-front-page-posts-section-metas {
+        max-height: none;
+    }
+    div#overview-front-page-posts-section-metas div.overview-front-page-posts-section-metas-date {
+        text-align: center;
+    }
+    div#overview-front-page-posts-section-metas div.overview-front-page-posts-section-metas-date i.fa-clock-o {
+        display: block;
+    }
+    /* post display content */
+    div#overview-front-page-posts-section-content {
+        max-height: none;
+    }
+    /* posts display navigation */
+    div.overview-front-page-display-navigation-container {
+        display: none;
+    }
+    div.overview-front-page-display-navigation-mobile-container {
+        display: block;
+        width: 100%;
+        margin: 6px 0;
+        text-align: center;
+    }
+    div.overview-front-page-display-navigation-mobile div {
+        display: inline-block;
+        width: 45%;
+    }
+
+}
+
+@media screen and (max-width: 599px){
+    /* navbar */
+    nav#site-navigation {
+        background: $ov-main-color;
+        /*overflow-y: auto;*/
+    }
+    nav#site-navigation div {
+      width: 100%;
+      max-width: 100%;
+    }
+    .main-navigation li {
+      clear: both;
+      }
+    nav#site-navigation div ul.nav-menu li {
+        display: block;
+        margin-left: 0;
+        @include ov-border-radius(0);
+    }
+}
+
+
+
+/* NAVIGATION TESTS
+  http://www.jasong-designs.com/2016/06/30/hiding-and-showing-a-wordpress-menu-ii-javascript-only-please/
+  _______________________________________*/
+
+

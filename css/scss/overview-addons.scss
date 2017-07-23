@@ -1,0 +1,39 @@
+/* OverView addons styles  */
+
+/* WP navbar logo */
+@media screen and (max-width: 599px){
+  nav#site-navigation a#overview-navbar-site-logo img {
+    width: auto;
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+
+/* navbar */
+nav#site-navigation div {
+  padding: 0 14px;
+}
+
+/* site title & description */
+header#masthead div.site-branding h1.site-title,
+header#masthead div.site-branding p.site-title,
+header#masthead div.site-branding p.site-description {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+header#masthead div.site-branding h1.site-title {
+  @media screen and(max-width: 767px){
+    padding: 12px 20px 4px 20px;
+    line-height: 1.1;
+  }
+  a.overview-site-title-a {
+    padding-left: 0;
+  }
+}
+header#masthead div.site-branding p.site-description {
+  @media screen and(max-width: 767px){
+    padding: 0 12px 12px 12px;
+  }
+}
+
+

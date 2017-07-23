@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,sCAAsC;AAEpC,qCAAqC;EADvC,mCAAoC;IAEhC,KAAK,EAAE,KAAK;IACZ,SAAS,EAAE,KAAK;IAChB,MAAM,EAAE,MAAM;;AAIhB,qCAAsC;EADxC,gCAAiC;IAE7B,KAAK,EAAE,MAAM;IACb,SAAS,EAAE,MAAM;IACjB,MAAM,EAAE,MAAM",
+"sources": ["scss/overview-fixed-layout.scss"],
+"names": [],
+"file": "overview-fixed-layout.css"
+}

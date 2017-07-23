@@ -1,0 +1,449 @@
+/* OverView SCSS setup
+_______________________________________ */
+
+
+/* VARIABLES */
+
+  /* "Century Gothic",  "Avant Garde Gothic",  "Avant Garde",  "URW Gothic L",   helvetica,  sans-serif; */
+$ov-main-font: 'Muli', sans-serif;
+
+/* Iced Lake (default): rgba(76,118,201,1) , #4c76c9 */
+  /*
+  /* Amazon Rainforest: rgba(70,118,88,1) */
+  /* Chessnuts Field: rgba(129,118,88,1) */
+  /* Terracotta Road: rgba(173,118,60,1) */
+  /* Japanese Maple Hill: rgba(191,58,63,1) */
+  /* Sunset Desert: rgba(195,118,94,1) */
+  /* Orchid Cliff: rgba(182,118,176,1) */
+  /* Lavander Island: rgba(135,118,189,1) */
+  /* Mariana Trench: rgba(69,82,131,1) */
+  /* Countryside Oasis: rgba(79,97,36,1) */
+    
+/* test sets: rgba(70,118,88,1), rgba(129,118,88,1), rgba(173,118,60,1), rgba(191,58,63,1), rgba(195,118,94,1), rgba(182,118,176,1), rgba(135,118,189,1) */
+/* more sets: rgba(69,82,131,1), rgba(79,97,36,1) */
+
+$ov-main-color: rgba(79,97,36,1);
+
+$ov-main-color-hover: saturate($ov-main-color, 35%); 
+$ov-main-color-gradient: lighten($ov-main-color, 15%);
+$ov-main-alt-color: lighten($ov-main-color, 30%);/* #cce2f7 */
+$ov-main-color-visited: darken($ov-main-color, 30%);
+
+$ov-main-bright-color: #f8f8f8;
+$ov-main-dark-color: #222;
+$ov-structure-dark-color: #808080;
+$ov-structure-light-color: rgba(220, 220, 220, .8);
+
+
+/* MIXINS */
+
+/* PREFIXES */
+
+/* animation */
+@mixin ov-animation($animation){
+-webkit-animation: $animation;
+-moz-animation: $animation;
+-ms-animation: $animation;
+-o-animation: $animation;
+animation: $animation;
+}
+/* transform */
+@mixin ov-transform($transform){
+-webkit-transform: $transform;
+-moz-transform: $transform;
+-ms-transform: $transform;
+-o-transform: $transform;
+transform: $transform;
+}
+/* border radius */
+@mixin ov-border-radius($radius){
+-webkit-border-radius: $radius;
+-moz-border-radius: $radius;
+-ms-border-radius: $radius;
+-o-border-radius: $radius;
+border-radius: $radius;
+}
+/* transition */
+@mixin ov-transition($transition){
+-webkit-transition: $transition;
+-moz-transition: $transition;
+-ms-transition: $transition;
+-o-transition: $transition;
+transition: $transition;
+}
+/* text shadow */
+@mixin ov-text-shadow($text-shadow){
+-webkit-text-shadow: $text-shadow;
+-moz-text-shadow: $text-shadow;
+-ms-text-shadow: $text-shadow;
+-o-text-shadow: $text-shadow;
+text-shadow: $text-shadow;
+}
+  /* box shadow */
+@mixin ov-box-shadow($box-shadow){
+-webkit-box-shadow: $box-shadow;
+-moz-box-shadow: $box-shadow;
+-ms-box-shadow: $box-shadow;
+-o-box-shadow: $box-shadow;
+box-shadow: $box-shadow;
+}
+
+/* WordPress STRUCTURES */
+
+/* main layouts */
+
+@mixin ov-site-content-and-sidebar(){
+  width: 100%;
+  @supports (display: grid){
+    display: grid;
+    grid-auto-flow: column dense;
+    grid-template-columns: 1fr 1fr 400px;
+    grid-template-areas: 'content content sidebar';
+    grid-gap: 40px;
+    @media screen and (max-width: 980px){
+      grid-template-columns: 100%;
+      grid-template-rows: auto auto;
+      grid-auto-flow: row dense;
+      grid-template-areas: 'content-pocket' 'sidebar-pocket';
+    }
+  }
+}
+
+@mixin ov-full-layout(){
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@mixin ov-sidebar-layout(){
+  display: inline-block;
+  width: 70%;
+  max-width: 70%;
+  box-sizing: border-box;
+  @media screen and (max-width: 980px){
+    @include ov-full-layout();
+  }
+  @supports (display: grid){
+    grid-area: content;
+    width: 100%;
+    max-width: 100%;
+    @media screen and (max-width: 980px){
+      grid-row: 1;
+      grid-area: content-pocket;
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+}
+
+@mixin ov-sidebar-container(){
+  float: right;
+  width: 26%;
+  max-width: 500px;
+  margin-left: 16px;
+  padding-top: 50px;
+  padding-right: 12px;
+  box-sizing: border-box;
+  border-top: 5px solid $ov-structure-light-color;
+  @media screen and (max-width: 980px){
+    @include ov-full-layout();
+    margin-left: 0px;
+    padding-top: 20px;
+    padding-right: 12px;
+  }
+  @supports (display: grid){
+    grid-area: sidebar;
+    width: 100%;
+    margin-left: 0;
+    @media screen and (max-width: 980px){
+      grid-row: 2;
+      grid-area: sidebar-pocket;
+      max-width: 100%;
+      padding: 20px;
+    }
+  }
+}
+
+/* standard post list attributes */
+@mixin ov-standard-post-attributes($post-color-structure){
+  padding: 30px;
+  border-top: 5px solid $post-color-structure;
+  border-bottom: 5px solid $post-color-structure;
+}
+
+/* standard post list featured img header */
+@mixin ov-standard-post-featured-img(){
+  header {
+    float: left;
+    width: 70%;
+    clear: both;
+    @media screen and (max-width: 767px){
+      display: block;
+      float: none;
+      width: 100%;
+    }
+  }
+  a.overview-default-post-entry-featured-image-aside {
+    display: inline-block;
+    width: 30%;
+    padding: 6px;
+    border-left: 1px solid $ov-structure-light-color;
+    @include ov-border-radius(4px);
+    img {
+      display: block;
+      box-sizing: border-box;
+      max-width: 95%;
+      max-height: 300px;
+      margin: 0 auto;
+      @include ov-box-shadow(0px 0px 6px 1px $ov-main-color-gradient);
+    }
+    @media screen and (max-width: 767px){
+      display: block;
+      width: 100%;
+      padding-top: 12px;
+      border-left: none;
+    }
+  }
+  div.overview-single-post-entry-full-featured-image img {
+    @include ov-box-shadow(0 0 8px 2px $ov-main-color);
+  }
+}
+
+/* standard post list NO featured img header */
+@mixin ov-standard-post-no-featured-img(){
+  header {
+    width: 100%;
+  }
+}
+
+/* standard post list content */
+@mixin ov-standard-post-content($post-color-structure){
+  margin-top: 32px;
+  padding: 16px 60px;
+  border-top: 1px solid $post-color-structure;
+  @media screen and (max-width: 900px){
+    padding: 16px 20px;
+  }
+  @media screen and (max-width: 599px){
+    padding: 16px 0;
+  }
+}
+
+/* standard posts format */
+@mixin ov-default-post-list($post-color-structure){
+  @include ov-standard-post-attributes($post-color-structure);
+  @include ov-standard-post-featured-img();
+
+  div.overview-default-entry-content {
+    @include ov-standard-post-content($post-color-structure);
+  }
+}
+
+/* standard posts format - no featured image */
+@mixin ov-default-post-list-no-featured-img($post-color-structure){
+  @include ov-standard-post-attributes($post-color-structure);
+  @include ov-standard-post-no-featured-img();
+
+  div.overview-default-entry-content {
+    @include ov-standard-post-content($post-color-structure);
+  }
+}
+
+/* meta icons */
+@mixin overview-meta-icon(){
+      width: 40px;
+      margin-top: 12px;
+      margin-right: 6px;
+      color: $ov-structure-dark-color;
+      @include ov-transform(rotateZ(-5deg));
+}
+
+/* post meta */
+@mixin overview-post-meta-container(){
+  margin-top: 12px;
+  span.posted-on {
+    i.fa-calendar {
+      @include overview-meta-icon();
+    }
+  }
+}
+
+/* post categories and tags */
+@mixin overview-post-cats-tags(){
+  display: block;
+  i.fa-folder-open,
+  i.fa-tags {
+    @include overview-meta-icon();
+  }
+}
+
+/* comments links */
+@mixin overview-comments-links(){
+  i.fa-comments {
+    @include overview-meta-icon();
+  }
+}
+
+/* comments */
+@mixin overview-comments-container(){
+  padding: 0 20px 20px 20px;
+  div#respond form p label {
+    display: block;
+  }
+}
+
+  
+/* WordPress content's elements styles */
+@mixin overview-content-quote(){
+  display: inline-block;
+  padding: 6px 36px;
+  background-color: $ov-structure-light-color;
+  @include ov-border-radius(3px);
+  @include ov-text-shadow(0 0 1px $ov-main-color);
+}
+
+@mixin overview-content-cite() {
+  margin: 6px;
+  padding: 6px;
+  color: $ov-main-dark-color;
+  background-color: $ov-main-alt-color;
+  @include ov-border-radius(2px);
+  @include ov-text-shadow(0 0 1px);
+}
+
+@mixin overview-content-table(){
+  max-width: 100%;
+  text-align: left;
+  @include ov-border-radius(6px);
+  thead th {
+    margin: 12px 6px;
+    padding: 6px 0;
+  }
+  td {
+    margin: 6px 12px;
+  }
+  tr th {
+    margin: 0 3px;
+    padding: 6px;
+    border-bottom: 1px solid $ov-structure-dark-color;
+    text-align: center;
+  }
+  tr td {
+    padding: 6px;
+    border-left: 1px solid $ov-structure-dark-color;
+    &:first-child {
+      padding: 6px;
+      border-left: none;
+    }
+  }
+}
+
+@mixin overview-content-address(){
+  padding: 1% 4%;
+  letter-spacing: 0.12em;
+  line-height: 1.2em;
+  text-align: center;
+  border-top: 1px dotted;
+  border-bottom:  1px dotted;
+  @include ov-text-shadow(0 0 1px $ov-main-color);
+}
+
+
+/* sidebar WordPress widgets */
+@mixin overview-sidebar-widget-list(){
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 16px;
+  li ul {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 16px;
+  }
+}
+
+/* footer WordPress widgets */
+@mixin ov-footer-widget(){
+  display: inline-block;
+  width: 33.33%;
+  box-sizing: border-box;
+  padding: 20px;
+  text-align: left;
+  @media screen and (max-width: 767px){
+    width: 100%;
+    max-width: 100%;
+  }
+  h2.footer-widget-title {
+    text-align: center;
+    color: $ov-main-alt-color;
+  }
+    form,
+    form label,
+    form input,
+    select {
+      width: 100%;
+      max-width: 100%;
+    }
+}
+  
+/* standard footer */
+@mixin ov-footer-colors(){
+  color: $ov-structure-light-color;
+  /* footer gradient background */
+  background: $ov-main-color; /* Oldbrowsers */
+  background: -moz-linear-gradient(top, $ov-main-alt-color 0%, $ov-main-color 1%, $ov-main-dark-color 3%, $ov-main-dark-color 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, $ov-main-alt-color 0%,$ov-main-color 1%,$ov-main-dark-color 3%,$ov-main-dark-color 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, $ov-main-alt-color 0%,$ov-main-color 1%,$ov-main-dark-color 3%,$ov-main-dark-color 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b5bdc8', endColorstr='#28343b',GradientType=0 ); /* IE6-9 */
+  @media screen and (max-width: 767px){
+    background: $ov-main-dark-color;
+    border-top: 2px solid $ov-main-color;
+  }
+}
+
+@mixin ov-standard-footer(){
+  min-height: 120px;
+  padding-top: 90px;
+  padding-bottom: 12px;
+  @include ov-box-shadow(0 -1px 3px $ov-main-dark-color);
+  @include ov-footer-colors();
+  div.overview-footer-widgets-container {
+    max-width: 100%;
+    text-align: center;
+    section.overview-footer-widget {
+      @include ov-footer-widget();
+    }
+    @supports (display: flex) or (display: -webkit-flex){
+      display: -webkit-flex;
+      -webkit-flex-direction: row;
+      -webkit-flex-wrap: wrap;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+  div.site-info {
+    padding: 0 8px;
+    text-align: center;
+    div.overview-footer-info-separator {
+      width: 40%;
+      margin: 0 auto;
+      margin-bottom: 12px;
+      border-bottom: 1px solid $ov-structure-light-color;
+    }
+  }
+}
+
+/* buttons  */
+@mixin overview-standard-button(){
+  padding: 12px;
+  font-size: .9em;
+  border: 1px solid $ov-structure-light-color;
+  color: $ov-main-bright-color;
+  background-color: $ov-main-color;
+  @include ov-border-radius(3px);
+  &:hover {
+    color: $ov-main-color;
+    background-color: $ov-main-bright-color;
+  }
+}
