@@ -12,6 +12,12 @@
 ?>
 
 	</div><!-- #content -->
+
+<?php 
+        if ( is_page_template('overview-front-page-after-content.php') ){
+            get_template_part( 'template-parts/overview-display' );
+        }
+?>
         
 	<footer id="colophon" class="site-footer overview-footer-container" role="contentinfo">
             <?php

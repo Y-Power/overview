@@ -47,20 +47,18 @@ else {?>
 
 	else :
 
-	get_template_part( 'template-parts/content', 'none' );
-
         ?>
         <div class="overview-unindexed-content-main-container"><?php get_template_part( 'template-parts/content', 'none' ); ?>
         </div> <!-- .overview-indexed-content-main-container -->
-    <?php 
+    <?php
 
     endif; ?>
 
 </main><!-- #main -->
     </div><!-- #primary </section> -->
 
-        <?php
-        if ( is_active_sidebar( 'sidebar-1' ) ){?>
-            <div class="overview-sidebar-main-container"><?php get_sidebar( 'sidebar-1' ); ?></div>
-        <?php }
-        get_footer();
+    <?php
+    if ( is_active_sidebar( 'sidebar-1' ) ){?>
+        <div class="overview-sidebar-main-container"><?php get_sidebar( 'sidebar-1' ); ?></div>
+    <?php }
+    get_footer();

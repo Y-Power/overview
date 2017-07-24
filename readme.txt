@@ -44,6 +44,10 @@ OverView includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
+= 1.0.1 - July 24 2017 =
+* Removed unnecessary files and folders
+* Added new OverView Display page template (after content)
+
 = 1.0.0 - July 19 2017 =
 * Initial release
 
