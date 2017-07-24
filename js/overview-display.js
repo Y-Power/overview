@@ -195,7 +195,8 @@
                         
                         /* author data */
                         postsManagerUser.fetch(overviewPostsDisplayAuthorsQueryArgs).done(function(author){
-                            console.log(author);
+                            //console.log(author);
+                            
                             /* create author html */
                             var authorHtml = '<a href="' + author[0].link + '"><i class="fa fa-id-card-o" aria-hidden="true"></i>' + author[0].name + '</a>';
                             /* add author html */
@@ -253,9 +254,9 @@
                             }, 300);
                         });
                         
-                        console.log('First page var:\n', postsPageCounter, '\nTotal pages var:\n',  postsMaxPages, '\nThis collection state:\n', this.collection.state);
+                        //console.log('First page var:\n', postsPageCounter, '\nTotal pages var:\n',  postsMaxPages, '\nThis collection state:\n', this.collection.state);
                         
-                        console.log(OVPostData);
+                        //console.log(OVPostData);
 
 			html = '<div class="overview-front-page-posts-section-img-container"><a href="' + OVPostData.link + '"><img id="overview-front-page-posts-section-img" style="display: none;" alt="featured image"></img></a></div><div class="overview-front-page-display-navigation-mobile-container"><div class="overview-front-page-display-navigation-mobile"><div class="overview-front-page-display-navigation-mobile-prev"><button id="overview-front-page-display-navigation-mobile-prev-button"><i class="fa fa-2x fa-angle-left" aria-hidden="true"></i></button></div><div class="overview-front-page-display-navigation-mobile-next"><button id="overview-front-page-display-navigation-mobile-next-button"><i class="fa fa-2x fa-angle-right" aria-hidden="true"></i></button></div></div></div><div class="overview-front-page-section-content-container"><a href="' + OVPostData.link + '"><h2 id="overview-front-page-posts-section-title" class="overview-front-page-section-title">' + OVPostData.title.rendered + '</h2></a><div id="overview-front-page-posts-section-tags" style="display: none;"></div><div id="overview-front-page-posts-section-metas"><div class="overview-front-page-posts-section-metas-date" style="display: none;"><a href="' + OVPostData.link + '">' + OVPostDate + '</a></div><div class="overview-front-page-posts-section-metas-author" style="display: none;"></div><div class="overview-front-page-posts-section-metas-categories" style="display: none;"></div></div><div id="overview-front-page-posts-section-content" class="overview-front-page-section-content">' + OVPostData.content.rendered + '</div></div>';
 		    }
@@ -494,7 +495,7 @@
 	/* on backbone ready START */
 	wp.api.loadPromise.done(function(){
 
-	    console.log('Backbone JS obj: (Backbone)\n', Backbone, '\nWP REST API obj: (wp.api)\n', wp.api, '\nWP API Settings: (wpApiSettings)\n', wpApiSettings, '\nWP localized vars:\n', OVAPIVars);
+	    // console.log('Backbone JS obj: (Backbone)\n', Backbone, '\nWP REST API obj: (wp.api)\n', wp.api, '\nWP API Settings: (wpApiSettings)\n', wpApiSettings, '\nWP localized vars:\n', OVAPIVars);
 
 	    /* OverView page controller var */
 	    var overviewPageController;
