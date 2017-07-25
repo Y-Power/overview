@@ -28,6 +28,7 @@
         /* OverView elements init */
         overviewNavbarSettings();
         overviewNavbarAdjust();
+        overviewSocialNavSettings();
         /* re-adjust on window resize */
         jQ(window).resize(function(){
             overviewNavbarAdjust();
@@ -174,7 +175,16 @@
             });
             
         }
-        
+
+        /* OverView social nav menu */
+        function overviewSocialNavSettings(){
+            var allSocialLinks = jQ('ul#ov-social-menu > li > div > a');
+            // hide all icons labels
+            allSocialLinks.each(function(){
+                jQ(this).context.childNodes[0].data = '';
+            });
+        }
+
     });
     /* document ready END */
     

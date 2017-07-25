@@ -20,7 +20,19 @@
 ?>
         
 	<footer id="colophon" class="site-footer overview-footer-container" role="contentinfo">
-            <?php
+            <?php 
+            /* OverView social links menu */
+            if ( has_nav_menu( 'ov-social-menu-1' ) ){
+                wp_nav_menu( array(
+                    'theme_location' => 'ov-social-menu-1',
+                    'menu_id'        => 'ov-social-menu',
+                    'before'         => '<div class="overview-social-nav-link">',
+                    'link_after'     => '<div class="overview-default-social-icon"><i class="fafa-share-alt fa-3x"></i></div>',
+                    'after'          => '</div>'
+                )
+                );
+            }
+            /* OverView footer widgets */
             if ( is_active_sidebar( 'ov-footer-1' ) ){?>
                 <div class="overview-footer-widgets-container">
                     <?php dynamic_sidebar( 'ov-footer-1' ); ?>

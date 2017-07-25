@@ -39,7 +39,7 @@
                         <?php }
                         ?></a>
 		        <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><i class="fa fa-bars fa-2x" aria-hidden="true" title="<?php esc_attr( __('Toggle Menu', 'overview') ); ?>"></i><?php //esc_html_e( 'Primary Menu', 'overview' ); //overview removed default ?></button>
-		    <?php wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'primary-menu' ) ); ?>
+		    <?php wp_nav_menu( array( 'theme_location' => 'ov-menu-1', 'menu_id' => 'primary-menu' ) ); ?>
 		</nav><!-- #site-navigation -->
                 
                 <!-- OverView header image -->
@@ -84,7 +84,7 @@
             
 	    <div id="content" class="site-content
                      <?php 
-                     if ( is_active_sidebar('sidebar-1') ){
+                     if ( is_active_sidebar('ov-sidebar-1') ){
                          echo ' overview-content-and-sidebar-layout'; 
                      }
                      ?>

@@ -44,6 +44,10 @@ OverView includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
+= 1.0.3 - July 26 2017 =
+* Prefixed sidebar widgets area
+* Added social nav menu support
+
 = 1.0.2 - July 25 2017 =
 * Removed (by commenting) OverView Display JS console logs tests
 

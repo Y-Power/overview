@@ -10,7 +10,7 @@
 get_header(); ?>
 
 <?php 
-if ( is_active_sidebar( 'sidebar-1' ) ){?>
+if ( is_active_sidebar( 'ov-sidebar-1' ) ){?>
     <div id="primary" class="content-area overview-sidebar-layout">
 <?php }
 else {?>
@@ -67,7 +67,7 @@ else {?>
     </div><!-- #primary -->
 
     <?php
-    if ( is_active_sidebar( 'sidebar-1' ) ){?>
-        <div class="overview-sidebar-main-container"><?php get_sidebar( 'sidebar-1' ); ?></div>
+    if ( is_active_sidebar( 'ov-sidebar-1' ) ){?>
+        <div class="overview-sidebar-main-container"><?php get_sidebar( 'ov-sidebar-1' ); ?></div>
         <?php }
         get_footer();

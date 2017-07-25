@@ -44,7 +44,8 @@ function overview_setup() {
 
     // This theme uses wp_nav_menu() in one location.
     register_nav_menus( array(
-	'menu-1' => esc_html__( 'Primary', 'overview' ),
+	'ov-menu-1'        => esc_html__( 'Primary', 'overview' ),
+        'ov-social-menu-1' => esc_html__( 'Social', 'overview' )
     ) );
 
     /*
@@ -100,7 +101,7 @@ add_action( 'after_setup_theme', 'overview_content_width', 0 );
 function overview_widgets_init() {
     register_sidebar( array(
 	'name'          => esc_html__( 'Sidebar', 'overview' ),
-	'id'            => 'sidebar-1',
+	'id'            => 'ov-sidebar-1',
 	'description'   => esc_html__( 'Add sidebar widgets here.', 'overview' ),
 	'before_widget' => '<section id="%1$s" class="widget %2$s">',
 	'after_widget'  => '</section>',

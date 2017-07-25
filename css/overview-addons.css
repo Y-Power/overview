@@ -27,4 +27,17 @@ header#masthead div.site-branding h1.site-title a.overview-site-title-a {
   header#masthead div.site-branding p.site-description {
     padding: 0 12px 12px 12px; } }
 
+/* OverView social nav menu */
+div.menu-overview-social-container {
+  width: 100%;
+  max-width: 100%; }
+  div.menu-overview-social-container ul#ov-social-menu {
+    margin: 12px 0;
+    padding-left: 0;
+    text-align: center;
+    list-style: none; }
+    div.menu-overview-social-container ul#ov-social-menu li {
+      display: inline-block;
+      padding: 9px 12px; }
+
 /*# sourceMappingURL=overview-addons.css.map */
