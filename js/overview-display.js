@@ -59,7 +59,7 @@
 	    }
 	    /* compute box offset */
 	    function setSplashOffset(splashEl, splashParent){
-		var displayOffset = (splashParent.position().top); // last value is top padding
+		var displayOffset = (splashParent.position().top);
 		/* assign offset based on window */
 		splashEl.offset({
 		    top: displayOffset,
@@ -145,7 +145,6 @@
 		    this.collection.fetch(overviewPostsDisplayQueryArgs).done(function(data, status, response){
                         /* set max pages */
                         postsMaxPages = parseInt(response.getResponseHeader('X-WP-TotalPages'));
-                        //postsMaxPages = parseInt(this.collection.state.totalPages);
                     });
 		    this.model.fetch(overviewPostsDisplayQueryArgs);
 		    this.render();
@@ -160,9 +159,7 @@
                     /* if there is data */
 		    if ( this.model.attributes[0] ){
                         
-			// console.log('This: (data)\n', this, '\nThis model queried post:\n', this.model.attributes[0], '\nThis posts collection:\n', this.collection);
-
-                        /* define this post model var */
+			/* define this post model var */
 			OVPostData = this.model.attributes[0];
                         /* define post feature image model var */
 			getPostImage(OVPostData);
@@ -195,8 +192,6 @@
                         
                         /* author data */
                         postsManagerUser.fetch(overviewPostsDisplayAuthorsQueryArgs).done(function(author){
-                            //console.log(author);
-                            
                             /* create author html */
                             var authorHtml = '<a href="' + author[0].link + '"><i class="fa fa-id-card-o" aria-hidden="true"></i>' + author[0].name + '</a>';
                             /* add author html */
@@ -254,11 +249,7 @@
                             }, 300);
                         });
                         
-                        //console.log('First page var:\n', postsPageCounter, '\nTotal pages var:\n',  postsMaxPages, '\nThis collection state:\n', this.collection.state);
-                        
-                        //console.log(OVPostData);
-
-			html = '<div class="overview-front-page-posts-section-img-container"><a href="' + OVPostData.link + '"><img id="overview-front-page-posts-section-img" style="display: none;" alt="featured image"></img></a></div><div class="overview-front-page-display-navigation-mobile-container"><div class="overview-front-page-display-navigation-mobile"><div class="overview-front-page-display-navigation-mobile-prev"><button id="overview-front-page-display-navigation-mobile-prev-button"><i class="fa fa-2x fa-angle-left" aria-hidden="true"></i></button></div><div class="overview-front-page-display-navigation-mobile-next"><button id="overview-front-page-display-navigation-mobile-next-button"><i class="fa fa-2x fa-angle-right" aria-hidden="true"></i></button></div></div></div><div class="overview-front-page-section-content-container"><a href="' + OVPostData.link + '"><h2 id="overview-front-page-posts-section-title" class="overview-front-page-section-title">' + OVPostData.title.rendered + '</h2></a><div id="overview-front-page-posts-section-tags" style="display: none;"></div><div id="overview-front-page-posts-section-metas"><div class="overview-front-page-posts-section-metas-date" style="display: none;"><a href="' + OVPostData.link + '">' + OVPostDate + '</a></div><div class="overview-front-page-posts-section-metas-author" style="display: none;"></div><div class="overview-front-page-posts-section-metas-categories" style="display: none;"></div></div><div id="overview-front-page-posts-section-content" class="overview-front-page-section-content">' + OVPostData.content.rendered + '</div></div>';
+                        html = '<div class="overview-front-page-posts-section-img-container"><a href="' + OVPostData.link + '"><img id="overview-front-page-posts-section-img" style="display: none;" alt="featured image"></img></a></div><div class="overview-front-page-display-navigation-mobile-container"><div class="overview-front-page-display-navigation-mobile"><div class="overview-front-page-display-navigation-mobile-prev"><button id="overview-front-page-display-navigation-mobile-prev-button"><i class="fa fa-2x fa-angle-left" aria-hidden="true"></i></button></div><div class="overview-front-page-display-navigation-mobile-next"><button id="overview-front-page-display-navigation-mobile-next-button"><i class="fa fa-2x fa-angle-right" aria-hidden="true"></i></button></div></div></div><div class="overview-front-page-section-content-container"><a href="' + OVPostData.link + '"><h2 id="overview-front-page-posts-section-title" class="overview-front-page-section-title">' + OVPostData.title.rendered + '</h2></a><div id="overview-front-page-posts-section-tags" style="display: none;"></div><div id="overview-front-page-posts-section-metas"><div class="overview-front-page-posts-section-metas-date" style="display: none;"><a href="' + OVPostData.link + '">' + OVPostDate + '</a></div><div class="overview-front-page-posts-section-metas-author" style="display: none;"></div><div class="overview-front-page-posts-section-metas-categories" style="display: none;"></div></div><div id="overview-front-page-posts-section-content" class="overview-front-page-section-content">' + OVPostData.content.rendered + '</div></div>';
 		    }
                     
                     /* assign new html */
@@ -409,9 +400,7 @@
 	    /* pagination */
 	    function postsNavigationSetup(){
 
-                // console.log(postsPageCounter, postsMaxPages);
-
-		/* reset navigation events */
+                /* reset navigation events */
 		jQ('button#overview-front-page-display-navigation-prev-button, button#overview-front-page-display-navigation-mobile-prev-button, button#overview-front-page-display-navigation-next-button, button#overview-front-page-display-navigation-mobile-next-button').off('click');
 		/* prev button */
 		jQ('button#overview-front-page-display-navigation-prev-button, button#overview-front-page-display-navigation-mobile-prev-button').click(function(navButton){
@@ -525,9 +514,7 @@
 			[
 			    splashBox
 			]
-		    ],
-		    // navigation
-		    //overviewPageController.postsNavigationSetup
+		    ]
 		];
 		/* page controller init */
 		overviewPageController.init(overviewInitParams);

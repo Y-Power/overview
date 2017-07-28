@@ -28,11 +28,23 @@
         /* OverView elements init */
         overviewNavbarSettings();
         overviewNavbarAdjust();
+        subMenusFormatSetup();
         overviewSocialNavSettings();
         /* re-adjust on window resize */
         jQ(window).resize(function(){
             overviewNavbarAdjust();
+            subMenusFormatSetup();
         });
+
+        /* WordPress Widgets */
+
+        /* add tag-cloud link title */
+        var overviewAllTagCloudsLinks = jQ('a.tag-cloud-link');
+        if ( overviewAllTagCloudsLinks && overviewAllTagCloudsLinks.length > 0 ){
+            overviewAllTagCloudsLinks.each(function(){
+                jQ(this).attr('title', jQ(this).attr('aria-label'));
+            });
+        }
 
         /* _s navbar settings */
         function overviewNavbarSettings(){
@@ -63,97 +75,54 @@
             }
 
             /* adjust sub-menu offsets on hover */
-            jQ('li.page_item_has_children, li.menu-item-has-children').mouseenter(function(){
-                subMenuHovering(this);
-            }).mouseleave(function(){
-                subMenuHovering(this);
-            });
+            var overviewAllParentsMenuItems = jQ('nav#site-navigation div ul > li.page_item_has_children, nav#site-navigation div ul > li.menu-item-has-children');
+            overviewAllParentsMenuItems.on('mouseenter', subMenuHovering);
+            overviewAllParentsMenuItems.on('mouseleave', subMenuHovering);
+            /* show mobile sub-menus on button click */
+            var overviewSubMenusButtons = overviewAllParentsMenuItems.children('button');
+            overviewSubMenusButtons.on('click', subMenuMobileClick);
+            
             // add/remove navigation classes on li hovering in order to access sub-menu items
             function subMenuHovering(thisEl){
-                var itemSubMenus = jQ(thisEl).children('ul.sub-menu'),
+                var itemSubMenus = jQ(thisEl.delegateTarget).children('ul.sub-menu'),
                     //itemParentUl = jQ(thisEl).parent('ul.sub-menu'),
                     winWidth = jQ(window).innerWidth();
 
                 /* if there are children sub-menus */
                 if ( parseInt(itemSubMenus.length) > 0 ){
                     itemSubMenus.each(function(){
-                        setupSubMenu(jQ(this));
+                        setupSubMenuHovering(jQ(this));
                     });
                 }
+            }
 
-                /* check for submenu position and assign navigation classes if needed */
-                function setupSubMenu(thisElement){
-                    var thisSubMenu = thisElement,
-                        subMenuWidth = thisSubMenu.outerWidth(),
-                        subMenuOffset = thisSubMenu.offset();
-                    /* if sub-menu X offset + width > window width */
-                    if (subMenuOffset.left + subMenuWidth > winWidth){
-                        //console.log('Total width:\n', subMenuOffset.left + subMenuWidth, '\nWin width:\n', winWidth, '\nElement:\n', thisSubMenu);
-                        /* if navbar is NOT toggled */
-                        if ( ! jQ('nav#site-navigation').hasClass('toggled')){
-                            thisSubMenu.addClass('flipped-menu');
-                            //jQ('head').append('<style id="overview-navigation-extra-styles">.flipped-menu{}</style>');
-                        }
-                        /* if navbar IS toggled */
-                        else {
-                            thisSubMenu.addClass('flipped-mobile-menu');
-                        }
-                    }
-                    else {
-                        if (thisSubMenu.hasClass('flipped-menu')){
-                            thisSubMenu.removeClass('flipped-menu');
-                        }
-                        if (thisSubMenu.hasClass('flipped-mobile-menu')){
-                            thisSubMenu.removeClass('flipped-mobile-menu');
-                        }
+            /* check for submenu position and assign navigation classes if needed */
+            function setupSubMenuHovering(thisElement){
+                var thisSubMenu = thisElement,
+                    subMenuWidth = thisSubMenu.outerWidth(),
+                    subMenuOffset = thisSubMenu.offset(),
+                    winWidth = jQ(window).innerWidth();
+                /* if sub-menu X offset + width > window width */
+                if (subMenuOffset.left + subMenuWidth > winWidth){
+                        thisSubMenu.addClass('flipped-menu');
+                }
+                else {
+                    if (thisSubMenu.hasClass('flipped-menu')){
+                        thisSubMenu.removeClass('flipped-menu');
                     }
                 }
-                
             }
             
-            /*
-            // reset focus on clicks outside navbar
-            jQ('body *').click(function(el){
-                var OVContainer, OVButton, OVMenu;
-                OVContainer = document.getElementById( 'site-navigation' );
-	        if ( ! OVContainer ) {
-		    return;
-	        }
-	        OVButton = OVContainer.getElementsByTagName( 'button' )[0];
-	        if ( 'undefined' === typeof OVButton ) {
-		    return;
-	        }
-                OVMenu = OVContainer.getElementsByTagName( 'ul' )[0];
+        }
 
-                // if toggled and target is NOT the menu-toggle switch
-                if ( jQ('nav#site-navigation').hasClass('toggled') && el.target != OVContainer.getElementsByTagName( 'button' )[0] ){
-
-                    // _s original function
-		    if ( -1 !== OVContainer.className.indexOf( 'toggled' ) ) {
-			OVContainer.className = OVContainer.className.replace( ' toggled', '' );
-			OVButton.setAttribute( 'aria-expanded', 'false' );
-			OVMenu.setAttribute( 'aria-expanded', 'false' );
-		    } else {
-			OVContainer.className += ' toggled';
-			OVButton.setAttribute( 'aria-expanded', 'true' );
-			OVMenu.setAttribute( 'aria-expanded', 'true' );
-		    }
-
-                    resetFocus();
-                }
-                // reset focus on menu toggle
-                if ( el.target == OVContainer.getElementsByTagName( 'button' )[0] && ! jQ('nav#site-navigation').hasClass('toggled') ){
-                    resetFocus();
-                }
-
-                // focus reset
-                function resetFocus(){
-                    var OVFocusReset = document.activeElement;
-                    jQ(OVFocusReset).blur();
-                }
-            });
-             */
-            
+        /* OverView EXTRA ADJUSTMENTS functions */
+        
+        /* show/hide mobile sub-menu on button click */
+        function subMenuMobileClick(clickEvent){
+            if ( 'block' === jQ('.menu-toggle').css('display') ){
+                var thisButton = jQ(clickEvent.delegateTarget);
+                thisButton.siblings('ul.sub-menu').slideToggle(200);
+            }
         }
         
         /* _s navbar adjustments */
@@ -170,17 +139,38 @@
                 maxHeight: OVSiteLogoHeight
             });
             /* body margin from navbar */
-            jQ('body').css({
-                marginTop: OVNavbarHeight
-            });
-            
+            var OVMenu = jQ('nav#site-navigation');
+            if ( 'none' === jQ('.menu-toggle').css('display') ){
+                jQ('body').css({
+                    marginTop: OVNavbarHeight
+                });
+            }
+            else {
+                jQ('body').css({
+                    marginTop: '72px'
+                });
+            }            
         }
 
+        /* setup sub-menu styles according to mobile/full layout */
+        function subMenusFormatSetup(){
+            var allNavMenuSubMenus = jQ('nav#site-navigation ul.sub-menu');
+            // if mobile layout
+            if ( 'block' === jQ('.menu-toggle').css('display') ){
+                allNavMenuSubMenus.addClass('overview-mobile-navbar-sub-menu').slideUp(0);
+            }
+            // if full layout
+            else {
+                allNavMenuSubMenus.removeClass('overview-mobile-navbar-sub-menu').slideDown(0);
+            }
+        }
+        
         /* OverView social nav menu */
         function overviewSocialNavSettings(){
             var allSocialLinks = jQ('ul#ov-social-menu > li > div > a');
             // hide all icons labels
             allSocialLinks.each(function(){
+                jQ(this).context.title = jQ(this).context.childNodes[0].data;
                 jQ(this).context.childNodes[0].data = '';
             });
         }

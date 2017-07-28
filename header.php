@@ -29,36 +29,50 @@
                 <!-- OverView site navigation -->
 	        <nav id="site-navigation" class="main-navigation" role="navigation">
                     <!-- OverView site logo -->
-                    <a id="overview-navbar-site-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+                    <a id="overview-navbar-site-logo" title="<?php bloginfo( 'name' ); ?>" href="<?php echo esc_url( home_url( '/' ) ); ?>">
                         <?php
                         if ( get_theme_mod( 'custom_logo' ) ) {?>
-                            <img alt="<?php esc_attr( __('site logo image', 'overview') ); ?>" src="<?php echo overview_custom_logo(); ?>" />
+                            <img alt="<?php echo esc_attr( __('site logo image', 'overview') ); ?>" src="<?php echo overview_custom_logo(); ?>" />
                         <?php }
                         else {?>
                             <p class="overview-navbar-nologo-fallback"><?php bloginfo( 'name' ); ?></p>
                         <?php }
                         ?></a>
+
+                        <?php
+                        // OverView no selected menu notice
+                        if ( ! has_nav_menu( 'ov-menu-1' ) ) {?>
+                            <h4 class="overview-no-menu-assigned-notice"><a href="http://localhost/wordpress/wp-admin/nav-menus.php?action=locations"><?php echo esc_attr( __( 'Click here to assign the main menu', 'overview' ) ); ?></a></h4>
+                        <?php }?>
+                        
 		        <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><i class="fa fa-bars fa-2x" aria-hidden="true" title="<?php esc_attr( __('Toggle Menu', 'overview') ); ?>"></i><?php //esc_html_e( 'Primary Menu', 'overview' ); //overview removed default ?></button>
-		    <?php wp_nav_menu( array( 'theme_location' => 'ov-menu-1', 'menu_id' => 'primary-menu' ) ); ?>
+		        <?php
+                        if ( has_nav_menu( 'ov-menu-1' ) ){
+                            wp_nav_menu( array(
+                                'theme_location' => 'ov-menu-1',
+                                'menu_id'        => 'primary-menu'
+                            )
+                            );
+                        }?>
 		</nav><!-- #site-navigation -->
-                
+
                 <!-- OverView header image -->
                 <div id="overview-header-image-container">
                     <?php the_header_image_tag(); ?>
                 </div>
-
+                
                 <!-- OverView site branding -->
 	        <div class="site-branding">
                     <?php if ( is_front_page() && is_home() ) : ?>
-		        <h1 class="site-title"><a class="overview-site-title-a" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+		        <h1 class="site-title font-effect-emboss"><a class="overview-site-title-a" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 		    <?php else : ?>
-		        <p class="site-title"><a class="overview-site-title-a" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+		        <p class="site-title font-effect-emboss"><a class="overview-site-title-a" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
 		    <?php
 		    endif;
 
 		    $description = get_bloginfo( 'description', 'display' );
 		    if ( $description || is_customize_preview() ) : ?>
-		        <p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
+		        <p class="site-description font-effect-3d-float"><?php echo $description; /* WPCS: xss ok. */ ?></p>
 		    <?php
 		    endif;
                     ?>

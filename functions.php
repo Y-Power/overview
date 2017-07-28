@@ -42,7 +42,7 @@ function overview_setup() {
      */
     add_theme_support( 'post-thumbnails' );
 
-    // This theme uses wp_nav_menu() in one location.
+    // This theme uses wp_nav_menu() in two locations.
     register_nav_menus( array(
 	'ov-menu-1'        => esc_html__( 'Primary', 'overview' ),
         'ov-social-menu-1' => esc_html__( 'Social', 'overview' )
@@ -75,6 +75,43 @@ function overview_setup() {
 
     // Add theme support for selective refresh for widgets.
     add_theme_support( 'customize-selective-refresh-widgets' );
+
+    /* OverView demo content */
+    add_theme_support( 'starter_content', array(
+        'posts' => array(
+            'home' => array(
+                'template' => 'overview-front-page.php'
+            )
+        ),
+        'widgets' => array(
+            'ov-sidebar-1' => array(
+                'calendar',
+                'search'
+            ),
+            'ov-footer-1' => array(
+                'categories',
+                'meta',
+                'recent-posts'
+            )
+        ),
+        'nav_menus' => array(
+	    'ov-social-menu-1' => array(
+	        'name'  => __( 'Social Menu', 'overview' ),
+	        'items' => array(
+		    'link_facebook',
+		    'link_twitter',
+                    'link_linkedin',
+                    'link_youtube'
+	        ),
+	    )
+        ),
+        'theme_mods' => array(
+            'overview_site_branding_description' => __( 'Use this space to describe your story, mission, branding and more in a longer form', 'overview' ),
+	    'overview_front_page_title'          => __( 'Check here our latest activities!', 'overview' )
+        )
+    )
+    );
+
 }
 endif;
 add_action( 'after_setup_theme', 'overview_setup' );
@@ -88,7 +125,7 @@ add_action( 'after_setup_theme', 'overview_setup' );
  * @global int $content_width
  */
 function overview_content_width() {
-    $GLOBALS['content_width'] = apply_filters( 'overview_content_width', 640 );
+    $GLOBALS['content_width'] = apply_filters( 'overview_content_width', 980 );
 }
 add_action( 'after_setup_theme', 'overview_content_width', 0 );
 
@@ -130,8 +167,37 @@ function overview_custom_logo() {
     return esc_url($overview_custom_logo_image[0]);
 }
 
+/* OverView custom font name */
+function overview_get_custom_font_name($overview_font_name, $pretty){
+    $overview_font_name = trim( $overview_font_name );
+    $overview_font_name = explode( " ", strtolower( $overview_font_name ) );
+    for ( $wi = 0; $wi < count( $overview_font_name ); $wi++ ){
+        $overview_font_name[$wi] = strtoupper( mb_substr( $overview_font_name[$wi], 0, 1 ) ) . mb_substr( $overview_font_name[$wi], 1 );
+    }
+    if ( 'pretty' === $pretty ){
+        return implode( " ", $overview_font_name );
+    }
+    else {
+        return implode( "+", $overview_font_name );
+    }
+}
+
+/* custom logo head extra style */
+function overview_add_custom_font_style() {
+    if ( get_theme_mod( 'overview_custom_font', '' ) !== '' ){
+        $overview_font_head_style = overview_get_custom_font_name( esc_attr( get_theme_mod( 'overview_custom_font', '' ) ), 'pretty'); ?>
+    <style id="overview-custom-font-css" type="text/css">
+     body {
+         font-family: "<?php echo $overview_font_head_style; ?>", sans-serif;
+     }
+    </style>
+<?php
+}
+}
+add_action( 'wp_head', 'overview_add_custom_font_style' );
+
 /* OverView TinyMCE styles */
-function overview_add_editor_styles(){
+function overview_add_editor_styles() {
     $ov_active_color_scheme = get_theme_mod( 'overview_colors_theme', 'iced_lake' );
     add_editor_style( array(
         'https://fonts.googleapis.com/css?family=Muli',
@@ -154,7 +220,9 @@ function overview_scripts() {
     wp_enqueue_style( 'overview-core-style', get_stylesheet_uri() );
 
     /* OverView Google font */
-    wp_enqueue_style( 'overview-google-font', 'https://fonts.googleapis.com/css?family=Muli' );
+    $overview_custom_font_check = get_theme_mod( 'overview_custom_font', '' );
+    $overview_custom_font_name = $overview_custom_font_check === '' ? 'Muli' : overview_get_custom_font_name( $overview_custom_font_check, 'not_pretty' );
+    wp_enqueue_style( 'overview-google-font', 'https://fonts.googleapis.com/css?family=' . $overview_custom_font_name . ':400,500,600,700&effect=emboss|3d-float' );
     
     /* OverView styles */
     $ov_chosen_color_scheme = get_theme_mod( 'overview_colors_theme', 'iced_lake' );
@@ -189,7 +257,7 @@ function overview_scripts() {
 
     /* comments reply */
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-	wp_enqueue_script( 'comment-reply' );
+        wp_enqueue_script( 'comment-reply' );
     }
 
     /* OverView Display templates resources */
