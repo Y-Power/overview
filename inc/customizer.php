@@ -49,6 +49,15 @@ function overview_customize_register( $wp_customize ) {
         'transport'         => 'refresh',
         'sanitize_callback' => 'esc_textarea'
     ) );
+
+    // body font size
+    $wp_customize->add_setting( 'overview_body_font_size', array(
+        'type'              => 'theme_mod',
+        'capability'        => 'edit_theme_options',
+        'default'           => '18px',
+        'transport'         => 'refresh',
+        'sanitize_callback' => 'esc_attr'
+    ) );
     
     // front page template description
     $wp_customize->add_setting( 'overview_front_page_title', array(
@@ -171,14 +180,39 @@ function overview_customize_register( $wp_customize ) {
         'type' => 'select',
         'priority' => 10,
         'section' => 'overview_options',
-        'label' => __( 'Choose layout', 'overview' ),
+        'label' => esc_html( __( 'Choose layout', 'overview' ) ),
         'input_attrs' => array(
             'class' => 'overview-layouts',
             'style' => 'border: 1px solid gray;'
         ),
         'choices' => array(
-            'fixed' => __( 'Fixed' , 'overview' ),
-            'full'  => __( 'Full-width' , 'overview' )
+            'fixed' => esc_html( __( 'Fixed' , 'overview' ) ),
+            'full'  => esc_html( __( 'Full-width' , 'overview' ) )
+        )
+    ) );
+
+    // layout
+    $wp_customize->add_control( 'overview_body_font_size', array(
+        'type' => 'select',
+        'priority' => 15,
+        'section' => 'overview_options',
+        'label' => esc_html( __( 'Main font size', 'overview' ) ),
+        'input_attrs' => array(
+            'class' => 'overview-main-font-size',
+            'style' => 'border: 1px solid gray;'
+        ),
+        'choices' => array(
+            '14px' => esc_html( __('14 Pixels', 'overview') ),
+            '15px' => esc_html( __('15 Pixels', 'overview') ),
+            '16px' => esc_html( __('16 Pixels', 'overview') ),
+            '17px' => esc_html( __('17 Pixels', 'overview') ),
+            '18px' => esc_html( __('18 Pixels', 'overview') ),
+            '19px' => esc_html( __('19 Pixels', 'overview') ),
+            '20px' => esc_html( __('20 Pixels', 'overview') ),
+            '21px' => esc_html( __('21 Pixels', 'overview') ),
+            '22px' => esc_html( __('22 Pixels', 'overview') ),
+            '23px' => esc_html( __('23 Pixels', 'overview') ),
+            '24px' => esc_html( __('24 Pixels', 'overview') ),
         )
     ) );
     

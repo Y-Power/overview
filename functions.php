@@ -196,6 +196,19 @@ function overview_add_custom_font_style() {
 }
 add_action( 'wp_head', 'overview_add_custom_font_style' );
 
+/* body font size */
+function overview_body_font_size() {
+    if ( get_theme_mod( 'overview_body_font_size', '18px' ) !== '18px' ){ ?>
+    <style id="overview-body-font-size" type="text/css">
+     body {
+         font-size: <?php echo esc_attr( get_theme_mod( 'overview_body_font_size', '18px' ) ); ?>;
+     }
+    </style>
+<?php
+}
+}
+add_action( 'wp_head','overview_body_font_size' );
+
 /* OverView TinyMCE styles */
 function overview_add_editor_styles() {
     $ov_active_color_scheme = get_theme_mod( 'overview_colors_theme', 'iced_lake' );
@@ -206,7 +219,6 @@ function overview_add_editor_styles() {
     ) );
 }
 add_action( 'admin_init', 'overview_add_editor_styles' );
-
 
 /**
  * Enqueue scripts and styles.

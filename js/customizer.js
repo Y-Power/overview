@@ -22,7 +22,7 @@
 	    $( '.site-description' ).text( to );
 	} );
     } );
-
+    
     // OverView site branding description
     wp.customize( 'overview_site_branding_description', function( value ) {
         value.bind( function( to ) {

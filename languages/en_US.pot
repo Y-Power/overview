@@ -1,0 +1,382 @@
+# OverView
+# Copyright (C) 2017 _Y_Power ( http://ypower.nouveausiteweb.fr )
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: OverView\n"
+"Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
+"POT-Creation-Date: 2017-08-13 00:57+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: _Y_Power <youremail@example.com>\n"
+"Language-Team: Your Team <translations@example.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Textdomain-Support: yesX-Generator: Poedit 1.6.10\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;esc_html_e;esc_html_x:1,2c;esc_html__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;"
+"_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
+"X-Poedit-Basepath: ../\n"
+"X-Generator: Poedit 1.6.10\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:23
+msgid "That page can&rsquo;t be found!"
+msgstr ""
+
+#: 404.php:27
+msgid ""
+"It looks like nothing was found at this location! Maybe try one of the links "
+"below, or a search?"
+msgstr ""
+
+#: 404.php:39
+msgid "Most Used Categories"
+msgstr ""
+
+#. translators: %1$s: smiley
+#: 404.php:57
+#, php-format
+msgid "Try looking in the monthly archives. %1$s"
+msgstr ""
+
+#: comments.php:31
+#, php-format
+msgctxt "comments title"
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:40 comments.php:61
+msgid "Comment navigation"
+msgstr ""
+
+#: comments.php:43 comments.php:64
+msgid "Older Comments"
+msgstr ""
+
+#: comments.php:44 comments.php:65
+msgid "Newer Comments"
+msgstr ""
+
+#: comments.php:78
+msgid "Comments are closed."
+msgstr ""
+
+#: footer.php:44
+msgid "https://wordpress.org/"
+msgstr ""
+
+#: footer.php:44
+#, php-format
+msgid "Proudly powered by %s"
+msgstr ""
+
+#: footer.php:46
+#, php-format
+msgid "Theme: %1$s by %2$s."
+msgstr ""
+
+#: functions.php:47
+msgid "Primary"
+msgstr ""
+
+#: functions.php:48
+msgid "Social"
+msgstr ""
+
+#: functions.php:99
+msgid "Social Menu"
+msgstr ""
+
+#: functions.php:109
+msgid ""
+"Use this space to describe your story, mission, branding and more in a "
+"longer form"
+msgstr ""
+
+#: functions.php:110
+msgid "Check here our latest activities!"
+msgstr ""
+
+#: functions.php:140
+msgid "Sidebar"
+msgstr ""
+
+#: functions.php:142
+msgid "Add sidebar widgets here."
+msgstr ""
+
+#: functions.php:151
+msgid "Footer"
+msgstr ""
+
+#: functions.php:153
+msgid "Add footer widgets here."
+msgstr ""
+
+#: functions.php:282
+msgid "January"
+msgstr ""
+
+#: functions.php:283
+msgid "February"
+msgstr ""
+
+#: functions.php:284
+msgid "March"
+msgstr ""
+
+#: functions.php:285
+msgid "April"
+msgstr ""
+
+#: functions.php:286
+msgid "May"
+msgstr ""
+
+#: functions.php:287
+msgid "June"
+msgstr ""
+
+#: functions.php:288
+msgid "July"
+msgstr ""
+
+#: functions.php:289
+msgid "August"
+msgstr ""
+
+#: functions.php:290
+msgid "September"
+msgstr ""
+
+#: functions.php:291
+msgid "October"
+msgstr ""
+
+#: functions.php:292
+msgid "November"
+msgstr ""
+
+#: functions.php:293
+msgid "December"
+msgstr ""
+
+#: header.php:24
+msgid "Skip to content"
+msgstr ""
+
+#: header.php:35
+msgid "site logo image"
+msgstr ""
+
+#: header.php:45
+msgid "Click here to assign the main menu"
+msgstr ""
+
+#: header.php:48
+msgid "Toggle Menu"
+msgstr ""
+
+#: inc/customizer.php:76
+msgid "OverView options"
+msgstr ""
+
+#: inc/customizer.php:91
+msgid "Site branding description"
+msgstr ""
+
+#: inc/customizer.php:92
+msgid "Describe your brand and/or mission"
+msgstr ""
+
+#: inc/customizer.php:104
+msgid "Colors scheme"
+msgstr ""
+
+#: inc/customizer.php:105
+msgid "Choose your website colors set"
+msgstr ""
+
+#: inc/customizer.php:111
+msgid "Iced Lake"
+msgstr ""
+
+#: inc/customizer.php:112
+msgid "Amazon Rainforest"
+msgstr ""
+
+#: inc/customizer.php:113
+msgid "Chessnuts Field"
+msgstr ""
+
+#: inc/customizer.php:114
+msgid "Terracotta Road"
+msgstr ""
+
+#: inc/customizer.php:115
+msgid "Japanese Maple Hill"
+msgstr ""
+
+#: inc/customizer.php:116
+msgid "Sunset Desert"
+msgstr ""
+
+#: inc/customizer.php:117
+msgid "Orchid Cliff"
+msgstr ""
+
+#: inc/customizer.php:118
+msgid "Lavander Island"
+msgstr ""
+
+#: inc/customizer.php:119
+msgid "Mariana Trench"
+msgstr ""
+
+#: inc/customizer.php:120
+msgid "Countryside Oasis"
+msgstr ""
+
+#: inc/customizer.php:129
+msgid "Google&reg; font"
+msgstr ""
+
+#: inc/customizer.php:130
+msgid "See all available Google fonts"
+msgstr ""
+
+#: inc/customizer.php:130
+msgid "Google is a registred trademark and belongs to its owners."
+msgstr ""
+
+#: inc/customizer.php:130
+msgid "OverView's default font is "
+msgstr ""
+
+#: inc/customizer.php:142
+msgid "This page has an \"OverView Display\" template attached"
+msgstr ""
+
+#: inc/customizer.php:143
+msgid "Set the OverView Display options"
+msgstr ""
+
+#: inc/customizer.php:143
+msgid ""
+"This section is only visible on pages with an activated \"OverView Display\" "
+"template: you can change templates in the specific page's editor."
+msgstr ""
+
+#: inc/customizer.php:158
+msgid "Bright Display"
+msgstr ""
+
+#: inc/customizer.php:159
+msgid "Save and refresh to continue testing the Display after switching."
+msgstr ""
+
+#: inc/customizer.php:174
+msgid "Choose layout"
+msgstr ""
+
+#: inc/customizer.php:180
+msgid "Fixed"
+msgstr ""
+
+#: inc/customizer.php:181
+msgid "Full-width"
+msgstr ""
+
+#: inc/template-tags.php:28
+#, php-format
+msgctxt "post date"
+msgid "Posted on %s"
+msgstr ""
+
+#: inc/template-tags.php:33
+#, php-format
+msgctxt "post author"
+msgid "by %s"
+msgstr ""
+
+#. translators: used between list items, there is a space after the comma
+#: inc/template-tags.php:50 inc/template-tags.php:56
+msgid ", "
+msgstr ""
+
+#: inc/template-tags.php:52
+#, php-format
+msgid "Posted in %1$s"
+msgstr ""
+
+#: inc/template-tags.php:58
+#, php-format
+msgid "Tagged %1$s"
+msgstr ""
+
+#. translators: %s: post title
+#: inc/template-tags.php:65
+#, php-format
+msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
+msgstr ""
+
+#. translators: %s: Name of current post
+#: inc/template-tags.php:72 template-parts/content-page.php:46
+#, php-format
+msgid "Edit %s"
+msgstr ""
+
+#: search.php:25
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: single.php:27
+msgid "previous"
+msgstr ""
+
+#: single.php:28
+msgid "next"
+msgstr ""
+
+#: single.php:30
+msgid "Continue Reading"
+msgstr ""
+
+#: template-parts/content-none.php:14
+msgid "Nothing Found"
+msgstr ""
+
+#: template-parts/content-none.php:21
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: template-parts/content-none.php:25
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+
+#: template-parts/content-none.php:31
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#: template-parts/content-page.php:34 template-parts/content.php:57
+msgid "Pages:"
+msgstr ""
+
+#. translators: %s: Name of current post.
+#: template-parts/content.php:52
+#, php-format
+msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""

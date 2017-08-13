@@ -44,6 +44,11 @@ OverView includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
+= 1.0.5 - August 13 2017 =
+* Fixed social menu CSS
+* Included correct .pot file for translations
+* Added body font size option
+
 = 1.0.4 - July 28 2017 =
 * Fixed menu and logo in mobile-layout and minor CSS changes
 * Added Google fonts option and theme starter content

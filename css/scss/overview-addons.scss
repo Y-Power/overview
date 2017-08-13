@@ -1,5 +1,10 @@
 /* OverView addons styles  */
 
+/* default body font size */
+body {
+  font-size: 18px;
+}
+
 /* WP navbar logo */
 @media screen and (max-width: 599px){
   nav#site-navigation a#overview-navbar-site-logo img {
@@ -46,18 +51,16 @@ header#masthead div.site-branding p.site-description {
 }
 
 /* OverView social nav menu */
-div.menu-overview-social-container {
+ul#ov-social-menu {
   width: 100%;
   max-width: 100%;
-  ul#ov-social-menu {
   margin: 12px 0;
   padding-left: 0;
   text-align: center;
   list-style: none;
-    li {
-      display: inline-block;
-      padding: 9px 12px;
-    }
+  li {
+    display: inline-block;
+    padding: 9px 12px;
   }
 }
 
