@@ -168,13 +168,66 @@ function overview_custom_logo() {
 }
 
 /* OverView custom font name */
-function overview_get_custom_font_name($overview_font_name, $pretty){
+function overview_get_custom_font_name($overview_font_name, $overview_pretty_print_check){
     $overview_font_name = trim( $overview_font_name );
     $overview_font_name = explode( " ", strtolower( $overview_font_name ) );
+    // for each word in the font name
     for ( $wi = 0; $wi < count( $overview_font_name ); $wi++ ){
-        $overview_font_name[$wi] = strtoupper( mb_substr( $overview_font_name[$wi], 0, 1 ) ) . mb_substr( $overview_font_name[$wi], 1 );
+        // fonts exceptions
+        if ( strlen( $overview_font_name[$wi] ) <= 2 ){
+            // one-letter esceptions list
+            if ( 'a' === $overview_font_name[$wi] ){
+                $overview_font_name[$wi] = 'A';
+            }
+            // two-letters exceptions list
+            else if ( 'do' === $overview_font_name[$wi] ){
+                $overview_font_name[$wi] = 'Do';
+            }
+            else if ( 'by' === $overview_font_name[$wi] ){
+                $overview_font_name[$wi] = 'By';
+            }
+            else if ( 'if' === $overview_font_name[$wi] ){
+                $overview_font_name[$wi] = 'If';
+            }
+            else if ( '2p' === $overview_font_name[$wi] ){
+                $overview_font_name[$wi] = '2P';
+            }
+            else if ( 'mr' === $overview_font_name[$wi] ){
+                $overview_font_name[$wi] = 'Mr';
+            }
+            // default one/two letters exception
+            else {
+                $overview_font_name[$wi] = strtoupper( $overview_font_name[$wi] );
+            }
+        }
+        // int exceptions
+        else if ( $overview_font_name[$wi][0] === intval( $overview_font_name[$wi][0] ) ) {
+            $overview_font_name[$wi] = $overview_font_name[$wi];
+        }
+        // ad-hoc exceptions
+        else if ( 'abeezee' === $overview_font_name[$wi] ){
+            $overview_font_name[$wi] = 'ABeeZee';
+        }
+        // if word lenght is => 3
+        else {
+            // three-letters exceptions
+            if ( $overview_font_name[$wi] === 'the' ){
+                $overview_font_name[$wi] = 'the';
+            }
+            else if ( $overview_font_name[$wi] === 'for' ){
+                $overview_font_name[$wi] = 'for';
+            }
+            else if ( 'vt323' === $overview_font_name[$wi] ){
+                $overview_font_name[$wi] = 'VT323';
+            }
+            // default font word output
+            else {
+                $overview_font_name[$wi] = strtoupper( mb_substr( $overview_font_name[$wi], 0, 1 ) ) . mb_substr( $overview_font_name[$wi], 1 );
+            }
+        }
     }
-    if ( 'pretty' === $pretty ){
+    // return desired output
+    if ( 'pretty' === $overview_pretty_print_check ){
         return implode( " ", $overview_font_name );
     }
     else {
@@ -300,7 +353,7 @@ function overview_scripts() {
                 '12'                    => __('December', 'overview')
             )
         );
-        wp_localize_script('overview-scripts', 'OVAPIVars', $overview_JS_variables);
+        wp_localize_script( 'overview-scripts', 'OVAPIVars', $overview_JS_variables );
     }
 
     // admin
@@ -311,6 +364,16 @@ function overview_scripts() {
     
 }
 add_action( 'wp_enqueue_scripts', 'overview_scripts' );
+
+/**
+ * Admin files
+ */
+function overview_admin_files(){
+    // admin JS
+    wp_register_script( 'overview-admin-js', get_template_directory_uri() . '/js/admin/overview-admin.js', array( 'jquery', 'customize-controls' ) );
+    wp_enqueue_script( 'overview-admin-js' );
+}
+add_action( 'admin_enqueue_scripts', 'overview_admin_files' );
 
 /**
  * Custom Header

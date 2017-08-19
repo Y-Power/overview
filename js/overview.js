@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2017  _Y_Power
+    Copyright (C) 2017 _Y_Power ( http://ypower.nouveausiteweb.fr )
 
     This file is part of the OverView WordPress theme package.
 
@@ -174,8 +174,9 @@
                 jQ(this).context.childNodes[0].data = '';
             });
         }
-
+        
     });
+    
     /* document ready END */
     
 })();

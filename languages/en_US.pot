@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OverView\n"
 "Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
-"POT-Creation-Date: 2017-08-13 00:57+0100\n"
+"POT-Creation-Date: 2017-08-18 00:45+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: _Y_Power <youremail@example.com>\n"
 "Language-Team: Your Team <translations@example.com>\n"
@@ -119,51 +119,51 @@ msgstr ""
 msgid "Add footer widgets here."
 msgstr ""
 
-#: functions.php:282
+#: functions.php:329
 msgid "January"
 msgstr ""
 
-#: functions.php:283
+#: functions.php:330
 msgid "February"
 msgstr ""
 
-#: functions.php:284
+#: functions.php:331
 msgid "March"
 msgstr ""
 
-#: functions.php:285
+#: functions.php:332
 msgid "April"
 msgstr ""
 
-#: functions.php:286
+#: functions.php:333
 msgid "May"
 msgstr ""
 
-#: functions.php:287
+#: functions.php:334
 msgid "June"
 msgstr ""
 
-#: functions.php:288
+#: functions.php:335
 msgid "July"
 msgstr ""
 
-#: functions.php:289
+#: functions.php:336
 msgid "August"
 msgstr ""
 
-#: functions.php:290
+#: functions.php:337
 msgid "September"
 msgstr ""
 
-#: functions.php:291
+#: functions.php:338
 msgid "October"
 msgstr ""
 
-#: functions.php:292
+#: functions.php:339
 msgid "November"
 msgstr ""
 
-#: functions.php:293
+#: functions.php:340
 msgid "December"
 msgstr ""
 
@@ -183,114 +183,166 @@ msgstr ""
 msgid "Toggle Menu"
 msgstr ""
 
-#: inc/customizer.php:76
+#: inc/customizer.php:85
 msgid "OverView options"
 msgstr ""
 
-#: inc/customizer.php:91
+#: inc/customizer.php:100
 msgid "Site branding description"
 msgstr ""
 
-#: inc/customizer.php:92
+#: inc/customizer.php:101
 msgid "Describe your brand and/or mission"
 msgstr ""
 
-#: inc/customizer.php:104
+#: inc/customizer.php:113
 msgid "Colors scheme"
 msgstr ""
 
-#: inc/customizer.php:105
+#: inc/customizer.php:114
 msgid "Choose your website colors set"
 msgstr ""
 
-#: inc/customizer.php:111
+#: inc/customizer.php:120
 msgid "Iced Lake"
 msgstr ""
 
-#: inc/customizer.php:112
+#: inc/customizer.php:121
 msgid "Amazon Rainforest"
 msgstr ""
 
-#: inc/customizer.php:113
+#: inc/customizer.php:122
 msgid "Chessnuts Field"
 msgstr ""
 
-#: inc/customizer.php:114
+#: inc/customizer.php:123
 msgid "Terracotta Road"
 msgstr ""
 
-#: inc/customizer.php:115
+#: inc/customizer.php:124
 msgid "Japanese Maple Hill"
 msgstr ""
 
-#: inc/customizer.php:116
+#: inc/customizer.php:125
 msgid "Sunset Desert"
 msgstr ""
 
-#: inc/customizer.php:117
+#: inc/customizer.php:126
 msgid "Orchid Cliff"
 msgstr ""
 
-#: inc/customizer.php:118
+#: inc/customizer.php:127
 msgid "Lavander Island"
 msgstr ""
 
-#: inc/customizer.php:119
+#: inc/customizer.php:128
 msgid "Mariana Trench"
 msgstr ""
 
-#: inc/customizer.php:120
+#: inc/customizer.php:129
 msgid "Countryside Oasis"
 msgstr ""
 
-#: inc/customizer.php:129
+#: inc/customizer.php:138
 msgid "Google&reg; font"
 msgstr ""
 
-#: inc/customizer.php:130
+#: inc/customizer.php:139
 msgid "See all available Google fonts"
 msgstr ""
 
-#: inc/customizer.php:130
+#: inc/customizer.php:139
 msgid "Google is a registred trademark and belongs to its owners."
 msgstr ""
 
-#: inc/customizer.php:130
+#: inc/customizer.php:139
 msgid "OverView's default font is "
 msgstr ""
 
-#: inc/customizer.php:142
+#: inc/customizer.php:139
+msgid "Enter the name of the Google font you have picked here:"
+msgstr ""
+
+#: inc/customizer.php:151
 msgid "This page has an \"OverView Display\" template attached"
 msgstr ""
 
-#: inc/customizer.php:143
+#: inc/customizer.php:152
 msgid "Set the OverView Display options"
 msgstr ""
 
-#: inc/customizer.php:143
+#: inc/customizer.php:152
 msgid ""
 "This section is only visible on pages with an activated \"OverView Display\" "
 "template: you can change templates in the specific page's editor."
 msgstr ""
 
-#: inc/customizer.php:158
+#: inc/customizer.php:167
 msgid "Bright Display"
 msgstr ""
 
-#: inc/customizer.php:159
+#: inc/customizer.php:168
 msgid "Save and refresh to continue testing the Display after switching."
 msgstr ""
 
-#: inc/customizer.php:174
+#: inc/customizer.php:183
 msgid "Choose layout"
 msgstr ""
 
-#: inc/customizer.php:180
+#: inc/customizer.php:189
 msgid "Fixed"
 msgstr ""
 
-#: inc/customizer.php:181
+#: inc/customizer.php:190
 msgid "Full-width"
+msgstr ""
+
+#: inc/customizer.php:199
+msgid "Main font size"
+msgstr ""
+
+#: inc/customizer.php:205
+msgid "14 Pixels"
+msgstr ""
+
+#: inc/customizer.php:206
+msgid "15 Pixels"
+msgstr ""
+
+#: inc/customizer.php:207
+msgid "16 Pixels"
+msgstr ""
+
+#: inc/customizer.php:208
+msgid "17 Pixels"
+msgstr ""
+
+#: inc/customizer.php:209
+msgid "18 Pixels"
+msgstr ""
+
+#: inc/customizer.php:210
+msgid "19 Pixels"
+msgstr ""
+
+#: inc/customizer.php:211
+msgid "20 Pixels"
+msgstr ""
+
+#: inc/customizer.php:212
+msgid "21 Pixels"
+msgstr ""
+
+#: inc/customizer.php:213
+msgid "22 Pixels"
+msgstr ""
+
+#: inc/customizer.php:214
+msgid "23 Pixels"
+msgstr ""
+
+#: inc/customizer.php:215
+msgid "24 Pixels"
 msgstr ""
 
 #: inc/template-tags.php:28

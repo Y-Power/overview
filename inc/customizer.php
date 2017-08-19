@@ -82,7 +82,7 @@ function overview_customize_register( $wp_customize ) {
     
     // general options
     $wp_customize->add_section( 'overview_options', array(
-        'title' => esc_html__( 'OverView options', 'overview' ),
+        'title' => __( 'OverView options', 'overview' ),
         //'panel' => '',
         'priority' => 80,
         'capability' => 'edit_theme_options',
@@ -97,8 +97,8 @@ function overview_customize_register( $wp_customize ) {
         'type' => 'textarea',
         'priority' => 40,
         'section' => 'title_tagline',
-        'label' => esc_html__( 'Site branding description', 'overview' ),
-        'description' => esc_html__( 'Describe your brand and/or mission', 'overview' ),
+        'label' => __( 'Site branding description', 'overview' ),
+        'description' => __( 'Describe your brand and/or mission', 'overview' ),
         'input_attrs' => array(
             'class' => 'overview-site-branding-description-text',
             'style' => 'border: 1px solid gray;'
@@ -110,23 +110,23 @@ function overview_customize_register( $wp_customize ) {
         'type' => 'select',
         'priority' => 10,
         'section' => 'colors',
-        'label' => esc_html__( 'Colors scheme', 'overview' ),
-        'description' => esc_html__( 'Choose your website colors set', 'overview' ),
+        'label' => __( 'Colors scheme', 'overview' ),
+        'description' => __( 'Choose your website colors set', 'overview' ),
         'input_attrs' => array(
             'class' => 'overview-colors-themes',
             'style' => 'border: 1px solid gray;'
         ),
         'choices' => array(
-            'iced_lake'           => esc_html__( 'Iced Lake' , 'overview' ),
-            'amazon_rainforest'   => esc_html__( 'Amazon Rainforest' , 'overview' ),
-            'chessnuts_field'     => esc_html__( 'Chessnuts Field' , 'overview' ),
-            'terracotta_road'     => esc_html__( 'Terracotta Road' , 'overview' ),
-            'japanese_maple_hill' => esc_html__( 'Japanese Maple Hill' , 'overview' ),
-            'sunset_desert'       => esc_html__( 'Sunset Desert' , 'overview' ),
-            'orchid_cliff'        => esc_html__( 'Orchid Cliff' , 'overview' ),
-            'lavander_island'     => esc_html__( 'Lavander Island' , 'overview' ),
-            'mariana_trench'      => esc_html__( 'Mariana Trench' , 'overview' ),
-            'countryside_oasis'   => esc_html__( 'Countryside Oasis' , 'overview' ),
+            'iced_lake'           => __( 'Iced Lake' , 'overview' ),
+            'amazon_rainforest'   => __( 'Amazon Rainforest' , 'overview' ),
+            'chessnuts_field'     => __( 'Chessnuts Field' , 'overview' ),
+            'terracotta_road'     => __( 'Terracotta Road' , 'overview' ),
+            'japanese_maple_hill' => __( 'Japanese Maple Hill' , 'overview' ),
+            'sunset_desert'       => __( 'Sunset Desert' , 'overview' ),
+            'orchid_cliff'        => __( 'Orchid Cliff' , 'overview' ),
+            'lavander_island'     => __( 'Lavander Island' , 'overview' ),
+            'mariana_trench'      => __( 'Mariana Trench' , 'overview' ),
+            'countryside_oasis'   => __( 'Countryside Oasis' , 'overview' ),
         )
     ) );
 
@@ -135,8 +135,8 @@ function overview_customize_register( $wp_customize ) {
         'type' => 'text',
         'priority' => 20,
         'section' => 'overview_options',
-        'label' => esc_html__( 'Google&reg; font', 'overview' ),
-        'description' => '<a href="https://fonts.google.com" target="_blank">' . esc_html__( 'See all available Google fonts', 'overview' ) . '</a><br /><p><strong>' . esc_html__( 'Google is a registred trademark and belongs to its owners.', 'overview' ) . '</strong></p><p>' . esc_html__( 'OverView\'s default font is ', 'overview' ) . '<a href="https://fonts.google.com/specimen/Muli" target="_blank">Muli</a>. '. esc_html( 'Enter the name of the Google font you have picked here:', 'overview' ) .'</p>',
+        'label' => __( 'Google&reg; font', 'overview' ),
+        'description' => '<a href="https://fonts.google.com" target="_blank">' . __( 'See all available Google fonts', 'overview' ) . '</a><br /><p><strong>' . __( 'Google is a registred trademark and belongs to its owners.', 'overview' ) . '</strong></p><p>' . __( 'OverView\'s default font is ', 'overview' ) . '<a href="https://fonts.google.com/specimen/Muli" target="_blank">Muli</a>. '. __( 'Enter the name of the Google font you have picked here:', 'overview' ) .'</p>',
         'input_attrs' => array(
             'id' => 'overview-custom-font-text-input',
             'style' => 'border: 1px solid gray;'
@@ -148,8 +148,8 @@ function overview_customize_register( $wp_customize ) {
         'type' => 'textarea',
         'priority' => 30,
         'section' => 'overview_options',
-        'label' => esc_html__( 'This page has an "OverView Display" template attached', 'overview' ),
-        'description' => '<strong>' . esc_html__('Set the OverView Display options', 'overview') . '</strong><br /><em>' . esc_html__( 'This section is only visible on pages with an activated "OverView Display" template: you can change templates in the specific page\'s editor.', 'overview' ) . '</em>',
+        'label' => __( 'This page has an "OverView Display" template attached', 'overview' ),
+        'description' => '<strong>' . __('Set the OverView Display options', 'overview') . '</strong><br /><em>' . __( 'This section is only visible on pages with an activated "OverView Display" template: you can change templates in the specific page\'s editor.', 'overview' ) . '</em>',
         'input_attrs' => array(
             'class' => 'overview-front-template-title-text',
             'style' => 'border: 1px solid gray;'
@@ -164,8 +164,8 @@ function overview_customize_register( $wp_customize ) {
         'type'        => 'checkbox',
         'priority'    => 40,
         'section'     => 'overview_options',
-        'label'       => esc_html__( 'Bright Display', 'overview' ),
-        'description' => '<em>' . esc_html__('Save and refresh to continue testing the Display after switching.', 'overview') . '</em>',
+        'label'       => __( 'Bright Display', 'overview' ),
+        'description' => '<em>' . __('Save and refresh to continue testing the Display after switching.', 'overview') . '</em>',
         'input_attrs' => array(
             'class'       => 'overview-front-template-bright-display-checkbox',
             'style'     => 'border: 1px solid gray;'
@@ -180,14 +180,14 @@ function overview_customize_register( $wp_customize ) {
         'type' => 'select',
         'priority' => 10,
         'section' => 'overview_options',
-        'label' => esc_html( __( 'Choose layout', 'overview' ) ),
+        'label' => __( 'Choose layout', 'overview' ),
         'input_attrs' => array(
             'class' => 'overview-layouts',
             'style' => 'border: 1px solid gray;'
         ),
         'choices' => array(
-            'fixed' => esc_html( __( 'Fixed' , 'overview' ) ),
-            'full'  => esc_html( __( 'Full-width' , 'overview' ) )
+            'fixed' => __( 'Fixed' , 'overview' ),
+            'full'  => __( 'Full-width' , 'overview' )
         )
     ) );
 
@@ -196,23 +196,23 @@ function overview_customize_register( $wp_customize ) {
         'type' => 'select',
         'priority' => 15,
         'section' => 'overview_options',
-        'label' => esc_html( __( 'Main font size', 'overview' ) ),
+        'label' => __( 'Main font size', 'overview' ),
         'input_attrs' => array(
             'class' => 'overview-main-font-size',
             'style' => 'border: 1px solid gray;'
         ),
         'choices' => array(
-            '14px' => esc_html( __('14 Pixels', 'overview') ),
-            '15px' => esc_html( __('15 Pixels', 'overview') ),
-            '16px' => esc_html( __('16 Pixels', 'overview') ),
-            '17px' => esc_html( __('17 Pixels', 'overview') ),
-            '18px' => esc_html( __('18 Pixels', 'overview') ),
-            '19px' => esc_html( __('19 Pixels', 'overview') ),
-            '20px' => esc_html( __('20 Pixels', 'overview') ),
-            '21px' => esc_html( __('21 Pixels', 'overview') ),
-            '22px' => esc_html( __('22 Pixels', 'overview') ),
-            '23px' => esc_html( __('23 Pixels', 'overview') ),
-            '24px' => esc_html( __('24 Pixels', 'overview') ),
+            '14px' => __('14 Pixels', 'overview'),
+            '15px' => __('15 Pixels', 'overview'),
+            '16px' => __('16 Pixels', 'overview'),
+            '17px' => __('17 Pixels', 'overview'),
+            '18px' => __('18 Pixels', 'overview'),
+            '19px' => __('19 Pixels', 'overview'),
+            '20px' => __('20 Pixels', 'overview'),
+            '21px' => __('21 Pixels', 'overview'),
+            '22px' => __('22 Pixels', 'overview'),
+            '23px' => __('23 Pixels', 'overview'),
+            '24px' => __('24 Pixels', 'overview'),
         )
     ) );
     
