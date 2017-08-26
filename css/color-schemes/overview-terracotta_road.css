@@ -76,7 +76,8 @@ input[type=button],
 input[type=search],
 input[type=select],
 select,
-input[type=submit] {
+input[type=submit],
+input[type=reset] {
   padding: 12px;
   font-size: .9em;
   border: 1px solid rgba(220, 220, 220, 0.8);
@@ -91,7 +92,8 @@ input[type=submit] {
   input[type=search]:hover,
   input[type=select]:hover,
   select:hover,
-  input[type=submit]:hover {
+  input[type=submit]:hover,
+  input[type=reset]:hover {
     color: #ad763c;
     background-color: #f8f8f8; }
 

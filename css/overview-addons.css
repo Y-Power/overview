@@ -14,9 +14,21 @@ body {
     width: auto;
     min-width: 0;
     max-width: 100%; } }
+/* navbar no logo */
+p.overview-navbar-nologo-fallback {
+  margin-bottom: 0;
+  padding-bottom: 0; }
+
 /* navbar */
 nav#site-navigation div {
   padding: 0 14px; }
+
+/* navbar menu links */
+nav#site-navigation div ul.nav-menu li a {
+  border-bottom: 1px solid; }
+
+nav#site-navigation div ul.nav-menu li ul > li:last-of-type a {
+  border-bottom: none; }
 
 /* no assigned menu notice */
 h4.overview-no-menu-assigned-notice {
@@ -42,6 +54,12 @@ header#masthead div.site-branding h1.site-title a.overview-site-title-a {
 @media screen and (max-width: 767px) {
   header#masthead div.site-branding p.site-description {
     padding: 0 12px 12px 12px; } }
+
+/* entry editing */
+span.edit-link {
+  display: block;
+  margin: 12px;
+  text-align: right; }
 
 /* OverView social nav menu */
 ul#ov-social-menu {
@@ -87,6 +105,24 @@ div.overview-sidebar-main-container h2.widget-title {
   font-size: 1.1em;
   color: #555;
   border-bottom: 1px dotted; }
+
+/* RSS */
+section.widget_rss ul li {
+  margin: 12px auto 20px auto;
+  padding: 4px 0; }
+  section.widget_rss ul li a.rsswidget {
+    display: block;
+    font-size: 1.1rem; }
+  section.widget_rss ul li span.rss-date {
+    display: inline-block;
+    margin-left: 12px;
+    margin-bottom: 6px;
+    font-size: .8rem;
+    font-style: italic;
+    border-bottom: 1px dotted; }
+  section.widget_rss ul li div.rssSummary {
+    margin-bottom: 8px;
+    padding: 0 6px; }
 
 /* calendar */
 aside#secondary #wp-calendar > tbody {

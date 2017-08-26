@@ -18,7 +18,7 @@ function overview_customize_register( $wp_customize ) {
     $wp_customize->add_setting( 'overview_site_branding_description', array(
         'type'              => 'theme_mod',
         'capability'        => 'edit_theme_options',
-        'default'           => '',
+        'default'           => __( 'Use this space to describe your story, mission, branding and more in a longer form', 'overview' ),
         'transport'         => 'postMessage',
         'sanitize_callback' => 'esc_textarea'
     ) );
@@ -74,17 +74,26 @@ function overview_customize_register( $wp_customize ) {
         'capability'        => 'edit_theme_options',
         'default'           => '',
         'transport'         => 'refresh',
-        'sanitize_callback' => 'esc_textarea'
+        'sanitize_callback' => 'esc_attr'
     ) );
+
+    // front page template image rotatation
+    $wp_customize->add_setting( 'overview_display_image_rotation', array(
+        'type'              => 'theme_mod',
+        'capability'        => 'edit_theme_options',
+        'default'           => '1',
+        'transport'         => 'refresh',
+        'sanitize_callback' => 'esc_attr'
+    ) );    
     
 
     /* OverView WordPress customizer SECTIONS */
     
     // general options
     $wp_customize->add_section( 'overview_options', array(
-        'title' => __( 'OverView options', 'overview' ),
+        'title'      => __( 'OverView options', 'overview' ),
         //'panel' => '',
-        'priority' => 80,
+        'priority'   => 80,
         'capability' => 'edit_theme_options',
         //'theme_supports' => '',
     ) );
@@ -94,27 +103,27 @@ function overview_customize_register( $wp_customize ) {
 
     // site branding
     $wp_customize->add_control( 'overview_site_branding_description', array(
-        'type' => 'textarea',
-        'priority' => 40,
-        'section' => 'title_tagline',
-        'label' => __( 'Site branding description', 'overview' ),
+        'type'        => 'textarea',
+        'priority'    => 40,
+        'section'     => 'title_tagline',
+        'label'       => __( 'Site branding description', 'overview' ),
         'description' => __( 'Describe your brand and/or mission', 'overview' ),
         'input_attrs' => array(
-            'class' => 'overview-site-branding-description-text',
-            'style' => 'border: 1px solid gray;'
+            'class'      => 'overview-site-branding-description-text',
+            'style'      => 'border: 1px solid gray;'
         ),
     ) );
 
     // colors themes    
     $wp_customize->add_control( 'overview_colors_theme', array(
-        'type' => 'select',
-        'priority' => 10,
-        'section' => 'colors',
-        'label' => __( 'Colors scheme', 'overview' ),
+        'type'        => 'select',
+        'priority'    => 10,
+        'section'     => 'colors',
+        'label'       => __( 'Colors scheme', 'overview' ),
         'description' => __( 'Choose your website colors set', 'overview' ),
         'input_attrs' => array(
-            'class' => 'overview-colors-themes',
-            'style' => 'border: 1px solid gray;'
+            'class'      => 'overview-colors-themes',
+            'style'      => 'border: 1px solid gray;'
         ),
         'choices' => array(
             'iced_lake'           => __( 'Iced Lake' , 'overview' ),
@@ -132,58 +141,26 @@ function overview_customize_register( $wp_customize ) {
 
     // custom font
     $wp_customize->add_control( 'overview_custom_font', array(
-        'type' => 'text',
-        'priority' => 20,
-        'section' => 'overview_options',
-        'label' => __( 'Google&reg; font', 'overview' ),
+        'type'        => 'text',
+        'priority'    => 20,
+        'section'     => 'overview_options',
+        'label'       => __( 'Google&reg; font', 'overview' ),
         'description' => '<a href="https://fonts.google.com" target="_blank">' . __( 'See all available Google fonts', 'overview' ) . '</a><br /><p><strong>' . __( 'Google is a registred trademark and belongs to its owners.', 'overview' ) . '</strong></p><p>' . __( 'OverView\'s default font is ', 'overview' ) . '<a href="https://fonts.google.com/specimen/Muli" target="_blank">Muli</a>. '. __( 'Enter the name of the Google font you have picked here:', 'overview' ) .'</p>',
         'input_attrs' => array(
-            'id' => 'overview-custom-font-text-input',
-            'style' => 'border: 1px solid gray;'
+            'id'         => 'overview-custom-font-text-input',
+            'style'      => 'border: 1px solid gray;'
         ),
-    ) );
-    
-    // front page template display title
-    $wp_customize->add_control( 'overview_front_page_title', array(
-        'type' => 'textarea',
-        'priority' => 30,
-        'section' => 'overview_options',
-        'label' => __( 'This page has an "OverView Display" template attached', 'overview' ),
-        'description' => '<strong>' . __('Set the OverView Display options', 'overview') . '</strong><br /><em>' . __( 'This section is only visible on pages with an activated "OverView Display" template: you can change templates in the specific page\'s editor.', 'overview' ) . '</em>',
-        'input_attrs' => array(
-            'class' => 'overview-front-template-title-text',
-            'style' => 'border: 1px solid gray;'
-        ),
-        'active_callback' => function () {
-            return is_page_template( 'overview-front-page.php' ) || is_page_template( 'overview-front-no-content-page.php' );
-        }
-    ) );
-
-    // front page template display background
-    $wp_customize->add_control( 'overview_display_bright_background', array(
-        'type'        => 'checkbox',
-        'priority'    => 40,
-        'section'     => 'overview_options',
-        'label'       => __( 'Bright Display', 'overview' ),
-        'description' => '<em>' . __('Save and refresh to continue testing the Display after switching.', 'overview') . '</em>',
-        'input_attrs' => array(
-            'class'       => 'overview-front-template-bright-display-checkbox',
-            'style'     => 'border: 1px solid gray;'
-        ),
-        'active_callback' => function () {
-            return is_page_template( 'overview-front-page.php' ) || is_page_template( 'overview-front-no-content-page.php' );
-        }
     ) );
 
     // layout
     $wp_customize->add_control( 'overview_layout', array(
-        'type' => 'select',
-        'priority' => 10,
-        'section' => 'overview_options',
-        'label' => __( 'Choose layout', 'overview' ),
+        'type'        => 'select',
+        'priority'    => 10,
+        'section'     => 'overview_options',
+        'label'       => __( 'Choose layout', 'overview' ),
         'input_attrs' => array(
-            'class' => 'overview-layouts',
-            'style' => 'border: 1px solid gray;'
+            'class'      => 'overview-layouts',
+            'style'      => 'border: 1px solid gray;'
         ),
         'choices' => array(
             'fixed' => __( 'Fixed' , 'overview' ),
@@ -193,13 +170,13 @@ function overview_customize_register( $wp_customize ) {
 
     // layout
     $wp_customize->add_control( 'overview_body_font_size', array(
-        'type' => 'select',
-        'priority' => 15,
-        'section' => 'overview_options',
-        'label' => __( 'Main font size', 'overview' ),
+        'type'        => 'select',
+        'priority'    => 15,
+        'section'     => 'overview_options',
+        'label'       => __( 'Main font size', 'overview' ),
         'input_attrs' => array(
-            'class' => 'overview-main-font-size',
-            'style' => 'border: 1px solid gray;'
+            'class'      => 'overview-main-font-size',
+            'style'      => 'border: 1px solid gray;'
         ),
         'choices' => array(
             '14px' => __('14 Pixels', 'overview'),
@@ -215,6 +192,56 @@ function overview_customize_register( $wp_customize ) {
             '24px' => __('24 Pixels', 'overview'),
         )
     ) );
+
+    
+    // TEMPLATES ONLY CONTROLS
+    
+    // front page template display title
+    $wp_customize->add_control( 'overview_front_page_title', array(
+        'type'        => 'textarea',
+        'priority'    => 30,
+        'section'     => 'overview_options',
+        'label'       => __( 'Detected an active "OverView Display" template for this page', 'overview' ),
+        'description' => '<strong>' . __('Set the OverView Display\'s options', 'overview') . '</strong><br /><em>' . __( 'This section is only visible on pages with an active "OverView Display" template: you can change templates in the specific page\'s editor.', 'overview' ) . '</em><p>' . __( 'Display\'s title or description:', 'overview' ) . '</p>',
+        'input_attrs' => array(
+            'class'      => 'overview-front-template-title-text',
+            'style'      => 'border: 1px solid gray;'
+        ),
+        'active_callback' => function () {
+            return is_page_template( 'overview-front-page.php' ) || is_page_template( 'overview-front-no-content-page.php' ) || is_page_template( 'overview-front-page-after-content.php' );
+        }
+    ) );
+
+    // front page template display background
+    $wp_customize->add_control( 'overview_display_bright_background', array(
+        'type'        => 'checkbox',
+        'priority'    => 40,
+        'section'     => 'overview_options',
+        'label'       => __( 'Bright Display', 'overview' ),
+        'input_attrs' => array(
+            'class'       => 'overview-front-template-bright-display-checkbox',
+            'style'       => 'border: 1px solid gray;'
+        ),
+        'active_callback' => function () {
+            return is_page_template( 'overview-front-page.php' ) || is_page_template( 'overview-front-no-content-page.php' ) || is_page_template( 'overview-front-page-after-content.php' );
+        }
+    ) );
+
+    // overview_display_image_rotation
+    $wp_customize->add_control( 'overview_display_image_rotation', array(
+        'type'        => 'checkbox',
+        'priority'    => 50,
+        'section'     => 'overview_options',
+        'label'       => __( 'Rotate feature image', 'overview' ),
+        'description' => '<em>' . __('Note: no rotation will be applied on smaller devices', 'overview') . '</em>',
+        'input_attrs' => array(
+            'class'       => 'overview-front-template-rotate-img-checkbox',
+            'style'       => 'border: 1px solid gray;'
+        ),
+        'active_callback' => function () {
+            return is_page_template( 'overview-front-page.php' ) || is_page_template( 'overview-front-no-content-page.php' ) || is_page_template( 'overview-front-page-after-content.php' );
+        }
+    ) );    
     
     
     /* OverView WordPress customizer PARTIALS */
@@ -224,7 +251,7 @@ function overview_customize_register( $wp_customize ) {
         'selector' => '.site-branding-description-p',
         'container_inclusive' => false,
         'render_callback' => function() {
-            echo get_theme_mod('overview_site_branding_description', '');
+            echo get_theme_mod('overview_site_branding_description', __( 'Use this space to describe your story, mission, branding and more in a longer form', 'overview' ));
         }
     ) );
     

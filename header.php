@@ -79,22 +79,22 @@
 	        </div><!-- .site-branding -->
 
                 <?php
-                $overview_site_branding_description_text = get_theme_mod('overview_site_branding_description');
+                $overview_site_branding_description_text = get_theme_mod('overview_site_branding_description', __( 'Use this space to describe your story, mission, branding and more in a longer form', 'overview' ));
                 if ( $overview_site_branding_description_text !== '' ){ ?>
                     <!-- OverView site branding description -->
                     <p class="site-branding-description-p">
-                        <?php echo esc_textarea( get_theme_mod('overview_site_branding_description', '') ); ?>
+                        <?php echo esc_textarea( get_theme_mod( 'overview_site_branding_description', __( 'Use this space to describe your story, mission, branding and more in a longer form', 'overview' ) ) ); ?>
                     </p>
                 <?php }
                 ?>
                 
 	    </header><!-- #masthead -->
 
-<?php 
+            <?php 
             if ( is_page_template('overview-front-page.php') || is_page_template('overview-front-no-content-page.php') ){
-            get_template_part( 'template-parts/overview-display' );
+                get_template_part( 'template-parts/overview-display' );
             }
-?>
+            ?>
             
 	    <div id="content" class="site-content
                      <?php 

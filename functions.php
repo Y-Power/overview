@@ -217,8 +217,17 @@ function overview_get_custom_font_name($overview_font_name, $overview_pretty_pri
             else if ( $overview_font_name[$wi] === 'for' ){
                 $overview_font_name[$wi] = 'for';
             }
-            else if ( 'vt323' === $overview_font_name[$wi] ){
+            else if ( $overview_font_name[$wi] === 'ntr' ){
+                $overview_font_name[$wi] = 'NTR';
+            }
+            else if ( $overview_font_name[$wi] === 'gfs' ){
+                $overview_font_name[$wi] = 'GFS';
+            }
+            else if ( $overview_font_name[$wi] === 'vt323' ){
                 $overview_font_name[$wi] = 'VT323';
+            }
+            else if ( $overview_font_name[$wi] === 'unifrakturmaguntia' ){
+                $overview_font_name[$wi] = 'UnifrakturMaguntia';
             }
             // default font word output
             else {
@@ -253,7 +262,8 @@ add_action( 'wp_head', 'overview_add_custom_font_style' );
 function overview_body_font_size() {
     if ( get_theme_mod( 'overview_body_font_size', '18px' ) !== '18px' ){ ?>
     <style id="overview-body-font-size" type="text/css">
-     body {
+     body,
+     p.overview-navbar-nologo-fallback {
          font-size: <?php echo esc_attr( get_theme_mod( 'overview_body_font_size', '18px' ) ); ?>;
      }
     </style>
@@ -261,6 +271,16 @@ function overview_body_font_size() {
 }
 }
 add_action( 'wp_head','overview_body_font_size' );
+
+/* OverView Display check */
+function overview_check_front_page_template(){
+    $display_template_check = (
+        is_page_template( 'overview-front-page.php' ) ||
+        is_page_template( 'overview-front-no-content-page.php' ) ||
+        is_page_template( 'overview-front-page-after-content.php' )
+    ) ? true : false;
+    return $display_template_check;
+}
 
 /* OverView TinyMCE styles */
 function overview_add_editor_styles() {
@@ -295,6 +315,12 @@ function overview_scripts() {
 
     /* OverView addons styles */
     wp_enqueue_style( 'overview-style-addons', get_template_directory_uri() . '/css/overview-addons.css' );
+
+    /* OverView Display addons */
+    $overview_display_alt_img = get_theme_mod( 'overview_display_image_rotation', '1' );
+    if ( '' !== $overview_display_alt_img ){
+        wp_enqueue_style( 'overview-display-style-addons', get_template_directory_uri() . '/css/overview-display-alt-img.css' );
+    }
     
     /* OverView Layout */
     $overview_layout_check = get_theme_mod( 'overview_layout', 'fixed' );
@@ -312,11 +338,8 @@ function overview_scripts() {
     wp_enqueue_script( 'overview-scripts', get_template_directory_uri() . '/js/overview.js', array( 'jquery' ) );
 
     /* OverView Display scripts */
-    if (
-        is_page_template( 'overview-front-page.php' ) ||
-        is_page_template( 'overview-front-no-content-page.php' ) ||
-        is_page_template( 'overview-front-page-after-content.php' )
-    ) {
+    $overview_display_check = overview_check_front_page_template();
+    if ( $overview_display_check ) {
         wp_enqueue_script( 'overview-display-scripts', get_template_directory_uri() . '/js/overview-display.js', array( 'jquery', 'underscore', 'backbone', 'wp-api' ) );
     }
 
@@ -326,11 +349,7 @@ function overview_scripts() {
     }
 
     /* OverView Display templates resources */
-    if (
-        is_page_template( 'overview-front-page.php' ) ||
-        is_page_template( 'overview-front-no-content-page.php' ) ||
-        is_page_template( 'overview-front-page-after-content.php' )
-    ){
+    if ( $overview_display_check ){
         /* JS vars */
         $overview_JS_variables = array(
             /* site locale */
