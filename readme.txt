@@ -1,7 +1,7 @@
 === OverView ===
 
 Author: _Y_Power
-Tags: blog, education, one-column, two-columns, right-sidebar, flexible-header, custom-background, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, full-width-template, theme-options, threaded-comments, translation-ready
+Tags: blog, education, one-column, two-columns, right-sidebar, flexible-header, custom-background, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready
 Requires at least: 4.7
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
@@ -17,7 +17,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 
 == Description ==
 
-A minimal yet colorful responsive theme, OverView delivers a one-page browsing experience: all posts can be dinamically shown one by one on the OverView Display -available as page templates- by clicking on simple navigation buttons, helping engagement with your content.
+A minimalist yet colorful responsive theme, OverView delivers a one-page browsing experience: all posts can be dinamically shown one by one on the OverView Display -available as page templates- by clicking on simple navigation buttons, helping engagement with your content.
 
 OverView is based on Underscores, powered by the WordPress REST API and features an unlimited Google font selection, many color schemes and several styled widgets, wide layouts with CSS grid and flex support -including fallbacks for older devices.
 
@@ -45,6 +45,11 @@ Some plugin might be blocking the Display: it usually depends on security plugin
 OverView includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 1.0.8 - August 28 2017 =
+* Fixed posts classes
+* Changed standard feature images CSS
+* Added sticky posts styles and tag
 
 = 1.0.7 - August 26 2017 =
 * Fixed brand description option HTML

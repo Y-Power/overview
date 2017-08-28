@@ -3,10 +3,73 @@
 
     This file is part of the OverView WordPress theme package.
 */
+/* OverView SCSS setup
+_______________________________________ */
+/* VARIABLES */
+/* "Century Gothic",  "Avant Garde Gothic",  "Avant Garde",  "URW Gothic L",   helvetica,  sans-serif; */
+/* Iced Lake (default): rgba(76,118,201,1) , #4c76c9 */
+/*
+/* Amazon Rainforest: rgba(70,118,88,1) */
+/* Chessnuts Field: rgba(129,118,88,1) */
+/* Terracotta Road: rgba(173,118,60,1) */
+/* Japanese Maple Hill: rgba(191,58,63,1) */
+/* Sunset Desert: rgba(195,118,94,1) */
+/* Orchid Cliff: rgba(182,118,176,1) */
+/* Lavander Island: rgba(135,118,189,1) */
+/* Mariana Trench: rgba(69,82,131,1) */
+/* Countryside Oasis: rgba(79,97,36,1) */
+/* test sets: rgba(70,118,88,1), rgba(129,118,88,1), rgba(173,118,60,1), rgba(191,58,63,1), rgba(195,118,94,1), rgba(182,118,176,1), rgba(135,118,189,1) */
+/* more sets: rgba(69,82,131,1), rgba(79,97,36,1) */
+/* #cce2f7 */
+/* MIXINS */
+/* PREFIXES */
+/* animation */
+/* transform */
+/* border radius */
+/* transition */
+/* text shadow */
+/* box shadow */
+/* WordPress STRUCTURES */
+/* main layouts */
+/* standard post list attributes */
+/* standard post list featured img header */
+/* standard post list NO featured img header */
+/* standard post list content */
+/* standard posts format */
+/* standard posts format - no featured image */
+/* meta icons */
+/* post meta */
+/* post categories and tags */
+/* comments links */
+/* comments */
+/* WordPress content's elements styles */
+/* sidebar WordPress widgets */
+/* footer WordPress widgets */
+/* standard footer */
+/* buttons  */
 /* OverView addons styles  */
 /* default body font size */
 body {
   font-size: 18px; }
+
+/* headings */
+h1 {
+  font-size: 3.1rem; }
+
+h2 {
+  font-size: 2.5rem; }
+
+h3 {
+  font-size: 2.1rem; }
+
+h4 {
+  font-size: 1.8rem; }
+
+h5 {
+  font-size: 1.5rem; }
+
+h6 {
+  font-size: 1.2rem; }
 
 /* WP navbar logo */
 @media screen and (max-width: 599px) {
@@ -99,6 +162,99 @@ li.page_item_has_children:hover button.overview-sub-menu-down-arrow,
 li.menu-item-has-children:hover button.overview-sub-menu-down-arrow {
   color: #333; }
 
+/* Featured images */
+/* mobile feature imgs */
+article.overview-standard-indexed-entry header.overview-standard-indexed-entry-header {
+  background-size: 0;
+  height: auto; }
+  @media screen and (max-width: 767px) {
+    article.overview-standard-indexed-entry header.overview-standard-indexed-entry-header {
+      min-height: 300px;
+      padding-top: 300px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      -webkit-box-shadow: 0 0 6px 0;
+      -moz-box-shadow: 0 0 6px 0;
+      -ms-box-shadow: 0 0 6px 0;
+      -o-box-shadow: 0 0 6px 0;
+      box-shadow: 0 0 6px 0; }
+      article.overview-standard-indexed-entry header.overview-standard-indexed-entry-header h1.entry-title {
+        overflow-wrap: break-word;
+        padding: 12px;
+        color: #c4c4c4;
+        background-color: rgba(11, 11, 11, 0.8); }
+      article.overview-standard-indexed-entry header.overview-standard-indexed-entry-header h2.entry-title {
+        overflow-wrap: break-word; }
+        article.overview-standard-indexed-entry header.overview-standard-indexed-entry-header h2.entry-title a {
+          display: block;
+          overflow-wrap: break-word;
+          padding: 9px;
+          line-height: 1.7;
+          background-color: rgba(11, 11, 11, 0.8); } }
+
+@media screen and (max-width: 767px) {
+  article.overview-standard-indexed-entry div.overview-single-post-entry-full-featured-image {
+    display: none; } }
+
+article.overview-standard-indexed-entry a.overview-default-post-entry-featured-image-aside {
+  min-height: 170px; }
+  @media screen and (max-width: 767px) {
+    article.overview-standard-indexed-entry a.overview-default-post-entry-featured-image-aside {
+      display: none; } }
+
+/* sticky */
+.sticky {
+  -webkit-box-shadow: 0 0 6px 0;
+  -moz-box-shadow: 0 0 6px 0;
+  -ms-box-shadow: 0 0 6px 0;
+  -o-box-shadow: 0 0 6px 0;
+  box-shadow: 0 0 6px 0; }
+  @media screen and (max-width: 980px) {
+    .sticky {
+      margin-left: 15px;
+      margin-right: 15px; } }
+
+/* content words overflow and intelligibility */
+div.overview-default-entry-content * {
+  overflow-wrap: break-word; }
+@media screen and (max-width: 600px) {
+  div.overview-default-entry-content ul,
+  div.overview-default-entry-content ol,
+  div.overview-default-entry-content dl {
+    padding-left: 0; } }
+
+/* primary div margin */
+div#primary {
+  margin-bottom: 30px; }
+
+/* galleries */
+.gallery {
+  padding: 0 12px;
+  color: #c4c4c4;
+  background-color: rgba(33, 33, 33, 0.85);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 4px 0 inset;
+  -moz-box-shadow: 0 0 4px 0 inset;
+  -ms-box-shadow: 0 0 4px 0 inset;
+  -o-box-shadow: 0 0 4px 0 inset;
+  box-shadow: 0 0 4px 0 inset; }
+  @media screen and (max-width: 600px) {
+    .gallery {
+      padding: 0 1px; } }
+  .gallery figure.gallery-item div.gallery-icon a img {
+    -webkit-box-shadow: 0 0 4px 0;
+    -moz-box-shadow: 0 0 4px 0;
+    -ms-box-shadow: 0 0 4px 0;
+    -o-box-shadow: 0 0 4px 0;
+    box-shadow: 0 0 4px 0; }
+  .gallery figure.gallery-item figcaption.gallery-caption {
+    padding: 4px; }
+
 /* Widgets */
 /* titles */
 div.overview-sidebar-main-container h2.widget-title {
@@ -112,7 +268,7 @@ section.widget_rss ul li {
   padding: 4px 0; }
   section.widget_rss ul li a.rsswidget {
     display: block;
-    font-size: 1.1rem; }
+    font-size: 1.13rem; }
   section.widget_rss ul li span.rss-date {
     display: inline-block;
     margin-left: 12px;

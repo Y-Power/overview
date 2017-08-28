@@ -24,8 +24,8 @@ else {?>
     get_template_part( 'template-parts/content', get_post_format() );
 
     the_post_navigation( array(
-        'prev_text'                  => '<i class="fa fa-chevron-left overview-navigation-icon overview-navigation-arrow-prev" aria-hidden="true"></i><span class="overview-navigation-direction-span">' . __('previous', 'overview') . ' - </span>%title',
-        'next_text'                  => '<i class="fa fa-chevron-right overview-navigation-icon overview-navigation-arrow-next" aria-hidden="true"></i>%title<span class="overview-navigation-direction-span"> - ' . __('next', 'overview') . '</span>',
+        'prev_text'                  => '<i class="fa fa-chevron-left overview-navigation-icon overview-navigation-arrow-prev" aria-hidden="true"></i><span class="overview-navigation-direction-span">' . __('previous', 'overview') . ' -- </span>%title',
+        'next_text'                  => '<i class="fa fa-chevron-right overview-navigation-icon overview-navigation-arrow-next" aria-hidden="true"></i>%title<span class="overview-navigation-direction-span"> -- ' . __('next', 'overview') . '</span>',
         'in_same_term'               => true,
         'screen_reader_text' => __( 'Continue Reading', 'overview' ),
     ) );

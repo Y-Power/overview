@@ -233,7 +233,7 @@ function overview_customize_register( $wp_customize ) {
         'priority'    => 50,
         'section'     => 'overview_options',
         'label'       => __( 'Rotate feature image', 'overview' ),
-        'description' => '<em>' . __('Note: no rotation will be applied on smaller devices', 'overview') . '</em>',
+        'description' => '<em>' . __('Note: NO rotation will be applied on smaller devices and effect changes angle at different screen sizes', 'overview') . '</em>',
         'input_attrs' => array(
             'class'       => 'overview-front-template-rotate-img-checkbox',
             'style'       => 'border: 1px solid gray;'

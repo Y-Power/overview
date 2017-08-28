@@ -1,9 +1,15 @@
 @import '_overview_scss_vars';
 
 img#overview-front-page-posts-section-img {
-  @include ov-transform(translate(-40%, -50%) matrix3d( .95, .01, 0, 0.0005, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 ));
+  @include ov-transform(translate(-35%, -50%) matrix3d( .98, .01, 0, 0.0005, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 ));
   @media screen and (max-width: 767px){
     @include ov-transform(translate(-50%, -50%));
     }
   }
 
+header#masthead {
+  margin-bottom: 40px;
+  @media screen and (max-width: 767px){
+    margin-bottom: 0;
+    }
+  }

@@ -48,14 +48,18 @@ else {?>
                             </div> <!-- .overview-indexed-content-main-container -->
                         <?php 
 			endwhile;
-                        the_posts_navigation();
+                        the_posts_navigation( array(
+                            'prev_text'                  => '<i class="fa fa-chevron-left overview-navigation-icon overview-navigation-arrow-prev" aria-hidden="true"></i><span class="overview-navigation-direction-span">' . __('Previous entries', 'overview'),
+                            'next_text'                  => '<i class="fa fa-chevron-right overview-navigation-icon overview-navigation-arrow-next" aria-hidden="true"></i><span class="overview-navigation-direction-span">' . __('Newer entries', 'overview') . '</span>',
+                            'in_same_term'               => true,
+                            'screen_reader_text' => __( 'Continue Reading', 'overview' ),
+                        ) );
 		        else :
                         ?>
                         <div class="overview-unindexed-content-main-container"><?php get_template_part( 'template-parts/content', 'none' ); ?>
                         </div> <!-- .overview-indexed-content-main-container -->
         <?php 
 	endif; ?>
-
     </main><!-- #main -->
 </div><!-- #primary -->
 

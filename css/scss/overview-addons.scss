@@ -4,6 +4,8 @@
     This file is part of the OverView WordPress theme package.
 */
 
+@import 'overview_scss_vars';
+
 /* OverView addons styles  */
 
 /* default body font size */
@@ -11,6 +13,26 @@ body {
   font-size: 18px;
 }
 
+/* headings */
+h1 {
+  font-size: 3.1rem;
+  }
+h2 {
+  font-size: 2.5rem;
+  }
+h3 {
+  font-size: 2.1rem;
+  }
+h4 {
+  font-size: 1.8rem;
+  }
+h5 {
+  font-size: 1.5rem;
+  }
+h6 {
+  font-size: 1.2rem;
+  }
+  
 /* WP navbar logo */
 @media screen and (max-width: 599px){
   nav#site-navigation a#overview-navbar-site-logo img {
@@ -126,6 +148,104 @@ li.menu-item-has-children:hover button.overview-sub-menu-down-arrow {
   color: #333;
 }
 
+/* Featured images */
+
+/* mobile feature imgs */
+article.overview-standard-indexed-entry header.overview-standard-indexed-entry-header {
+  background-size: 0;
+  height: auto;
+  @media screen and (max-width: 767px){
+    min-height: 300px;
+    padding-top: 300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    @include ov-box-shadow(0 0 6px 0);
+    h1.entry-title {
+      overflow-wrap: break-word;
+      padding: 12px;
+      color: #c4c4c4;
+      background-color: rgba(11, 11, 11, .8);
+      }
+    h2.entry-title {
+      overflow-wrap: break-word;
+      a {
+        display: block;
+        overflow-wrap: break-word;
+        padding: 9px;
+        line-height: 1.7;
+        background-color: rgba(11, 11, 11, .8);
+        }
+      }
+    }
+  }
+
+article.overview-standard-indexed-entry {
+  @media screen and (max-width: 767px){
+    div.overview-single-post-entry-full-featured-image {
+      display: none;
+      }
+    }
+  }
+    
+article.overview-standard-indexed-entry a.overview-default-post-entry-featured-image-aside {
+  min-height: 170px;
+  @media screen and (max-width: 767px){
+    display: none;
+    }
+  }
+    
+/* sticky */
+
+.sticky {
+  @include ov-box-shadow(0 0 6px 0);
+  @media screen and (max-width: 980px){
+    margin-left: 15px;
+    margin-right: 15px;
+    }
+  }
+
+/* content words overflow and intelligibility */
+div.overview-default-entry-content {
+  * {
+    overflow-wrap: break-word;
+    }
+  @media screen and (max-width: 600px){
+    ul,
+    ol,
+    dl {
+      padding-left: 0;
+      }
+    }
+  }
+    
+/* primary div margin */
+
+div#primary {
+  margin-bottom: 30px;
+  }
+
+/* galleries */
+.gallery {
+  padding: 0 12px;
+  color: #c4c4c4;
+  background-color: rgba(33, 33, 33, .85);
+  @include ov-border-radius(3px);
+  @include ov-box-shadow(0 0 4px 0 inset);
+  @media screen and (max-width: 600px){
+    padding: 0 1px;
+    }
+  figure.gallery-item {
+    div.gallery-icon a img {
+      @include ov-box-shadow(0 0 4px 0);
+      }
+    figcaption.gallery-caption {
+      padding: 4px;
+      }
+    }
+  }
+  
+    
 /* Widgets */
 
 /* titles */
@@ -143,7 +263,7 @@ section.widget_rss {
       padding: 4px 0;
       a.rsswidget {
         display: block;
-        font-size: 1.1rem;
+        font-size: 1.13rem;
         }
       span.rss-date {
         display: inline-block;

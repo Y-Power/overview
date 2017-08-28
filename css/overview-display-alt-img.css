@@ -43,11 +43,11 @@ _______________________________________ */
 /* standard footer */
 /* buttons  */
 img#overview-front-page-posts-section-img {
-  -webkit-transform: translate(-40%, -50%) matrix3d(0.95, 0.01, 0, 0.0005, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  -moz-transform: translate(-40%, -50%) matrix3d(0.95, 0.01, 0, 0.0005, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  -ms-transform: translate(-40%, -50%) matrix3d(0.95, 0.01, 0, 0.0005, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  -o-transform: translate(-40%, -50%) matrix3d(0.95, 0.01, 0, 0.0005, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  transform: translate(-40%, -50%) matrix3d(0.95, 0.01, 0, 0.0005, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  -webkit-transform: translate(-35%, -50%) matrix3d(0.98, 0.01, 0, 0.0005, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  -moz-transform: translate(-35%, -50%) matrix3d(0.98, 0.01, 0, 0.0005, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  -ms-transform: translate(-35%, -50%) matrix3d(0.98, 0.01, 0, 0.0005, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  -o-transform: translate(-35%, -50%) matrix3d(0.98, 0.01, 0, 0.0005, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  transform: translate(-35%, -50%) matrix3d(0.98, 0.01, 0, 0.0005, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   @media screen and (max-width: 767px) {
     img#overview-front-page-posts-section-img {
       -webkit-transform: translate(-50%, -50%);
@@ -55,5 +55,11 @@ img#overview-front-page-posts-section-img {
       -ms-transform: translate(-50%, -50%);
       -o-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%); } }
+
+header#masthead {
+  margin-bottom: 40px; }
+  @media screen and (max-width: 767px) {
+    header#masthead {
+      margin-bottom: 0; } }
 
 /*# sourceMappingURL=overview-display-alt-img.css.map */

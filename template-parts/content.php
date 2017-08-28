@@ -9,14 +9,11 @@
 
 ?>
 
-<?php if ( has_post_thumbnail() ){?>
-    <article class="overview-standard-indexed-entry" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-<?php }
-else { // no featured image
+<?php
+$overview_post_thumbnail_class_check = ( has_post_thumbnail() ) ? 'overview-standard-indexed-entry' : 'overview-standard-indexed-entry-no-featured-img';
 ?>
-    <article class="overview-standard-indexed-entry-no-featured-img" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-<?php } ?>
-<header class="entry-header overview-standard-indexed-entry-header">
+<article id="post-<?php the_ID(); ?>" <?php post_class($overview_post_thumbnail_class_check); ?>>
+    <header class="entry-header overview-standard-indexed-entry-header" style="background-image: url('<?php echo esc_url( get_the_post_thumbnail_url( get_the_ID(), 'full' ) ); ?>');">
     <?php
     if ( is_single() ) :
     the_title( '<h1 class="entry-title overview-single-post-title">', '</h1>' );
