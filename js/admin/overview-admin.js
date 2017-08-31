@@ -32,7 +32,7 @@
                 wp.customize.control('overview_custom_font').focus();
             }, 100);
         });
-
+        
     });
     
 })();

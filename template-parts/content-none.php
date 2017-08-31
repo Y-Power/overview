@@ -24,14 +24,18 @@
 
 			<p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'overview' ); ?></p>
 			<?php
-				get_search_form();
-
+			get_search_form();
+                        ?>
+                        <div class="overview-nothing-found-endpage"><p></p></div>
+                <?php 
 		else : ?>
 
 			<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'overview' ); ?></p>
 			<?php
-				get_search_form();
-
+			get_search_form();
+                        ?>
+                        <div class="overview-nothing-found-endpage"><p></p></div>
+                <?php 
 		endif; ?>
 	</div><!-- .page-content -->
 </section><!-- .no-results -->

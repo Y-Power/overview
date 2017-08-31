@@ -46,6 +46,13 @@ OverView includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
+= 1.0.9 - August 31 2017 =
+* Fixed post_class for pages
+* Improved back-end TinyMCE preview CSS
+* Set a larger main menu toggle break-point (767px)
+* Updated .pot file
+* Minor CSS adjustments
+
 = 1.0.8 - August 28 2017 =
 * Fixed posts classes
 * Changed standard feature images CSS

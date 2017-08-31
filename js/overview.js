@@ -128,8 +128,8 @@
         /* _s navbar adjustments */
         function overviewNavbarAdjust(){
             var OVMenuHeight = jQ('nav#site-navigation div').height(),
-                OVSiteLogoHeight = ( OVMenuHeight === 0 ) ? '42px' : OVMenuHeight + 'px',
-                OVNavbarHeight = jQ('nav#site-navigation').outerHeight() +'px';
+                OVSiteLogoHeight = ( jQ('nav#site-navigation.toggled') ) ? '42px' : OVMenuHeight + 'px',
+                OVNavbarHeight = jQ('nav#site-navigation').outerHeight() + 'px';
             /* navbar logo height */
             jQ('nav#site-navigation a#overview-navbar-site-logo').css({
                 height: OVSiteLogoHeight

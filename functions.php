@@ -282,16 +282,36 @@ function overview_check_front_page_template(){
     return $display_template_check;
 }
 
+/* OverView TinyMCE font */
+function overview_tinymce_custom_styles( $mceInit ) {
+    $ov_custom_font_check = overview_get_custom_font_name( esc_attr( get_theme_mod( 'overview_custom_font', '' ) ), 'pretty');
+    $overview_selected_font = ( $ov_custom_font_check ) === '' ? 'Muli' : $ov_custom_font_check;
+    $overview_selected_extra_styles = "body.mce-content-body { font-family: '" . $overview_selected_font . "', sans-serif; font-size: " . get_theme_mod( 'overview_body_font_size', '18px' ) . "; background-color: #" . esc_attr( get_background_color() ) . ";}";
+    if ( isset( $mceInit['content_style'] ) ) {
+        $mceInit['content_style'] .= ' ' . $overview_selected_extra_styles . ' ';
+    } else {
+        $mceInit['content_style'] = $overview_selected_extra_styles . ' ';
+    }
+    return $mceInit;
+}
+add_filter('tiny_mce_before_init','overview_tinymce_custom_styles');
+
 /* OverView TinyMCE styles */
 function overview_add_editor_styles() {
+    $ov_custom_font_check = overview_get_custom_font_name( esc_attr( get_theme_mod( 'overview_custom_font', '' ) ), 'not-pretty');
+    $overview_selected_font = ( $ov_custom_font_check ) === '' ? 'Muli' : $ov_custom_font_check;
+    $overview_selected_font_url = str_replace( ',', '%2C', 'https://fonts.googleapis.com/css?family=' . $overview_selected_font . ':300,400,500,600,700,800' );
     $ov_active_color_scheme = get_theme_mod( 'overview_colors_theme', 'iced_lake' );
     add_editor_style( array(
-        'https://fonts.googleapis.com/css?family=Muli',
+        $overview_selected_font_url,
         'style.css',
-        '/css/color-schemes/overview-' . esc_attr( $ov_active_color_scheme ) . '.css'
+        '/css/color-schemes/overview-' . esc_attr( $ov_active_color_scheme ) . '.css',
+        'css/overview-addons.css',
+        'css/overview-editor-styles.css'
     ) );
 }
 add_action( 'admin_init', 'overview_add_editor_styles' );
+
 
 /**
  * Enqueue scripts and styles.
@@ -390,6 +410,7 @@ add_action( 'wp_enqueue_scripts', 'overview_scripts' );
 function overview_admin_files(){
     // admin JS
     wp_register_script( 'overview-admin-js', get_template_directory_uri() . '/js/admin/overview-admin.js', array( 'jquery', 'customize-controls' ) );
+    // enqueue
     wp_enqueue_script( 'overview-admin-js' );
 }
 add_action( 'admin_enqueue_scripts', 'overview_admin_files' );

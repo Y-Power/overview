@@ -34,7 +34,7 @@ h6 {
   }
   
 /* WP navbar logo */
-@media screen and (max-width: 599px){
+@media screen and (max-width: 767px){
   nav#site-navigation a#overview-navbar-site-logo img {
     width: auto;
     min-width: 0;
@@ -97,6 +97,15 @@ span.edit-link {
   display: block;
   margin: 12px;
   text-align: right;
+  a {
+    margin: 0;
+    padding: 9px 12px;
+    background-color: $ov-structure-light-color;
+    @include ov-border-radius(3px);
+    &:hover {
+      background-color: transparent;
+      }
+    }
   }
   
 /* OverView social nav menu */
@@ -117,21 +126,36 @@ ul#ov-social-menu {
 
 /* logo */
 nav#site-navigation a#overview-navbar-site-logo {
-  @media screen and (max-width:599px){
+  @media screen and (max-width: 767px){
     width: 70%;
   }
 }
 
+nav#site-navigation a#overview-navbar-site-logo img {
+  position: absolute;
+  @media screen and (max-width: 767px){
+    position: relative;
+    }
+  }
+  
 /* menus navigation */
 nav#site-navigation.toggled {
-  @media screen and (max-width: 599px){
+  @media screen and (max-width: 767px){
     max-height: 90%;
     overflow-y: auto;
   }
 }
 
+nav#site-navigation div {
+    max-width: 80%;
+    @media screen and (max-width: 767px){
+      width: 100%;
+      max-width: 100%;
+      }
+}
+  
 nav#site-navigation.toggled div {
-  @media screen and (max-width: 599px){
+  @media screen and (max-width: 767px){
     float: none;
   }
   .overview-mobile-navbar-sub-menu{
@@ -143,6 +167,31 @@ nav#site-navigation.toggled div {
    }
 }
 
+nav#site-navigation div ul.nav-menu li {
+  display: inline-block;
+  float: left;
+  margin: 0 0 0 20px;
+  @include ov-border-radius(4px 4px 0 0);
+  @media screen and (max-width: 767px){
+    display: block;
+    float: none;
+    margin: 3px 0 3px 20px;
+    @include ov-border-radius(0);
+    }
+   a {
+     @media screen and (max-width: 767px){
+       width: 90%;
+       }
+     }
+  }
+
+nav#site-navigation div ul.nav-menu li ul.children, nav#site-navigation div ul.nav-menu li ul.sub-menu {
+  @media screen and (max-width: 767px){
+    width: 80%;
+    max-width: 80%;
+    }
+  }
+    
 li.page_item_has_children:hover button.overview-sub-menu-down-arrow,
 li.menu-item-has-children:hover button.overview-sub-menu-down-arrow {
   color: #333;
@@ -192,6 +241,19 @@ article.overview-standard-indexed-entry a.overview-default-post-entry-featured-i
   min-height: 170px;
   @media screen and (max-width: 767px){
     display: none;
+    }
+  }
+
+/* "Nothing found" search */
+div.overview-nothing-found-endpage {
+  width: 100%;
+  text-align: center;
+  p {
+    display: inline-block;
+    width: 80%;
+    height: 1px;
+    margin: 12px 0;
+    border-bottom: 1px solid $ov-structure-light-color;
     }
   }
     
