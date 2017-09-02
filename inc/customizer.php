@@ -23,6 +23,15 @@ function overview_customize_register( $wp_customize ) {
         'sanitize_callback' => 'esc_textarea'
     ) );
 
+    // body main color
+    $wp_customize->add_setting( 'overview_custom_body_color', array(
+        'type'              => 'theme_mod',
+        'capability'        => 'edit_theme_options',
+        'default'           => '#404040',
+        'transport'         => 'postMessage',
+        'sanitize_callback' => 'sanitize_hex_color'
+    ) );
+    
     // colors themes
     $wp_customize->add_setting( 'overview_colors_theme', array(
         'type'              => 'theme_mod',
@@ -55,7 +64,7 @@ function overview_customize_register( $wp_customize ) {
         'type'              => 'theme_mod',
         'capability'        => 'edit_theme_options',
         'default'           => '18px',
-        'transport'         => 'refresh',
+        'transport'         => 'postMessage',
         'sanitize_callback' => 'esc_attr'
     ) );
     
@@ -85,19 +94,34 @@ function overview_customize_register( $wp_customize ) {
         'transport'         => 'refresh',
         'sanitize_callback' => 'esc_attr'
     ) );    
+
+    // OverView about setting
+    $wp_customize->add_setting( 'overview_about', array(
+        'type'              => 'theme_mod',
+        'capability'        => 'edit_theme_options',
+        'default'           => '',
+        'transport'         => 'refresh',
+        'sanitize_callback' => 'esc_textarea'
+    ) );    
     
 
     /* OverView WordPress customizer SECTIONS */
     
     // general options
     $wp_customize->add_section( 'overview_options', array(
-        'title'      => __( 'OverView options', 'overview' ),
-        //'panel' => '',
-        'priority'   => 80,
-        'capability' => 'edit_theme_options',
-        //'theme_supports' => '',
+        'title'       => __( 'OverView options', 'overview' ),
+        'description' => '<em>' . __( 'Note: if the page you are previewing has an active OverView Display page template, the OverView Display settings will be shown at the bottom of this section', 'overview' ) . '</em>',
+        'priority'    => 80,
+        'capability'  => 'edit_theme_options'
     ) );
 
+    // about ' . esc_url( 'https://wordpress.org/support/theme/handcraft-expo/reviews/#new-post' ) . '
+    $wp_customize->add_section( 'overview_about_section', array(
+        'title'       => __( 'About', 'overview' ),
+        'description' => __( 'Thank you for using OverView, a completely free (as in FREEDOM) WordPress theme!', 'overview' ) . '<ul><br /><strong><em>' . __( 'Some useful links', 'overview' ) . '</em></strong><li><a href="' . esc_url( 'https://codex.wordpress.org/Themes' ) . '">' . __( 'using WordPress themes', 'overview' ) . '</a></li><li><a href="' . esc_url( 'https://wordpress.org/support/theme/overview' ) .'">' . __( 'OverView support forum', 'overview' ) . '</a></li><li><a href="' . esc_url( 'https://wordpress.org/support/' ) .'">' . __( 'WordPress support', 'overview' ) . '</a></li><li><a href="' . esc_url( 'https://codex.wordpress.org/Child_Themes' ) . '">' . __( 'WordPress child themes', 'overview' ) . '</a></li><li><a href="' . esc_url( 'https://wordpress.org/support/theme/overview/reviews/#new-post' ) . '">' . __( 'rate OverView', 'overview' ) . '</a></li></ul><br />' . __( 'You can learn more about the wonderful world of Free Software and why it matters to you by visting the', 'overview' ) . ' <a href="' . esc_url( 'https://fsf.org/' ) . '">' . __( 'Free Software Foundation', 'overview' ) . '</a>.',
+        'priority'    => 220,
+        'capability'  => 'edit_theme_options'
+    ) );
     
     /* OverView WordPress customizer CONTROLS */
 
@@ -114,6 +138,13 @@ function overview_customize_register( $wp_customize ) {
         ),
     ) );
 
+    // main body color
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'overview_custom_body_color', array(
+        'label'    => __( 'Font color', 'overview' ),
+        'section'  => 'colors',
+        'priority' => 5
+    ) ) );
+    
     // colors themes    
     $wp_customize->add_control( 'overview_colors_theme', array(
         'type'        => 'select',
@@ -145,7 +176,7 @@ function overview_customize_register( $wp_customize ) {
         'priority'    => 20,
         'section'     => 'overview_options',
         'label'       => __( 'Google&reg; font', 'overview' ),
-        'description' => '<a href="https://fonts.google.com" target="_blank">' . __( 'See all available Google fonts', 'overview' ) . '</a><br /><p><strong>' . __( 'Google is a registred trademark and belongs to its owners.', 'overview' ) . '</strong></p><p>' . __( 'OverView\'s default font is ', 'overview' ) . '<a href="https://fonts.google.com/specimen/Muli" target="_blank">Muli</a>. '. __( 'Enter the name of the Google font you have picked here:', 'overview' ) .'</p>',
+        'description' => '<a href="' . esc_url( 'https://fonts.google.com' ) . '" target="_blank">' . __( 'See all available Google fonts', 'overview' ) . '</a><br /><p><strong>' . __( 'Google is a registred trademark and belongs to its owners.', 'overview' ) . '</strong></p><p>' . __( 'OverView\'s default font is ', 'overview' ) . '<a href="' . esc_url( 'https://fonts.google.com/specimen/Muli' ) . '" target="_blank">Muli</a>. '. __( 'Enter the name of the Google font you have picked here:', 'overview' ) .'</p>',
         'input_attrs' => array(
             'id'         => 'overview-custom-font-text-input',
             'style'      => 'border: 1px solid gray;'
@@ -217,7 +248,7 @@ function overview_customize_register( $wp_customize ) {
         'type'        => 'checkbox',
         'priority'    => 40,
         'section'     => 'overview_options',
-        'label'       => __( 'Bright Display', 'overview' ),
+        'label'       => __( 'Standard background', 'overview' ),
         'input_attrs' => array(
             'class'       => 'overview-front-template-bright-display-checkbox',
             'style'       => 'border: 1px solid gray;'
@@ -242,6 +273,21 @@ function overview_customize_register( $wp_customize ) {
             return is_page_template( 'overview-front-page.php' ) || is_page_template( 'overview-front-no-content-page.php' ) || is_page_template( 'overview-front-page-after-content.php' );
         }
     ) );    
+
+    // about OverView
+    $wp_customize->add_control( 'overview_about', array(
+        'type'        => 'range',
+        'priority'    => 10,
+        'section'     => 'overview_about_section',
+        'description' => '_Y_Power',
+        'input_attrs' => array(
+            'class'       => 'overview-hidden-about-control',
+            'style'       => 'display: none;',
+            'min'         => 1,
+            'max'         => 1,
+            'step'        => 1
+        )
+    ) );
     
     
     /* OverView WordPress customizer PARTIALS */
@@ -264,8 +310,9 @@ function overview_customize_register( $wp_customize ) {
         }
     ) );
     
-    $wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
-    $wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
+    $wp_customize->get_setting( 'blogname' )->transport          = 'postMessage';
+    $wp_customize->get_setting( 'blogdescription' )->transport   = 'postMessage';
+    $wp_customize->get_setting( 'background_image' )->transport  = 'postMessage';
     //$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
     /* hide header color input */
@@ -278,6 +325,6 @@ add_action( 'customize_register', 'overview_customize_register' );
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
 function overview_customize_preview_js() {
-    wp_enqueue_script( 'overview_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20151215', true );
+    wp_enqueue_script( 'overview_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), 'jquery' );
 }
 add_action( 'customize_preview_init', 'overview_customize_preview_js' );

@@ -244,6 +244,41 @@ function overview_get_custom_font_name($overview_font_name, $overview_pretty_pri
     }
 }
 
+/* OverView custom background / background color */
+
+function overview_custom_main_font_color(){
+    $overview_custom_body_color = get_theme_mod( 'overview_custom_body_color', '#404040' );?>
+    <style id="overview-custom-body-color-css">
+     body, header#masthead div.site-branding p.site-description, header#masthead div.site-branding p.site-description, div.overview-indexed-content-main-container, article.overview-standard-indexed-entry, article.overview-standard-indexed-entry-no-featured-img, div#comments, div.page-content, div.overview-sidebar-main-container section.widget {color: <?php echo esc_attr( $overview_custom_body_color ); ?>}
+    </style>
+<?php }
+add_action( 'wp_head', 'overview_custom_main_font_color' );
+
+function overview_custom_background_styles(){
+    $overview_custom_background_img = get_background_image();
+    $overview_custom_body_color = get_theme_mod( 'overview_custom_body_color', '#404040' );
+    $overview_custom_background_color = get_background_color();
+    $overview_display_custom_background_check = get_theme_mod( 'overview_display_bright_background', '' );?>
+    <style id="overview-custom-background-extra-css" type="text/css">
+     body, header#masthead, .site-title, header#masthead div.site-branding p.site-description, div.overview-indexed-content-main-container, article.overview-standard-indexed-entry, article.overview-standard-indexed-entry-no-featured-img, div#comments, div.page-content, div.overview-sidebar-main-container section.widget {background-color: #<?php echo esc_attr( $overview_custom_background_color ); ?>;}
+    </style>
+<?php 
+// if there is a background image
+if ( '' !== $overview_display_custom_background_check ){?>
+    <style id="overview-custom-background-color-extra-css">
+     div#overview-front-page-section-content-container, div#overview-front-page-posts-section-content {color: <?php echo esc_attr( $overview_custom_body_color ); ?>; background-color: #<?php echo esc_attr( $overview_custom_background_color ); ?>;}
+    </style>
+<?php }
+// if NO background image
+else {?>
+    <style id="overview-custom-background-color-extra-css">
+     div#overview-front-page-posts-section-content {color: #404040; background-color: #fff}
+    </style>
+<?php }
+}
+// if there is a custom background image, include extra CSS
+add_action( 'wp_head','overview_custom_background_styles' );
+
 /* custom logo head extra style */
 function overview_add_custom_font_style() {
     if ( get_theme_mod( 'overview_custom_font', '' ) !== '' ){
@@ -286,7 +321,8 @@ function overview_check_front_page_template(){
 function overview_tinymce_custom_styles( $mceInit ) {
     $ov_custom_font_check = overview_get_custom_font_name( esc_attr( get_theme_mod( 'overview_custom_font', '' ) ), 'pretty');
     $overview_selected_font = ( $ov_custom_font_check ) === '' ? 'Muli' : $ov_custom_font_check;
-    $overview_selected_extra_styles = "body.mce-content-body { font-family: '" . $overview_selected_font . "', sans-serif; font-size: " . get_theme_mod( 'overview_body_font_size', '18px' ) . "; background-color: #" . esc_attr( get_background_color() ) . ";}";
+    $overview_custom_body_color = get_theme_mod( 'overview_custom_body_color', '#404040' );
+    $overview_selected_extra_styles = "body.mce-content-body { font-family: '" . $overview_selected_font . "', sans-serif; font-size: " . get_theme_mod( 'overview_body_font_size', '18px' ) . "; color: " . esc_attr( $overview_custom_body_color ) . "; background-color: #" . esc_attr( get_background_color() ) . ";}";
     if ( isset( $mceInit['content_style'] ) ) {
         $mceInit['content_style'] .= ' ' . $overview_selected_extra_styles . ' ';
     } else {

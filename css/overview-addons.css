@@ -71,6 +71,17 @@ h5 {
 h6 {
   font-size: 1.2rem; }
 
+/* default background colors */
+body, header#masthead, .site-title, header#masthead div.site-branding p.site-description, div.overview-indexed-content-main-container, article.overview-standard-indexed-entry, article.overview-standard-indexed-entry-no-featured-img, div#comments, div.page-content, div.overview-sidebar-main-container section.widget {
+  background-color: #fff; }
+
+/* default backgrounds layout */
+div.overview-sidebar-main-container {
+  background-color: transparent; }
+
+div.overview-sidebar-main-container section.widget {
+  padding: 12px; }
+
 /* WP navbar logo */
 @media screen and (max-width: 767px) {
   nav#site-navigation a#overview-navbar-site-logo img {
@@ -106,6 +117,12 @@ header#masthead div.site-branding p.site-title,
 header#masthead div.site-branding p.site-description {
   padding-left: 30px;
   padding-right: 30px; }
+  @media screen and (max-width: 767px) {
+    header#masthead div.site-branding h1.site-title,
+    header#masthead div.site-branding p.site-title,
+    header#masthead div.site-branding p.site-description {
+      padding-left: 0;
+      padding-right: 0; } }
 
 @media screen and (max-width: 767px) {
   header#masthead div.site-branding h1.site-title {
@@ -405,6 +422,10 @@ footer.overview-footer-container div.overview-footer-widgets-container section.o
   #content,
   .overview-sidebar-layout {
     display: block; }
+
+  /* OverView Display */
+  div#overview-front-page-section-content-container {
+    overflow-y: hidden; }
 
   div.overview-sidebar-main-container {
     display: block;

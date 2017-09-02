@@ -32,7 +32,19 @@ h5 {
 h6 {
   font-size: 1.2rem;
   }
-  
+
+/* default background colors */
+body, header#masthead, .site-title, header#masthead div.site-branding p.site-description, div.overview-indexed-content-main-container, article.overview-standard-indexed-entry, article.overview-standard-indexed-entry-no-featured-img, div#comments, div.page-content, div.overview-sidebar-main-container section.widget {
+  background-color: #fff;
+  }
+/* default backgrounds layout */
+div.overview-sidebar-main-container {
+  background-color: transparent;
+  }
+div.overview-sidebar-main-container section.widget {
+  padding: 12px;
+  }
+
 /* WP navbar logo */
 @media screen and (max-width: 767px){
   nav#site-navigation a#overview-navbar-site-logo img {
@@ -76,9 +88,13 @@ header#masthead div.site-branding p.site-title,
 header#masthead div.site-branding p.site-description {
   padding-left: 30px;
   padding-right: 30px;
-}
+  @media screen and (max-width: 767px){
+    padding-left: 0;
+    padding-right: 0;
+    }
+  }
 header#masthead div.site-branding h1.site-title {
-  @media screen and(max-width: 767px){
+  @media screen and (max-width: 767px){
     padding: 12px 20px 4px 20px;
     line-height: 1.1;
   }
@@ -86,12 +102,13 @@ header#masthead div.site-branding h1.site-title {
     padding-left: 0;
   }
 }
+
 header#masthead div.site-branding p.site-description {
-  @media screen and(max-width: 767px){
+  @media screen and (max-width: 767px){
     padding: 0 12px 12px 12px;
   }
 }
-
+  
 /* entry editing */
 span.edit-link {
   display: block;
@@ -417,6 +434,11 @@ footer.overview-footer-container div.overview-footer-widgets-container section.o
     display: block;
     }
 
+  /* OverView Display */
+    div#overview-front-page-section-content-container {
+      overflow-y: hidden;
+      }
+    
   div.overview-sidebar-main-container {
     display: block;
     float: none;
@@ -443,7 +465,7 @@ footer.overview-footer-container div.overview-footer-widgets-container section.o
     }
       
   }
-
+    
 @page {
     margin: 30px 15px !important;
   }

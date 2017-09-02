@@ -46,6 +46,13 @@ OverView includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
+= 1.0.10 - September 2 2017 =
+* Fixed background image / color styles
+* Escaped several hard-coded urls
+* Improved Customizer experience
+* Added body font color option
+* Added 'About' section in the Customizer
+
 = 1.0.9 - August 31 2017 =
 * Fixed post_class for pages
 * Improved back-end TinyMCE preview CSS
