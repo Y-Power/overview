@@ -381,7 +381,8 @@
                     month = OVAPIVars.OVLocalLangCalendar[date.slice(5, 7)], // change month name according to the localized calendar
                     year = date.slice(0, 4),
                     time = date.slice(11),
-                    outputDate = '<i class="fa fa-calendar" aria-hidden="true"></i>' + day + ' ' + month + ' ' + year + '<i class="fa fa-clock-o" aria-hidden="true"></i>' + time;
+                    outputDate = '<i class="fa fa-calendar" aria-hidden="true"></i>' + day + ' ' + month + ' ' + year;
+                //outputDate = '<i class="fa fa-calendar" aria-hidden="true"></i>' + day + ' ' + month + ' ' + year + '<i class="fa fa-clock-o" aria-hidden="true"></i>' + time; -- TO FINISH!!! - setup OverView Display WP post time option
                 return outputDate;
             }
             

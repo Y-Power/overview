@@ -30,6 +30,7 @@
         overviewNavbarAdjust();
         subMenusFormatSetup();
         overviewSocialNavSettings();
+        galleriesCaptionsImgsLinks();
         /* re-adjust on window resize */
         jQ(window).resize(function(){
             overviewNavbarAdjust();
@@ -84,7 +85,7 @@
             
             // add/remove navigation classes on li hovering in order to access sub-menu items
             function subMenuHovering(thisEl){
-                var itemSubMenus = jQ(thisEl.delegateTarget).children('ul.sub-menu'),
+                var itemSubMenus = jQ(thisEl.delegateTarget).children('ul.sub-menu, ul.children'),
                     //itemParentUl = jQ(thisEl).parent('ul.sub-menu'),
                     winWidth = jQ(window).innerWidth();
 
@@ -121,7 +122,7 @@
         function subMenuMobileClick(clickEvent){
             if ( 'block' === jQ('.menu-toggle').css('display') ){
                 var thisButton = jQ(clickEvent.delegateTarget);
-                thisButton.siblings('ul.sub-menu').slideToggle(200);
+                thisButton.siblings('ul.sub-menu, ul.children').slideToggle(200);
             }
         }
         
@@ -139,22 +140,14 @@
                 maxHeight: OVSiteLogoHeight
             });
             /* body margin from navbar */
-            var OVMenu = jQ('nav#site-navigation');
-            if ( 'none' === jQ('.menu-toggle').css('display') ){
-                jQ('body').css({
-                    marginTop: OVNavbarHeight
-                });
-            }
-            else {
-                jQ('body').css({
-                    marginTop: '72px'
-                });
-            }            
+            jQ('body').css({
+                marginTop: OVNavbarHeight
+            });
         }
 
         /* setup sub-menu styles according to mobile/full layout */
         function subMenusFormatSetup(){
-            var allNavMenuSubMenus = jQ('nav#site-navigation ul.sub-menu');
+            var allNavMenuSubMenus = jQ('nav#site-navigation ul.sub-menu, nav#site-navigation ul.children');
             // if mobile layout
             if ( 'block' === jQ('.menu-toggle').css('display') ){
                 allNavMenuSubMenus.addClass('overview-mobile-navbar-sub-menu').slideUp(0);
@@ -173,6 +166,27 @@
                 jQ(this).context.title = jQ(this).context.childNodes[0].data;
                 jQ(this).context.childNodes[0].data = '';
             });
+        }
+
+        // setup galleries figcaptions click-links
+        function galleriesCaptionsImgsLinks(){
+            var allGalleries = jQ('div.overview-default-entry-content .gallery');
+            if ( null !== allGalleries ){
+                allGalleries.each(function(){
+                    setupImgLinks( jQ(this) );
+                });
+            }
+            // find and setup galleries figcaption links
+            function setupImgLinks( OVGallery ){
+                var galleryItem = OVGallery.children('figure.gallery-item');
+                galleryItem.each(function(){
+                    var imgLink = jQ(this).children('div.gallery-icon').children('a').attr('href'),
+                        captionEl = jQ(this).children('figcaption');
+                    captionEl.on('click', function(){
+                        window.location.href = imgLink;
+                    });
+                });
+            }
         }
         
     });

@@ -1,9 +1,11 @@
 /**
- * File customizer.js.
- *
  * Theme Customizer enhancements for a better user experience.
  *
  * Contains handlers to make Theme Customizer preview reload changes asynchronously.
+ *
+ * Copyright (C) 2017 _Y_Power ( http://ypower.nouveausiteweb.fr )
+ *
+ * This file is part of the OverView WordPress theme package.
  */
 
 ( function( $ ) {
@@ -49,7 +51,7 @@
             else {
                 OVDisplayContentEl.css({
                     color: '#404040',
-                    backgroundColor: '#fff'
+                    backgroundColor: '#ffffff'
                 });
             }
         } );
@@ -72,7 +74,7 @@
                 var OVDisplayContentElement = $( 'div#overview-front-page-posts-section-content' );
                 OVDisplayContentElement.css({
                     color: '#404040',
-                    backgroundColor: '#fff'
+                    backgroundColor: '#ffffff'
                 });
             }
         } );
@@ -84,5 +86,5 @@
             $( 'body' ).css( 'font-size', to );
         } );
     } );
-
+    
 } )( jQuery );

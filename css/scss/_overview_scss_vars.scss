@@ -22,7 +22,7 @@ $ov-main-font: 'Muli', sans-serif;
 /* test sets: rgba(70,118,88,1), rgba(129,118,88,1), rgba(173,118,60,1), rgba(191,58,63,1), rgba(195,118,94,1), rgba(182,118,176,1), rgba(135,118,189,1) */
 /* more sets: rgba(69,82,131,1), rgba(79,97,36,1) */
 
-$ov-main-color: rgba(79,97,36,1);
+$ov-main-color: rgba(76,118,201,1);
 
 $ov-main-color-hover: saturate($ov-main-color, 35%); 
 $ov-main-color-gradient: lighten($ov-main-color, 15%);
@@ -369,7 +369,7 @@ box-shadow: $box-shadow;
   box-sizing: border-box;
   padding: 20px;
   text-align: left;
-  @media screen and (max-width: 767px){
+  @media screen and (max-width: 980px){
     width: 100%;
     max-width: 100%;
   }
@@ -377,33 +377,43 @@ box-shadow: $box-shadow;
     text-align: center;
     color: $ov-main-alt-color;
   }
-    form,
-    form label,
-    form input,
-    select {
+  form:not(.search-form),
+  form:not(.search-form) label,
+  form:not(.search-form) input,
+  select {
+    width: 100%;
+    max-width: 100%;
+  }
+  @supports (display: flex){
+    form.search-form {
+      display: flex;
+      align-items: normal;
+      flex-flow: row;
       width: 100%;
       max-width: 100%;
+      label {
+        width: 70%;
+        input.search-field {
+          width: 100%;
+        }
+      }
+      input.search-submit {
+        width: 30%;
+      }
     }
+  }
 }
   
 /* standard footer */
 @mixin ov-footer-colors(){
   color: $ov-structure-light-color;
-  /* footer gradient background */
-  background: $ov-main-color; /* Oldbrowsers */
-  background: -moz-linear-gradient(top, $ov-main-alt-color 0%, $ov-main-color 1%, $ov-main-dark-color 3%, $ov-main-dark-color 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, $ov-main-alt-color 0%,$ov-main-color 1%,$ov-main-dark-color 3%,$ov-main-dark-color 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, $ov-main-alt-color 0%,$ov-main-color 1%,$ov-main-dark-color 3%,$ov-main-dark-color 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b5bdc8', endColorstr='#28343b',GradientType=0 ); /* IE6-9 */
-  @media screen and (max-width: 767px){
-    background: $ov-main-dark-color;
-    border-top: 2px solid $ov-main-color;
-  }
+  background: $ov-main-dark-color;
+  border-top: 2px solid $ov-main-color;
 }
 
 @mixin ov-standard-footer(){
   min-height: 120px;
-  padding-top: 90px;
+  padding-top: 30px;
   padding-bottom: 12px;
   @include ov-box-shadow(0 -1px 3px $ov-main-dark-color);
   @include ov-footer-colors();

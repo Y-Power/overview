@@ -47,9 +47,44 @@ function overview_customize_register( $wp_customize ) {
         'capability'        => 'edit_theme_options',
         'default'           => 'fixed',
         'transport'         => 'refresh',
-        'sanitize_callback' => 'esc_textarea'
+        'sanitize_callback' => function( $overview_chosen_layout ){
+            $overview_layout_options = [ 'fixed', 'full' ];
+            $overview_chosen_layout = trim( $overview_chosen_layout );
+            $overview_layout_ouput;
+            for ( $ov_i = 0; $ov_i < 2; $ov_i++ ){
+                if ( $overview_layout_options[$ov_i] === $overview_chosen_layout ){
+                    $overview_layout_ouput = $overview_layout_options[$ov_i];
+                }
+            }
+            if ( null === $overview_layout_ouput ){
+                $overview_layout_ouput = 'fixed';
+            }
+            return $overview_layout_ouput;
+        }
     ) );
 
+    // sidebar layout
+    $wp_customize->add_setting( 'overview_sidebar_layout', array(
+        'type'              => 'theme_mod',
+        'capability'        => 'edit_theme_options',
+        'default'           => 'right',
+        'transport'         => 'refresh',
+        'sanitize_callback' => function( $overview_chosen_sidebar_layout ){
+            $overview_sidebar_layout_options = [ 'right', 'left' ];
+            $overview_chosen_sidebar_layout = trim( $overview_chosen_sidebar_layout );
+            $overview_sidebar_layout_ouput;
+            for ( $ov_i = 0; $ov_i < 2; $ov_i++ ){
+                if ( $overview_sidebar_layout_options[$ov_i] === $overview_chosen_sidebar_layout ){
+                    $overview_sidebar_layout_ouput = $overview_sidebar_layout_options[$ov_i];
+                }
+            }
+            if ( null === $overview_sidebar_layout_ouput ){
+                $overview_sidebar_layout_ouput = 'right';
+            }
+            return $overview_sidebar_layout_ouput;
+        }
+    ) );    
+    
     // custom fonts
     $wp_customize->add_setting( 'overview_custom_font', array(
         'type'              => 'theme_mod',
@@ -67,7 +102,16 @@ function overview_customize_register( $wp_customize ) {
         'transport'         => 'postMessage',
         'sanitize_callback' => 'esc_attr'
     ) );
-    
+
+    // entry titles alignment
+    $wp_customize->add_setting( 'overview_titles_alignment', array(
+        'type'              => 'theme_mod',
+        'capability'        => 'edit_theme_options',
+        'default'           => 'inherit',
+        'transport'         => 'refresh',
+        'sanitize_callback' => 'esc_attr'
+    ) );
+
     // front page template description
     $wp_customize->add_setting( 'overview_front_page_title', array(
         'type'              => 'theme_mod',
@@ -93,9 +137,36 @@ function overview_customize_register( $wp_customize ) {
         'default'           => '1',
         'transport'         => 'refresh',
         'sanitize_callback' => 'esc_attr'
-    ) );    
+    ) );
 
-    // OverView about setting
+    // show WordPress credits
+    $wp_customize->add_setting( 'overview_wp_credits', array(
+        'type'              => 'theme_mod',
+        'capability'        => 'edit_theme_options',
+        'default'           => '1',
+        'transport'         => 'refresh',
+        'sanitize_callback' => 'esc_attr'
+    ) );
+
+    // show OverView credits
+    $wp_customize->add_setting( 'overview_ov_credits', array(
+        'type'              => 'theme_mod',
+        'capability'        => 'edit_theme_options',
+        'default'           => '1',
+        'transport'         => 'refresh',
+        'sanitize_callback' => 'esc_attr'
+    ) );
+    
+    // OverView site copyright
+    $wp_customize->add_setting( 'overview_site_copyright', array(
+        'type'              => 'theme_mod',
+        'capability'        => 'edit_theme_options',
+        'default'           => '1',
+        'transport'         => 'refresh',
+        'sanitize_callback' => 'esc_attr'
+    ) );    
+    
+    // OverView about
     $wp_customize->add_setting( 'overview_about', array(
         'type'              => 'theme_mod',
         'capability'        => 'edit_theme_options',
@@ -110,7 +181,7 @@ function overview_customize_register( $wp_customize ) {
     // general options
     $wp_customize->add_section( 'overview_options', array(
         'title'       => __( 'OverView options', 'overview' ),
-        'description' => '<em>' . __( 'Note: if the page you are previewing has an active OverView Display page template, the OverView Display settings will be shown at the bottom of this section', 'overview' ) . '</em>',
+        'description' => '<em>' . __( 'Note: if the page you are previewing has an active OverView Display page template, the OverView Display settings will be shown below the footer copyright option', 'overview' ) . '</em>',
         'priority'    => 80,
         'capability'  => 'edit_theme_options'
     ) );
@@ -118,7 +189,7 @@ function overview_customize_register( $wp_customize ) {
     // about ' . esc_url( 'https://wordpress.org/support/theme/handcraft-expo/reviews/#new-post' ) . '
     $wp_customize->add_section( 'overview_about_section', array(
         'title'       => __( 'About', 'overview' ),
-        'description' => __( 'Thank you for using OverView, a completely free (as in FREEDOM) WordPress theme!', 'overview' ) . '<ul><br /><strong><em>' . __( 'Some useful links', 'overview' ) . '</em></strong><li><a href="' . esc_url( 'https://codex.wordpress.org/Themes' ) . '">' . __( 'using WordPress themes', 'overview' ) . '</a></li><li><a href="' . esc_url( 'https://wordpress.org/support/theme/overview' ) .'">' . __( 'OverView support forum', 'overview' ) . '</a></li><li><a href="' . esc_url( 'https://wordpress.org/support/' ) .'">' . __( 'WordPress support', 'overview' ) . '</a></li><li><a href="' . esc_url( 'https://codex.wordpress.org/Child_Themes' ) . '">' . __( 'WordPress child themes', 'overview' ) . '</a></li><li><a href="' . esc_url( 'https://wordpress.org/support/theme/overview/reviews/#new-post' ) . '">' . __( 'rate OverView', 'overview' ) . '</a></li></ul><br />' . __( 'You can learn more about the wonderful world of Free Software and why it matters to you by visting the', 'overview' ) . ' <a href="' . esc_url( 'https://fsf.org/' ) . '">' . __( 'Free Software Foundation', 'overview' ) . '</a>.',
+        'description' => __( 'Thank you for using OverView, a completely free (as in FREEDOM) WordPress theme!', 'overview' ) . '<ul><br /><strong><em>' . __( 'Some useful links', 'overview' ) . '</em></strong><li><a href="' . esc_url( 'https://codex.wordpress.org/Themes' ) . '">' . __( 'using WordPress themes', 'overview' ) . '</a></li><li><a href="' . esc_url( 'https://wordpress.org/support/theme/overview' ) .'">' . __( 'OverView support forum', 'overview' ) . '</a></li><li><a href="' . esc_url( 'https://wordpress.org/support/' ) .'">' . __( 'WordPress support', 'overview' ) . '</a></li><li><a href="' . esc_url( 'https://codex.wordpress.org/Child_Themes' ) . '">' . __( 'WordPress child themes', 'overview' ) . '</a></li><li><a href="' . esc_url( 'https://wordpress.org/support/theme/overview/reviews/#new-post' ) . '">' . __( 'rate OverView', 'overview' ) . '</a></li></ul><br />' . __( 'You can learn more about the wonderful world of Free Software and why it matters to you by visting the', 'overview' ) . ' <a href="' . esc_url( 'http://www.fsf.org/about/what-is-free-software' ) . '">' . __( 'Free Software Foundation', 'overview' ) . '</a>.',
         'priority'    => 220,
         'capability'  => 'edit_theme_options'
     ) );
@@ -199,12 +270,33 @@ function overview_customize_register( $wp_customize ) {
         )
     ) );
 
-    // layout
+    // sidebar layout
+    $wp_customize->add_control( 'overview_sidebar_layout', array(
+        'type'            => 'radio',
+        'priority'        => 10,
+        'section'         => 'overview_options',
+        'label'           => __( 'Sidebar shown on', 'overview' ),
+        'description'     => __( 'Note: older browsers may always show the sidebar on the right', 'overview' ),
+        'input_attrs'     => array(
+            'class'          => 'overview-layouts',
+            'style'          => 'border: 1px solid gray;'
+        ),
+        'choices'         => array(
+            'right'          => __( 'Right' , 'overview' ),
+            'left'           => __( 'Left' , 'overview' )
+        ),
+        'active_callback' => function(){
+            return is_active_sidebar( 'ov-sidebar-1' );
+        }
+    ) );
+    
+    // font-size
     $wp_customize->add_control( 'overview_body_font_size', array(
         'type'        => 'select',
         'priority'    => 15,
         'section'     => 'overview_options',
         'label'       => __( 'Main font size', 'overview' ),
+        'description' => __( 'Note: OverView Display needs a page refresh after previewing changes', 'overview' ),
         'input_attrs' => array(
             'class'      => 'overview-main-font-size',
             'style'      => 'border: 1px solid gray;'
@@ -221,6 +313,58 @@ function overview_customize_register( $wp_customize ) {
             '22px' => __('22 Pixels', 'overview'),
             '23px' => __('23 Pixels', 'overview'),
             '24px' => __('24 Pixels', 'overview'),
+        )
+    ) );
+
+    // 
+    $wp_customize->add_control( 'overview_titles_alignment', array(
+        'type'            => 'radio',
+        'priority'        => 18,
+        'section'         => 'overview_options',
+        'label'           => __( 'Titles alignment', 'overview' ),
+        'input_attrs'     => array(
+            'class'          => 'overview-titles-alignment',
+            'style'          => 'border: 1px solid gray;'
+        ),
+        'choices'         => array(
+            'inherit'          => __( 'Standard' , 'overview' ),
+            'center'           => __( 'Center' , 'overview' )
+        )
+    ) );
+
+    // WordPress credits
+    $wp_customize->add_control( 'overview_wp_credits', array(
+        'type'        => 'checkbox',
+        'priority'    => 23,
+        'section'     => 'overview_options',
+        'label'       => __( 'Show your support for WordPress!', 'overview' ),
+        'input_attrs' => array(
+            'class'       => 'overview-wp-credits-checkbox',
+            'style'       => 'border: 1px solid gray;'
+        )
+    ) );
+
+    // OverView credits
+    $wp_customize->add_control( 'overview_ov_credits', array(
+        'type'        => 'checkbox',
+        'priority'    => 24,
+        'section'     => 'overview_options',
+        'label'       => __( 'Show your support for OverView!', 'overview' ),
+        'input_attrs' => array(
+            'class'       => 'overview-ov-credits-checkbox',
+            'style'       => 'border: 1px solid gray;'
+        )
+    ) );
+
+    // OverView site copyright
+    $wp_customize->add_control( 'overview_site_copyright', array(
+        'type'        => 'checkbox',
+        'priority'    => 25,
+        'section'     => 'overview_options',
+        'label'       => __( 'Show footer copyright', 'overview' ),
+        'input_attrs' => array(
+            'class'       => 'overview-site-copyright-checkbox',
+            'style'       => 'border: 1px solid gray;'
         )
     ) );
 
@@ -272,7 +416,7 @@ function overview_customize_register( $wp_customize ) {
         'active_callback' => function () {
             return is_page_template( 'overview-front-page.php' ) || is_page_template( 'overview-front-no-content-page.php' ) || is_page_template( 'overview-front-page-after-content.php' );
         }
-    ) );    
+    ) );
 
     // about OverView
     $wp_customize->add_control( 'overview_about', array(
@@ -313,6 +457,7 @@ function overview_customize_register( $wp_customize ) {
     $wp_customize->get_setting( 'blogname' )->transport          = 'postMessage';
     $wp_customize->get_setting( 'blogdescription' )->transport   = 'postMessage';
     $wp_customize->get_setting( 'background_image' )->transport  = 'postMessage';
+    $wp_customize->get_control( 'custom_logo' )->description     = __( 'Note: OverView strongly suggests logos with a 16:9 ratio', 'overview' );
     //$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
     /* hide header color input */

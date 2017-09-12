@@ -1,7 +1,7 @@
 === OverView ===
 
 Author: _Y_Power
-Tags: blog, education, one-column, two-columns, right-sidebar, flexible-header, custom-background, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready
+Tags: blog, education, one-column, two-columns, right-sidebar, left-sidebar, flexible-header, custom-background, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready
 Requires at least: 4.7
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
@@ -45,6 +45,18 @@ Some plugin might be blocking the Display: it usually depends on security plugin
 OverView includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 1.0.11 - September 12 2017 =
+* Fixed navbar mobile access with media queries
+* Fixed navbar body top margin on resize
+* Corrected default menu fallback
+* Added left sidebar layout option
+* Added credits and site copyright option
+* Set background image defaults
+* Added CSS flex support to search widget
+* Improved galleries
+* Various CSS adjustments
+* Removed default header image
 
 = 1.0.10 - September 2 2017 =
 * Fixed background image / color styles

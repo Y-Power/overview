@@ -32,7 +32,8 @@ input[type=button],
 input[type=search],
 input[type=select],
 select,
-input[type=submit]{
+input[type=submit],
+input[type=reset] {
   @include overview-standard-button();
 }
 
@@ -513,6 +514,28 @@ div.overview-footer-widgets-container section.widget_nav_menu {
   overflow-x: auto;
 }
 
+/* search */
+div.overview-sidebar-main-container section.widget_search form.search-form {
+  @supports (display: flex){
+    display: flex;
+    align-items: normal;
+    flex-flow: row;
+    @media screen and (max-width: 980px){
+      width: 100%;
+      max-width: 100%;
+      label {
+        width: 70%;
+        input.search-field {
+          width: 100%;
+        }
+      }
+      input.search-submit {
+        width: 30%;
+      }
+    }
+  }
+}
+
 /* lists */
 section.widget > ul,
 section.widget_nav_menu div ul {
@@ -902,7 +925,11 @@ footer.overview-footer-container {
 /* OverView MEDIA QUERIES */
 
 @media screen and (max-width: 767px){
-
+    /* navbar */
+    nav#site-navigation {
+        background: $ov-main-color;
+        /*overflow-y: auto;*/
+    }
     /* navbar logo */
     nav#site-navigation a#overview-navbar-site-logo {
       height: 30px;
@@ -998,10 +1025,6 @@ footer.overview-footer-container {
 
 @media screen and (max-width: 599px){
     /* navbar */
-    nav#site-navigation {
-        background: $ov-main-color;
-        /*overflow-y: auto;*/
-    }
     nav#site-navigation div {
       width: 100%;
       max-width: 100%;

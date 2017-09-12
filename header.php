@@ -39,27 +39,23 @@
                         <?php }
                         ?></a>
 
-                        <?php
-                        // OverView no selected menu notice
-                        if ( ! has_nav_menu( 'ov-menu-1' ) ) {?>
-                            <h4 class="overview-no-menu-assigned-notice"><a href="http://localhost/wordpress/wp-admin/nav-menus.php?action=locations"><?php echo esc_attr( __( 'Click here to assign the main menu', 'overview' ) ); ?></a></h4>
-                        <?php }?>
-                        
 		        <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><i class="fa fa-bars fa-2x" aria-hidden="true" title="<?php esc_attr( __('Toggle Menu', 'overview') ); ?>"></i><?php //esc_html_e( 'Primary Menu', 'overview' ); //overview removed default ?></button>
 		        <?php
-                        if ( has_nav_menu( 'ov-menu-1' ) ){
-                            wp_nav_menu( array(
-                                'theme_location' => 'ov-menu-1',
-                                'menu_id'        => 'primary-menu'
-                            )
-                            );
-                        }?>
+                        wp_nav_menu( array(
+                            'theme_location' => 'ov-menu-1',
+                            'menu_id'        => 'primary-menu',
+                            'fallback_cb'    => 'wp_page_menu'
+                        )
+                        );
+                        ?>
 		</nav><!-- #site-navigation -->
 
-                <!-- OverView header image -->
-                <div id="overview-header-image-container">
-                    <?php the_header_image_tag(); ?>
-                </div>
+                <?php if ( has_header_image() ) { ?>
+                    <!-- OverView header image -->
+                    <div id="overview-header-image-container">
+                        <?php the_header_image_tag(); ?>
+                    </div>
+                <?php } ?>
                 
                 <!-- OverView site branding -->
 	        <div class="site-branding">
