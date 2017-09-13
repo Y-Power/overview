@@ -69,7 +69,13 @@ div.overview-default-entry-content ol,
 div.overview-default-entry-content dl {
   margin: 0 0 .5em 1em;
   }
-    
+
+
+/* pre tag default contrast */
+pre {
+  color: $ov-main-dark-color;
+}
+
 
 /* default background colors */
 body, header#masthead, .site-title, header#masthead div.site-branding p.site-description, div.overview-indexed-content-main-container, article.overview-standard-indexed-entry, article.overview-standard-indexed-entry-no-featured-img, div#comments, div.page-content, div.overview-sidebar-main-container section.widget {
@@ -153,7 +159,8 @@ header#masthead p.site-branding-description-p {
     @include ov-box-shadow(none);
     }
   }
-  
+
+
 /* entry editing */
 span.edit-link {
   display: block;
@@ -169,7 +176,8 @@ span.edit-link {
       }
     }
   }
-  
+
+
 /* OverView social nav menu */
 ul#ov-social-menu {
   width: 100%;
@@ -307,6 +315,16 @@ li.page_item_has_children > ul.children.flipped-menu li:first-of-type {
 }
 
 
+/* default posts icon size and shadow */
+#primary article i.fa-calendar,
+#primary article i.fa-folder-open,
+#primary article i.fa-tags {
+  margin-right: 18px;
+  font-size: 2.2rem;
+  @include ov-text-shadow(0 0 2px);
+}
+
+
 /* OverView Display */
 
 /* meta and content */
@@ -352,6 +370,10 @@ div#overview-front-page-posts-section-content {
       div.overview-front-page-posts-section-metas-categories {
         grid-area: categories;
         }
+      }
+    /* default folder icon */
+    div.overview-front-page-posts-section-metas-categories i.fa-folder-open {
+      color: $ov-structure-dark-color;
       }
     }
   }
@@ -606,6 +628,13 @@ div.overview-sidebar-main-container h2.widget-title {
   border-bottom: 1px dotted;
 }
 
+/* sidebar search max width */
+@supports (display: flex){
+  #secondary form.search-form label {
+    max-width: 70%;
+    }
+  }
+  
 /* RSS */
 section.widget_rss {
   ul {

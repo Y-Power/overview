@@ -32,7 +32,7 @@
                     <a id="overview-navbar-site-logo" title="<?php bloginfo( 'name' ); ?>" href="<?php echo esc_url( home_url( '/' ) ); ?>">
                         <?php
                         if ( get_theme_mod( 'custom_logo' ) ) {?>
-                            <img alt="<?php echo esc_attr( __('site logo image', 'overview') ); ?>" src="<?php echo overview_custom_logo(); ?>" />
+                            <img alt="<?php echo esc_attr( __('site logo image', 'overview') ); ?>" src="<?php echo esc_url( overview_custom_logo() ); ?>" />
                         <?php }
                         else {?>
                             <p class="overview-navbar-nologo-fallback"><?php bloginfo( 'name' ); ?></p>

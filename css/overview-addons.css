@@ -102,6 +102,10 @@ div.overview-default-entry-content ol,
 div.overview-default-entry-content dl {
   margin: 0 0 .5em 1em; }
 
+/* pre tag default contrast */
+pre {
+  color: #222; }
+
 /* default background colors */
 body, header#masthead, .site-title, header#masthead div.site-branding p.site-description, div.overview-indexed-content-main-container, article.overview-standard-indexed-entry, article.overview-standard-indexed-entry-no-featured-img, div#comments, div.page-content, div.overview-sidebar-main-container section.widget {
   background-color: #fff; }
@@ -310,6 +314,18 @@ li.page_item_has_children > ul.children.flipped-menu li {
 li.page_item_has_children > ul.children.flipped-menu li:first-of-type {
   margin-top: 18px; }
 
+/* default posts icon size and shadow */
+#primary article i.fa-calendar,
+#primary article i.fa-folder-open,
+#primary article i.fa-tags {
+  margin-right: 18px;
+  font-size: 2.2rem;
+  -webkit-text-shadow: 0 0 2px;
+  -moz-text-shadow: 0 0 2px;
+  -ms-text-shadow: 0 0 2px;
+  -o-text-shadow: 0 0 2px;
+  text-shadow: 0 0 2px; }
+
 /* OverView Display */
 /* meta and content */
 div#overview-front-page-posts-section-metas,
@@ -319,35 +335,39 @@ div#overview-front-page-posts-section-content {
 
 /* meta */
 @supports (display: grid) {
-  @media screen and (max-width: 767px) {
-    div#overview-front-page-posts-section-metas {
-      display: grid;
-      grid-template-columns: 50% 50%;
-      grid-template-areas: "date author" "categories categories"; }
-      div#overview-front-page-posts-section-metas * {
-        overflow-wrap: break-word; }
-      div#overview-front-page-posts-section-metas div.overview-front-page-posts-section-metas-date {
-        grid-area: date;
-        padding: 0 6px; }
-        div#overview-front-page-posts-section-metas div.overview-front-page-posts-section-metas-date i.fa-clock-o {
-          display: inline-block; }
-        @supports (display: flex) {
-          div#overview-front-page-posts-section-metas div.overview-front-page-posts-section-metas-date {
-            display: flex;
-            justify-content: center;
-            flex-direction: column; } }
-      div#overview-front-page-posts-section-metas div.overview-front-page-posts-section-metas-author {
-        grid-area: author;
-        padding: 0 6px;
-        text-align: center;
-        border-left: 1px dashed; }
-        @supports (display: flex) {
-          div#overview-front-page-posts-section-metas div.overview-front-page-posts-section-metas-author {
-            display: flex;
-            justify-content: center;
-            flex-direction: column; } }
-      div#overview-front-page-posts-section-metas div.overview-front-page-posts-section-metas-categories {
-        grid-area: categories; } } }
+  div#overview-front-page-posts-section-metas {
+    /* default folder icon */ }
+    @media screen and (max-width: 767px) {
+      div#overview-front-page-posts-section-metas {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-areas: "date author" "categories categories"; }
+        div#overview-front-page-posts-section-metas * {
+          overflow-wrap: break-word; }
+        div#overview-front-page-posts-section-metas div.overview-front-page-posts-section-metas-date {
+          grid-area: date;
+          padding: 0 6px; }
+          div#overview-front-page-posts-section-metas div.overview-front-page-posts-section-metas-date i.fa-clock-o {
+            display: inline-block; }
+          @supports (display: flex) {
+            div#overview-front-page-posts-section-metas div.overview-front-page-posts-section-metas-date {
+              display: flex;
+              justify-content: center;
+              flex-direction: column; } }
+        div#overview-front-page-posts-section-metas div.overview-front-page-posts-section-metas-author {
+          grid-area: author;
+          padding: 0 6px;
+          text-align: center;
+          border-left: 1px dashed; }
+          @supports (display: flex) {
+            div#overview-front-page-posts-section-metas div.overview-front-page-posts-section-metas-author {
+              display: flex;
+              justify-content: center;
+              flex-direction: column; } }
+        div#overview-front-page-posts-section-metas div.overview-front-page-posts-section-metas-categories {
+          grid-area: categories; } }
+    div#overview-front-page-posts-section-metas div.overview-front-page-posts-section-metas-categories i.fa-folder-open {
+      color: #808080; } }
 div.overview-dark-display div#overview-front-page-section-content-container div.overview-front-page-section-content-container div#overview-front-page-posts-section-metas {
   box-sizing: border-box;
   border: 1 px solid;
@@ -571,6 +591,10 @@ div.overview-sidebar-main-container h2.widget-title {
   color: #555;
   border-bottom: 1px dotted; }
 
+/* sidebar search max width */
+@supports (display: flex) {
+  #secondary form.search-form label {
+    max-width: 70%; } }
 /* RSS */
 section.widget_rss ul li {
   margin: 12px auto 20px auto;

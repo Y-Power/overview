@@ -12,6 +12,57 @@
  */
 function overview_customize_register( $wp_customize ) {
 
+    /* OverView custom escaping functions */
+
+    // layout
+    function ov_escape_layout( $overview_chosen_layout ){
+        $overview_layout_options = array( 'fixed', 'full' );
+        $overview_chosen_layout = trim( $overview_chosen_layout );
+        $overview_layout_ouput;
+        for ( $ov_i = 0; $ov_i < 2; $ov_i++ ){
+            if ( $overview_layout_options[$ov_i] === $overview_chosen_layout ){
+                $overview_layout_ouput = $overview_layout_options[$ov_i];
+            }
+        }
+        if ( null === $overview_layout_ouput ){
+            $overview_layout_ouput = 'fixed';
+        }
+        return $overview_layout_ouput;
+    }
+
+    // sidebar layout
+    function ov_escape_sidebar_layout( $overview_chosen_sidebar_layout ){
+        $overview_sidebar_layout_options = array( 'right', 'left' );
+        $overview_chosen_sidebar_layout = trim( $overview_chosen_sidebar_layout );
+        $overview_sidebar_layout_ouput;
+        for ( $ov_i = 0; $ov_i < 2; $ov_i++ ){
+            if ( $overview_sidebar_layout_options[$ov_i] === $overview_chosen_sidebar_layout ){
+                $overview_sidebar_layout_ouput = $overview_sidebar_layout_options[$ov_i];
+            }
+        }
+        if ( null === $overview_sidebar_layout_ouput ){
+            $overview_sidebar_layout_ouput = 'right';
+        }
+        return $overview_sidebar_layout_ouput;
+    }
+
+    /* OverView sidebar check */
+    function ov_sidebar_check(){
+        return is_active_sidebar( 'ov-sidebar-1' );
+    }
+    
+    
+    /* OverView Display check */
+    function overview_front_page_template_check(){
+        $display_template_check = (
+            is_page_template( 'overview-front-page.php' ) ||
+            is_page_template( 'overview-front-no-content-page.php' ) ||
+            is_page_template( 'overview-front-page-after-content.php' )
+        ) ? true : false;
+        return $display_template_check;
+    }
+    
+
     /* OverView WordPress customizer SETTINGS */
 
     // site branding
@@ -40,27 +91,14 @@ function overview_customize_register( $wp_customize ) {
         'transport'         => 'refresh',
         'sanitize_callback' => 'esc_attr'
     ) );
-
+    
     // layouts
     $wp_customize->add_setting( 'overview_layout', array(
         'type'              => 'theme_mod',
         'capability'        => 'edit_theme_options',
         'default'           => 'fixed',
         'transport'         => 'refresh',
-        'sanitize_callback' => function( $overview_chosen_layout ){
-            $overview_layout_options = [ 'fixed', 'full' ];
-            $overview_chosen_layout = trim( $overview_chosen_layout );
-            $overview_layout_ouput;
-            for ( $ov_i = 0; $ov_i < 2; $ov_i++ ){
-                if ( $overview_layout_options[$ov_i] === $overview_chosen_layout ){
-                    $overview_layout_ouput = $overview_layout_options[$ov_i];
-                }
-            }
-            if ( null === $overview_layout_ouput ){
-                $overview_layout_ouput = 'fixed';
-            }
-            return $overview_layout_ouput;
-        }
+        'sanitize_callback' => 'ov_escape_layout'
     ) );
 
     // sidebar layout
@@ -69,20 +107,7 @@ function overview_customize_register( $wp_customize ) {
         'capability'        => 'edit_theme_options',
         'default'           => 'right',
         'transport'         => 'refresh',
-        'sanitize_callback' => function( $overview_chosen_sidebar_layout ){
-            $overview_sidebar_layout_options = [ 'right', 'left' ];
-            $overview_chosen_sidebar_layout = trim( $overview_chosen_sidebar_layout );
-            $overview_sidebar_layout_ouput;
-            for ( $ov_i = 0; $ov_i < 2; $ov_i++ ){
-                if ( $overview_sidebar_layout_options[$ov_i] === $overview_chosen_sidebar_layout ){
-                    $overview_sidebar_layout_ouput = $overview_sidebar_layout_options[$ov_i];
-                }
-            }
-            if ( null === $overview_sidebar_layout_ouput ){
-                $overview_sidebar_layout_ouput = 'right';
-            }
-            return $overview_sidebar_layout_ouput;
-        }
+        'sanitize_callback' => 'ov_escape_sidebar_layout'
     ) );    
     
     // custom fonts
@@ -285,9 +310,7 @@ function overview_customize_register( $wp_customize ) {
             'right'          => __( 'Right' , 'overview' ),
             'left'           => __( 'Left' , 'overview' )
         ),
-        'active_callback' => function(){
-            return is_active_sidebar( 'ov-sidebar-1' );
-        }
+        'active_callback' => 'ov_sidebar_check'
     ) );
     
     // font-size
@@ -382,9 +405,7 @@ function overview_customize_register( $wp_customize ) {
             'class'      => 'overview-front-template-title-text',
             'style'      => 'border: 1px solid gray;'
         ),
-        'active_callback' => function () {
-            return is_page_template( 'overview-front-page.php' ) || is_page_template( 'overview-front-no-content-page.php' ) || is_page_template( 'overview-front-page-after-content.php' );
-        }
+        'active_callback' => 'overview_front_page_template_check'
     ) );
 
     // front page template display background
@@ -397,9 +418,7 @@ function overview_customize_register( $wp_customize ) {
             'class'       => 'overview-front-template-bright-display-checkbox',
             'style'       => 'border: 1px solid gray;'
         ),
-        'active_callback' => function () {
-            return is_page_template( 'overview-front-page.php' ) || is_page_template( 'overview-front-no-content-page.php' ) || is_page_template( 'overview-front-page-after-content.php' );
-        }
+        'active_callback' => 'overview_front_page_template_check'
     ) );
 
     // overview_display_image_rotation
@@ -413,9 +432,7 @@ function overview_customize_register( $wp_customize ) {
             'class'       => 'overview-front-template-rotate-img-checkbox',
             'style'       => 'border: 1px solid gray;'
         ),
-        'active_callback' => function () {
-            return is_page_template( 'overview-front-page.php' ) || is_page_template( 'overview-front-no-content-page.php' ) || is_page_template( 'overview-front-page-after-content.php' );
-        }
+        'active_callback' => 'overview_front_page_template_check'
     ) );
 
     // about OverView
@@ -435,25 +452,36 @@ function overview_customize_register( $wp_customize ) {
     
     
     /* OverView WordPress customizer PARTIALS */
+
+    /* partials output functions */
+
+    // get branding
+    function ov_branding_output(){
+        $ov_branding_description = get_theme_mod( 'overview_site_branding_description', __( 'Use this space to describe your story, mission, branding and more in a longer form', 'overview' ) );
+        echo esc_textarea( $ov_branding_description );
+    }
+
+    // get OverView Display title
+    function ov_display_title_output(){
+        $ov_display_title = get_theme_mod('overview_front_page_title', '');
+        echo esc_textarea( $ov_display_title );
+    }
     
-    // site branding
+    // site branding output
     $wp_customize->selective_refresh->add_partial( 'overview_site_branding_description', array(
-        'selector' => '.site-branding-description-p',
+        'selector'            => '.site-branding-description-p',
         'container_inclusive' => false,
-        'render_callback' => function() {
-            echo get_theme_mod('overview_site_branding_description', __( 'Use this space to describe your story, mission, branding and more in a longer form', 'overview' ));
-        }
+        'render_callback'     => 'ov_branding_output'
     ) );
     
-    // front page template title
+    // OverView Display template title output
     $wp_customize->selective_refresh->add_partial( 'overview_front_page_title', array(
-        'selector' => '.overview-front-page-title',
+        'selector'            => '.overview-front-page-title',
         'container_inclusive' => false,
-        'render_callback' => function() {
-            echo get_theme_mod('overview_front_page_title', '');
-        }
+        'render_callback'     => 'ov_display_title_output'
     ) );
-    
+
+    /* default WP core settings */
     $wp_customize->get_setting( 'blogname' )->transport          = 'postMessage';
     $wp_customize->get_setting( 'blogdescription' )->transport   = 'postMessage';
     $wp_customize->get_setting( 'background_image' )->transport  = 'postMessage';

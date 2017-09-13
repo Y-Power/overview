@@ -254,7 +254,7 @@ function overview_get_custom_font_name($overview_font_name, $overview_pretty_pri
 function overview_site_copyright(){
     $overview_copyright_years = ( mysql2date( 'Y', get_user_option('user_registered', 1 ) ) === date( 'Y' ) ) ? esc_attr( date( 'Y' ) ) : esc_attr( mysql2date( 'Y', get_user_option('user_registered', 1 ) ) ) . ' - ' . esc_attr( date( 'Y' ) );
     $overview_copyright_notice = ' ' . bloginfo( 'name' ) . $overview_copyright_years;
-    echo $overview_copyright_notice;
+    echo esc_attr( $overview_copyright_notice );
 }
 
 
@@ -305,7 +305,7 @@ function overview_custom_background_styles(){
             $overview_font_head_style = overview_get_custom_font_name( esc_attr( get_theme_mod( 'overview_custom_font', '' ) ), 'pretty'); ?>
         <style id="overview-custom-font-css" type="text/css">
          body {
-             font-family: "<?php echo $overview_font_head_style; ?>", sans-serif;
+             font-family: "<?php echo esc_attr( $overview_font_head_style ); ?>", sans-serif;
          }
         </style>
     <?php
@@ -355,7 +355,7 @@ function overview_custom_background_styles(){
         if ( is_active_sidebar( 'ov-sidebar-1' ) && 'left' === $overview_sidebar_side ){ ?>
         <style type="text/css" id="overview-left-sidebar-adjustments">
          @supports (display: grid){
-             @media screen and (min-width: 767px){
+             @media screen and (min-width: 980px){
                  #content.overview-content-and-sidebar-layout {
                      grid-template-columns: 400px 1fr 1fr;
                      grid-template-areas: 'sidebar content content';

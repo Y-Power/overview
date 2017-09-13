@@ -46,6 +46,11 @@ OverView includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
+= 1.0.12 - September 13 2017 =
+* Fixed NS Theme Check errors
+* Fixed left sidebar layout breakpoints
+* Improved default contrasts
+
 = 1.0.11 - September 12 2017 =
 * Fixed navbar mobile access with media queries
 * Fixed navbar body top margin on resize
