@@ -133,7 +133,7 @@ function overview_customize_register( $wp_customize ) {
         'type'              => 'theme_mod',
         'capability'        => 'edit_theme_options',
         'default'           => 'inherit',
-        'transport'         => 'refresh',
+        'transport'         => 'postMessage',
         'sanitize_callback' => 'esc_attr'
     ) );
 
@@ -236,18 +236,17 @@ function overview_customize_register( $wp_customize ) {
 
     // main body color
     $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'overview_custom_body_color', array(
-        'label'    => __( 'Font color', 'overview' ),
+        'label'    => __( 'Text color', 'overview' ),
         'section'  => 'colors',
-        'priority' => 5
+        'priority' => 10
     ) ) );
     
     // colors themes    
     $wp_customize->add_control( 'overview_colors_theme', array(
         'type'        => 'select',
-        'priority'    => 10,
+        'priority'    => 30,
         'section'     => 'colors',
         'label'       => __( 'Colors scheme', 'overview' ),
-        'description' => __( 'Choose your website colors set', 'overview' ),
         'input_attrs' => array(
             'class'      => 'overview-colors-themes',
             'style'      => 'border: 1px solid gray;'
@@ -262,7 +261,7 @@ function overview_customize_register( $wp_customize ) {
             'orchid_cliff'        => __( 'Orchid Cliff' , 'overview' ),
             'lavander_island'     => __( 'Lavander Island' , 'overview' ),
             'mariana_trench'      => __( 'Mariana Trench' , 'overview' ),
-            'countryside_oasis'   => __( 'Countryside Oasis' , 'overview' ),
+            'countryside_oasis'   => __( 'Countryside Oasis' , 'overview' )
         )
     ) );
 
@@ -482,14 +481,14 @@ function overview_customize_register( $wp_customize ) {
     ) );
 
     /* default WP core settings */
-    $wp_customize->get_setting( 'blogname' )->transport          = 'postMessage';
-    $wp_customize->get_setting( 'blogdescription' )->transport   = 'postMessage';
-    $wp_customize->get_setting( 'background_image' )->transport  = 'postMessage';
-    $wp_customize->get_control( 'custom_logo' )->description     = __( 'Note: OverView strongly suggests logos with a 16:9 ratio', 'overview' );
-    //$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
-
-    /* hide header color input */
-    $wp_customize->remove_control('header_textcolor');
+    $wp_customize->get_setting( 'blogname' )->transport           = 'postMessage';
+    $wp_customize->get_setting( 'blogdescription' )->transport    = 'postMessage';
+    $wp_customize->get_setting( 'header_textcolor' )->transport   = 'postMessage';
+    $wp_customize->get_setting( 'background_image' )->transport   = 'postMessage';
+    /* default WP core controls */
+    $wp_customize->get_control( 'custom_logo' )->description      = __( 'Note: OverView strongly suggests logos with a 16:9 ratio', 'overview' );
+    $wp_customize->get_control( 'header_textcolor' )->description = __( 'Set to \'Default\' to add the site title to the preview when switching color schemes: save and refresh the page to switch default colors', 'overview' );
+    $wp_customize->get_control( 'background_color' )->priority    = 20;
     
 }
 add_action( 'customize_register', 'overview_customize_register' );
@@ -498,6 +497,6 @@ add_action( 'customize_register', 'overview_customize_register' );
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
 function overview_customize_preview_js() {
-    wp_enqueue_script( 'overview_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), 'jquery' );
+    wp_enqueue_script( 'overview_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'jquery', 'customize-preview' ) );
 }
 add_action( 'customize_preview_init', 'overview_customize_preview_js' );

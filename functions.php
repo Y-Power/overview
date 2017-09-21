@@ -173,6 +173,77 @@ function overview_custom_logo() {
     return esc_url($overview_custom_logo_image[0]);
 }
 
+/* check site title color for OverView color schemes default values */
+function overview_custom_site_title_color_check(){
+    /* OverView color schemes defaults */
+    $overview_colors_schemes_title_hex_defaults = array(
+        'iced_lake'           => '2369f2',
+        'amazon_rainforest'   => '467658',
+        'chessnuts_field'     => '817658',
+        'terracotta_road'     => 'ad763c',
+        'japanese_maple_hill' => 'bf3a3f',
+        'sunset_desert'       => 'c3765e',
+        'orchid_cliff'        => 'b676b0',
+        'lavander_island'     => '8776bd',
+        'mariana_trench'      => '455283',
+        'countryside_oasis'   => '4f6124'
+    );
+    $ov_default_site_color = overview_get_site_title_color();
+    $ov_site_title_color = get_theme_mod( 'header_textcolor', $ov_default_site_color );
+    // check if color is scheme default
+    $ov_site_title_color_default_check = false;
+    // for all the color schemes
+    foreach ( $overview_colors_schemes_title_hex_defaults as $ov_color_scheme => $ov_color_default ){
+        // if a default color is found
+        if ( $ov_color_default === $ov_site_title_color ){
+            $ov_site_title_color_default_check = true;
+        }
+    }
+    return $ov_site_title_color_default_check;
+}
+
+/* get site title custom color from OverView color scheme */
+function overview_get_site_title_color(){
+    $ov_chosen_color_scheme = get_theme_mod( 'overview_colors_theme', 'iced_lake' );
+    switch ( $ov_chosen_color_scheme ) {
+        case 'iced_lake':
+            return '2369f2';
+            break;
+        case 'amazon_rainforest':
+            return '467658';
+            break;
+        case 'chessnuts_field':
+            return '817658';
+            break;
+        case 'terracotta_road':
+            return 'ad763c';
+            break;
+        case 'terracotta_road':
+            return 'ad763c';
+            break;
+        case 'japanese_maple_hill';
+            return 'bf3a3f';
+            break;
+        case 'sunset_desert':
+            return 'c3765e';
+            break;
+        case 'orchid_cliff':
+            return 'b676b0';
+            break;
+        case 'lavander_island':
+            return '8776bd';
+            break;
+        case 'mariana_trench':
+            return '455283';
+            break;
+        case 'countryside_oasis':
+            return '4f6124';
+            break;
+        default:
+            return '2369f2';
+    }
+}
+
 /* OverView custom font name */
 function overview_get_custom_font_name($overview_font_name, $overview_pretty_print_check){
     $overview_font_name = trim( $overview_font_name );
@@ -250,6 +321,16 @@ function overview_get_custom_font_name($overview_font_name, $overview_pretty_pri
     }
 }
 
+/* OverView Display check */
+function overview_check_front_page_template(){
+    $display_template_check = (
+        is_page_template( 'overview-front-page.php' ) ||
+        is_page_template( 'overview-front-no-content-page.php' ) ||
+        is_page_template( 'overview-front-page-after-content.php' )
+    ) ? true : false;
+    return $display_template_check;
+}
+
 /* OverView copyright */
 function overview_site_copyright(){
     $overview_copyright_years = ( mysql2date( 'Y', get_user_option('user_registered', 1 ) ) === date( 'Y' ) ) ? esc_attr( date( 'Y' ) ) : esc_attr( mysql2date( 'Y', get_user_option('user_registered', 1 ) ) ) . ' - ' . esc_attr( date( 'Y' ) );
@@ -257,9 +338,9 @@ function overview_site_copyright(){
     echo esc_attr( $overview_copyright_notice );
 }
 
+/* OverView EXTRA HEAD STYLES */
 
-/* OverView custom background / background color */
-
+/* OverView custom font */
 function overview_custom_main_font_color(){
     $overview_custom_body_color = get_theme_mod( 'overview_custom_body_color', '#404040' );?>
     <style id="overview-custom-body-color-css">
@@ -268,6 +349,7 @@ function overview_custom_main_font_color(){
 <?php }
 add_action( 'wp_head', 'overview_custom_main_font_color' );
 
+/* OverView custom background / background color */
 function overview_custom_background_styles(){
     $overview_custom_background_img = get_background_image();
     $overview_custom_body_color = get_theme_mod( 'overview_custom_body_color', '#404040' );
@@ -276,9 +358,26 @@ function overview_custom_background_styles(){
     <style id="overview-custom-background-extra-css" type="text/css">
      body, header#masthead, .site-title, header#masthead div.site-branding p.site-description, div.overview-indexed-content-main-container, article.overview-standard-indexed-entry, article.overview-standard-indexed-entry-no-featured-img, div#comments, div.page-content, div.overview-sidebar-main-container section.widget {background-color: #<?php echo esc_attr( $overview_custom_background_color ); ?>;}
      <?php if ( '' !== $overview_custom_background_img ){ ?>
-     article.overview-standard-indexed-entry, article.overview-standard-indexed-entry-no-featured-img, div.overview-sidebar-main-container {
+     article.overview-standard-indexed-entry:not(.sticky),
+     article.overview-standard-indexed-entry-no-featured-img:not(.sticky) {
          border-top: none;
          border-bottom: none;
+         -webkit-box-shadow: 0 0 6px 0 #333;
+         -moz-box-shadow: 0 0 6px 0 #333;
+         -ms-box-shadow: 0 0 6px 0 #333;
+         -o-box-shadow: 0 0 6px 0 #333;
+         box-shadow: 0 0 6px 0 #333;
+     }
+     div.overview-sidebar-main-container {
+         border-top: none;
+         border-bottom: none;
+     }
+     .sticky {
+         -webkit-box-shadow: 0 0 6px 0 #333 inset;
+         -moz-box-shadow: 0 0 6px 0 #333 inset;
+         -ms-box-shadow: 0 0 6px 0 #333 inset;
+         -o-box-shadow: 0 0 6px 0 #333 inset;
+         box-shadow: 0 0 6px 0 #333 inset;
      }
      <?php } ?>
     </style>
@@ -296,10 +395,26 @@ function overview_custom_background_styles(){
         </style>
     <?php }
     }
-    // if there is a custom background image, include extra CSS
+    // background extra CSS
     add_action( 'wp_head','overview_custom_background_styles' );
 
-    /* custom logo head extra style */
+    /* site title color */
+    function overview_custom_site_title_color(){
+        $ov_default_site_color = overview_get_site_title_color();
+        $ov_site_title_color = get_theme_mod( 'header_textcolor', $ov_default_site_color );
+        $ov_site_title_color_default_check = overview_custom_site_title_color_check();
+        if ( false === $ov_site_title_color_default_check ){?>
+        <style id="overview-site-title-color-extra-css">
+         header#masthead div.site-branding h1.site-title a, header#masthead div.site-branding p.site-title a,
+         header#masthead div.site-branding h1.site-title a:hover, header#masthead div.site-branding p.site-title a:hover {
+             color: #<?php echo esc_attr( $ov_site_title_color ); ?>;
+         }
+        </style>
+    <?php }
+    }
+    add_action( 'wp_head', 'overview_custom_site_title_color' );
+    
+    /* custom font head extra style */
     function overview_add_custom_font_style() {
         if ( get_theme_mod( 'overview_custom_font', '' ) !== '' ){
             $overview_font_head_style = overview_get_custom_font_name( esc_attr( get_theme_mod( 'overview_custom_font', '' ) ), 'pretty'); ?>
@@ -389,16 +504,6 @@ function overview_custom_background_styles(){
     <?php }
     }
     add_action( 'wp_head', 'overview_displays_extra_adjustments' );
-    
-    /* OverView Display check */
-    function overview_check_front_page_template(){
-        $display_template_check = (
-            is_page_template( 'overview-front-page.php' ) ||
-            is_page_template( 'overview-front-no-content-page.php' ) ||
-            is_page_template( 'overview-front-page-after-content.php' )
-        ) ? true : false;
-        return $display_template_check;
-    }
 
     /* OverView TinyMCE font */
     function overview_tinymce_custom_styles( $mceInit ) {
@@ -495,6 +600,8 @@ function overview_custom_background_styles(){
                 'OVSiteLocale'        => get_locale(),
                 /* custom logo url */
                 'OVSiteLogo'          => overview_custom_logo(),
+                /* set direction */
+                'OVSiteDirection'     => is_rtl(),
                 /* local language calendar */
                 'OVLocalLangCalendar' => array(
                     '01'                    => __('January', 'overview'),

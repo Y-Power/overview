@@ -15,8 +15,14 @@
 	value.bind( function( to ) {
 	    $( '.site-title a' ).text( to );
             /* OverView navbar logo fallback */
-            console.log($( '.overview-navbar-nologo-fallback' ));
             $( 'a#overview-navbar-site-logo p' ).text( to );
+	} );
+    } );
+    wp.customize( 'header_textcolor', function( value ) {
+	value.bind( function( to ) {
+	    $( '.site-title a' ).css({
+                color:  to
+            });
 	} );
     } );
     wp.customize( 'blogdescription', function( value ) {
@@ -80,11 +86,44 @@
         } );
     } );
 
+    // background image
+    wp.customize( 'background_image', function( value ) {
+        value.bind( function( to ) {
+            var ovBackgroundImgCheck = ( '' !== to ) ? true : false;
+            switch( ovBackgroundImgCheck ){
+                //if there IS an img
+            case true:
+                $( 'article.overview-standard-indexed-entry, article.overview-standard-indexed-entry-no-featured-img' ).removeClass('ov-background-switch-default').addClass('ov-background-switch-changes');
+                $( 'div.overview-sidebar-main-container' ).removeClass('ov-background-switch-sidebar-default').addClass('ov-background-switch-sidebar-changes');
+                $( '.sticky' ).removeClass('ov-background-switch-sticky-default').addClass('ov-background-switch-sticky-changes');
+                break;
+                // if there is NO img
+            case false:
+                $( 'article.overview-standard-indexed-entry, article.overview-standard-indexed-entry-no-featured-img' ).removeClass('ov-background-switch-changes').addClass('ov-background-switch-default');
+                $( 'div.overview-sidebar-main-container' ).removeClass('ov-background-switch-sidebar-changes').addClass('ov-background-switch-sidebar-default');
+                $( '.sticky' ).removeClass('ov-background-switch-sticky-changes').addClass('ov-background-switch-sticky-default');
+                break;
+                // default: remove special (background img)
+            default:
+                $( 'article.overview-standard-indexed-entry, article.overview-standard-indexed-entry-no-featured-img' ).removeClass('ov-background-switch-changes').addClass('ov-background-switch-default');
+                $( 'div.overview-sidebar-main-container' ).removeClass('ov-background-switch-sidebar-changes').addClass('ov-background-switch-sidebar-default');
+                $( '.sticky' ).removeClass('ov-background-switch-sticky-changes').addClass('ov-background-switch-sticky-default');
+            }
+        } );
+    } );
+    
     // body font size
     wp.customize( 'overview_body_font_size', function( value ) {
         value.bind( function( to ) {
             $( 'body' ).css( 'font-size', to );
         } );
     } );
-    
+
+    // titles alignment
+    wp.customize( 'overview_titles_alignment', function( value ) {
+        value.bind( function( to ) {
+            $( '.entry-title' ).css( 'text-align', to );
+        } );
+    } );
+
 } )( jQuery );

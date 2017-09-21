@@ -14,8 +14,7 @@ if ( '' !== $overview_front_page_title_check ){?>
          else {
              echo 'overview-bright-display';
          }
-         ?>
-         ">
+         ?>" aria-live="assertive">
 
     <!-- overview splash screen -->
     <div id="overview-front-page-posts-section-splash-screen" class="overview-single-box-container-splash-screen overview-splash-active"></div>

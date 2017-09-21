@@ -378,10 +378,11 @@
             /* format post date */
             function formatPostDate(date){
                 var day = parseInt( date.slice(8, 10) ),
-                    month = OVAPIVars.OVLocalLangCalendar[date.slice(5, 7)], // change month name according to the localized calendar
-                    year = date.slice(0, 4),
+                    month = OVAPIVars.OVLocalLangCalendar[ date.slice(5, 7) ], // change month name according to the localized calendar
+                    year = parseInt( date.slice(0, 4) ),
                     time = date.slice(11),
-                    outputDate = '<i class="fa fa-calendar" aria-hidden="true"></i>' + day + ' ' + month + ' ' + year;
+                    /* RTL date option */
+                    outputDate = ( '1' === OVAPIVars.OVSiteDirection ) ? '<i class="fa fa-calendar" aria-hidden="true"></i>' + year + ' ' + month + ' ' + day : '<i class="fa fa-calendar" aria-hidden="true"></i>' + day + ' ' + month + ' ' + year;
                 //outputDate = '<i class="fa fa-calendar" aria-hidden="true"></i>' + day + ' ' + month + ' ' + year + '<i class="fa fa-clock-o" aria-hidden="true"></i>' + time; -- TO FINISH!!! - setup OverView Display WP post time option
                 return outputDate;
             }

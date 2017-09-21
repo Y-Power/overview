@@ -24,7 +24,7 @@
     
     /* document ready START */
     jQ(document).ready(function(){
-        
+
         /* OverView elements init */
         overviewNavbarSettings();
         overviewNavbarAdjust();
@@ -37,13 +37,22 @@
             subMenusFormatSetup();
         });
 
+        /* html ready */
+        jQ('html').removeClass('overview-html-not-ready');
+
+        /* reset content offsets on mobile menu button click */
+        jQ('header#masthead nav#site-navigation button').click(function(){
+            overviewNavbarAdjust();
+        });
+
         /* WordPress Widgets */
 
         /* add tag-cloud link title */
         var overviewAllTagCloudsLinks = jQ('a.tag-cloud-link');
         if ( overviewAllTagCloudsLinks && overviewAllTagCloudsLinks.length > 0 ){
             overviewAllTagCloudsLinks.each(function(){
-                jQ(this).attr('title', jQ(this).attr('aria-label'));
+                var OVTagCloudLink = jQ(this);
+                OVTagCloudLink.attr('title', OVTagCloudLink.attr('aria-label'));
             });
         }
 

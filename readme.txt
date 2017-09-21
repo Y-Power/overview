@@ -3,6 +3,8 @@
 Author: _Y_Power
 Tags: blog, education, one-column, two-columns, right-sidebar, left-sidebar, flexible-header, custom-background, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready
 Requires at least: 4.7
+Tested up to: 4.8
+Requires PHP: 5.2
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
 
@@ -45,6 +47,17 @@ Some plugin might be blocking the Display: it usually depends on security plugin
 OverView includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 1.0.13 - September 20 2017 =
+* Fixed content offset on window resize while mobile menu is active
+* Added RTL support
+* Added Header Text Color control
+* Added ARIA support to OverView Display's container
+* Added RTL and flexible header tags
+* Added non-minified Font Awesome CSS file
+* Added images licenses
+* Removed old custom header callback function
+* Improved Customizer JS for easier use
 
 = 1.0.12 - September 13 2017 =
 * Fixed NS Theme Check errors
@@ -124,3 +137,5 @@ OverView includes support for Infinite Scroll in Jetpack.
 * Based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
 * normalize.css http://necolas.github.io/normalize.css/, (C) 2012-2016 Nicolas Gallagher and Jonathan Neal, [MIT](http://opensource.org/licenses/MIT)
 * Font Awesome by Dave Gandy http://fontawesome.io [SIL Open Font License - OFL](http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL)
+* Picture: Boat Barco Texture - Public domain via http://www.burningwell.org/gallery2/main.php?g2_view=dynamicalbum.UpdatesAlbum&g2_itemId=25774
+* Picture: canola2 - Public domain via https://github.com/WPTRT/theme-unit-test

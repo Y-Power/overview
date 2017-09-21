@@ -2,10 +2,6 @@
 /**
  * OverView Custom Header
  *
- * You can add an optional custom header image to header.php like so ...
- *
-   <?php the_header_image_tag(); ?>
- *
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
  *
  * @package OverView
@@ -13,60 +9,20 @@
 
 /**
  * Set up the WordPress core custom header feature.
- *
- * @uses overview_header_style()
  */
 function overview_custom_header_setup() {
+    $ov_default_site_color = overview_get_site_title_color();
+    $ov_site_title_color_default_check = overview_custom_site_title_color_check();
+    if ( true === $ov_site_title_color_default_check ) {
+        // if it is a default value, update theme setting
+        set_theme_mod( 'header_textcolor', $ov_default_site_color );
+    }
     add_theme_support( 'custom-header', apply_filters( 'overview_custom_header_args', array(
 	'default-image'          => '',
-	'default-text-color'     => '000000',
-	'width'                  => 2000,
-	'height'                 => 500,
-	'flex-height'            => true,
-	'wp-head-callback'       => 'overview_header_style',
+	'default-text-color'     => overview_get_site_title_color(),
+	'width'                  => 1980,
+	'height'                 => 480,
+	'flex-height'            => true
     ) ) );
 }
 add_action( 'after_setup_theme', 'overview_custom_header_setup' );
-
-if ( ! function_exists( 'overview_header_style' ) ) :
-/**
- * Styles the header image and text displayed on the blog.
- *
- * @see overview_custom_header_setup().
- */
-function overview_header_style() {
-    $header_text_color = get_header_textcolor();
-
-    /*
-     * If no custom options for text are set, let's bail.
-     * get_header_textcolor() options: Any hex value, 'blank' to hide text. Default: add_theme_support( 'custom-header' ).
-     */
-    if ( get_theme_support( 'custom-header', 'default-text-color' ) === $header_text_color ) {
-	return;
-    }
-
-    // If we get this far, we have custom styles. Let's do this.
-?>
-    <style type="text/css">
-     <?php
-     // Has the text been hidden?
-     if ( ! display_header_text() ) :
-     ?>
-     .site-title,
-     .site-description {
-	 position: absolute;
-	 clip: rect(1px, 1px, 1px, 1px);
-     }
-     <?php
-     // If the user has set a custom color for the text use that.
-     else :
-     ?>
-     .site-title a,
-     .site-description {
-	 color: #<?php echo esc_attr( $header_text_color ); ?>;
-     }
-     <?php endif; ?>
-    </style>
-<?php
-}
-endif;
