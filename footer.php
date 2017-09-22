@@ -27,7 +27,8 @@
                     'menu_id'        => 'ov-social-menu',
                     'before'         => '<div class="overview-social-nav-link">',
                     'link_after'     => '<div class="overview-default-social-icon"><i class="fa fa-share-alt fa-3x"></i></div>',
-                    'after'          => '</div>'
+                    'after'          => '</div>',
+                    'depth'          => 1
                 )
                 );
             }

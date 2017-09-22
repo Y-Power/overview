@@ -614,6 +614,11 @@ div.overview-default-entry-content .gallery figcaption.gallery-caption:hover {
   div#overview-front-page-posts-section-content .gallery-columns-8 .gallery-item,
   div#overview-front-page-posts-section-content .gallery-columns-9 .gallery-item {
     max-width: 50%; } }
+/* comments */
+div#comments {
+  margin-bottom: 4px;
+  border: 1px solid rgba(220, 220, 220, 0.8); }
+
 /* Widgets */
 /* titles */
 div.overview-sidebar-main-container h2.widget-title {

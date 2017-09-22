@@ -33,6 +33,9 @@ All free (GNU GPL), because the best things in life are.
 
 == Frequently Asked Questions ==
 
+= How do I set the social icons? =
+Create a [WordPress menu](https://codex.wordpress.org/Appearance_Menus_Screen) and add a [custom link](https://codex.wordpress.org/Appearance_Menus_Screen#Custom_Links) for each of your social accounts URL's. Cool fact: you can re-use the menu you created on any WordPress theme that uses social navigation menus.
+
 = How can I activate the OverView Display? =
 The Display is available as a WordPress page template, available in the page editor -> Page Attributes.
 
@@ -47,6 +50,10 @@ Some plugin might be blocking the Display: it usually depends on security plugin
 OverView includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 1.0.14 - September 22 2017 =
+* Fixed social menu depth
+* Added social menu howto info in readme.txt
 
 = 1.0.13 - September 20 2017 =
 * Fixed content offset on window resize while mobile menu is active
