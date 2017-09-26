@@ -285,7 +285,40 @@ box-shadow: $box-shadow;
   }
 }
 
-/* comments */
+/* comments list */
+@mixin overview-comments-list(){
+  li {
+    margin-bottom: 12px;
+    border-bottom: 1px solid $ov-structure-light-color;
+    article.comment-body {
+      footer.comment-meta {
+        div.comment-author {
+          img.avatar {
+            margin: auto 6px;
+            border: 1px solid $ov-structure-dark-color;
+            @include ov-box-shadow(0 0 6px 0);
+          }
+        }
+      }
+      div.reply {
+        margin-bottom: 24px;
+        a.comment-reply-link {
+          padding: 6px;
+          border: 1px solid $ov-structure-light-color;
+          @include ov-border-radius(3px);
+          &:hover {
+            background-color: $ov-main-bright-color;
+          }
+        }
+      }
+    }
+  }
+  li:last-of-type {
+  border-bottom: none;
+  }
+}
+  
+/* comments reply */
 @mixin overview-comments-container(){
   padding: 0 20px 20px 20px;
   div#respond form p label {

@@ -41,7 +41,8 @@ _______________________________________ */
 /* post meta */
 /* post categories and tags */
 /* comments links */
-/* comments */
+/* comments list */
+/* comments reply */
 /* WordPress content's elements styles */
 /* sidebar WordPress widgets */
 /* footer WordPress widgets */
@@ -618,6 +619,36 @@ div.overview-default-entry-content .gallery figcaption.gallery-caption:hover {
 div#comments {
   margin-bottom: 4px;
   border: 1px solid rgba(220, 220, 220, 0.8); }
+  div#comments ol.comment-list li {
+    margin-bottom: 12px;
+    border-bottom: 1px solid rgba(220, 220, 220, 0.8); }
+    div#comments ol.comment-list li article.comment-body footer.comment-meta div.comment-author img.avatar {
+      margin: auto 6px;
+      border: 1px solid #808080;
+      -webkit-box-shadow: 0 0 6px 0;
+      -moz-box-shadow: 0 0 6px 0;
+      -ms-box-shadow: 0 0 6px 0;
+      -o-box-shadow: 0 0 6px 0;
+      box-shadow: 0 0 6px 0; }
+    div#comments ol.comment-list li article.comment-body div.reply {
+      margin-bottom: 24px; }
+      div#comments ol.comment-list li article.comment-body div.reply a.comment-reply-link {
+        padding: 6px;
+        border: 1px solid rgba(220, 220, 220, 0.8);
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        -ms-border-radius: 3px;
+        -o-border-radius: 3px;
+        border-radius: 3px; }
+        div#comments ol.comment-list li article.comment-body div.reply a.comment-reply-link:hover {
+          background-color: #f8f8f8; }
+  div#comments ol.comment-list li:last-of-type {
+    border-bottom: none; }
+  @media screen and (max-width: 767px) {
+    div#comments ul,
+    div#comments ol,
+    div#comments dl {
+      padding-left: 0; } }
 
 /* Widgets */
 /* titles */

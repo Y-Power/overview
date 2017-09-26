@@ -133,7 +133,26 @@
 
 	    /* init check */
 	    var isInit = true;
-	    
+
+            /* cached items array */
+            var cachedEntries = [];
+            /* cached entries args */
+            var overviewCachedPostsDisplayQueryArgs = {
+		data: {
+		    per_page: 20,
+		    page: 1
+		}
+	    };
+            /* define cached entries model */
+            var cachedPostsCollection = new wp.api.collections.Posts();
+            /* fetch entries */
+            cachedPostsCollection.fetch(overviewCachedPostsDisplayQueryArgs).done(function(data){
+                /* push data into cached */
+                data.forEach(function(cachedEntry){
+                    cachedEntries.push(cachedEntry);
+                });
+            });
+
 	    /* create posts display views */
 	    var PostsManagerView = Backbone.View.extend({
 
@@ -160,10 +179,30 @@
 		    if ( this.model.attributes[0] ){
                         
 			/* define this post model var */
-			OVPostData = this.model.attributes[0];
+			OVPostData = getNewOrCachedEntry(this.model.attributes[0], cachedEntries);
+                        /* check if entry has been cached */
+                        function getNewOrCachedEntry(theEntry, allCachedEntries){
+                            var computedEntry = null;
+                            /* check if entry is cached and, if that is the case, set that obj as entry model */
+                            allCachedEntries.forEach(function(entryIndex){
+                                if ( entryIndex.id === theEntry.id ){
+                                    computedEntry = entryIndex;
+                                }
+                            });
+                            /* if entry is NOT chached, set it as model and push it in cached  */
+                            if (null === computedEntry){
+                                /* assign new model */
+                                computedEntry = theEntry;
+                                /* push new model into cached entries array */
+                                allCachedEntries.push(computedEntry);
+                            }
+                            /* return entry obj */
+                            return computedEntry;
+                        }
+
                         /* define post feature image model var */
 			getPostImage(OVPostData);
-
+                        
                         /* query post author */
                         overviewPostsDisplayAuthorsQueryArgs['data'] = {
                             search: OVPostData.author

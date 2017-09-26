@@ -658,6 +658,16 @@ div.overview-default-entry-content .gallery figcaption.gallery-caption:hover {
 div#comments {
   margin-bottom: 4px;
   border: 1px solid $ov-structure-light-color;
+  ol.comment-list {
+    @include overview-comments-list();
+    }
+  ul,
+  ol,
+  dl {
+    @media screen and (max-width: 767px){
+      padding-left: 0;
+      }
+    }
   }
 
 

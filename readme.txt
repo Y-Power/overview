@@ -1,7 +1,7 @@
 === OverView ===
 
 Author: _Y_Power
-Tags: blog, education, one-column, two-columns, right-sidebar, left-sidebar, flexible-header, custom-background, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready
+Tags: blog, education, one-column, two-columns, right-sidebar, left-sidebar, flexible-header, custom-background, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, full-width-template, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
 Requires at least: 4.7
 Tested up to: 4.8
 Requires PHP: 5.2
@@ -50,6 +50,16 @@ Some plugin might be blocking the Display: it usually depends on security plugin
 OverView includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 1.0.15 - September 26 2017 =
+* Fixed support for several Google fonts
+* Fixed support for CodePen social icon
+* Removed Google font style injection from functions.php file and moved it in header.php as WordPress documentation suggests
+* Removed document head custom functions from functions.php and moved them to new ov-head-extra.php file
+* Moved several functions from functions.php to extras.php
+* Corrected tags list in readme.txt
+* Added OverView Display basic caching system
+* Improved comments entries CSS
 
 = 1.0.14 - September 22 2017 =
 * Fixed social menu depth

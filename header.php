@@ -15,6 +15,13 @@
         <meta charset="<?php bloginfo( 'charset' ); ?>">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="profile" href="http://gmpg.org/xfn/11">
+        <?php
+        /* OverView Google font */
+        $overview_custom_font_check = get_theme_mod( 'overview_custom_font', '' );
+        $overview_custom_font_name = ( $overview_custom_font_check === '' ) ? 'Muli' : overview_get_custom_font_name( $overview_custom_font_check, 'not_pretty' );
+        ?>
+        <!-- Google Font -->
+        <link href="<?php echo esc_url( 'https://fonts.googleapis.com/css?family=' . esc_attr( $overview_custom_font_name ) . ':400,500,600,700&effect=emboss|3d-float' ); ?>" rel="stylesheet"> 
 
         <?php wp_head(); ?>
     </head>
