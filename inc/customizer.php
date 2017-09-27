@@ -50,6 +50,11 @@ function overview_customize_register( $wp_customize ) {
     function ov_sidebar_check(){
         return is_active_sidebar( 'ov-sidebar-1' );
     }
+
+    /* OverView fotter widgets check */
+    function overview_footer_widgets_check(){
+        return is_active_sidebar( 'ov-footer-1' );
+    }
     
     
     /* OverView Display check */
@@ -160,6 +165,15 @@ function overview_customize_register( $wp_customize ) {
         'type'              => 'theme_mod',
         'capability'        => 'edit_theme_options',
         'default'           => '1',
+        'transport'         => 'refresh',
+        'sanitize_callback' => 'esc_attr'
+    ) );
+
+    // OverView footer widgets alignment
+    $wp_customize->add_setting( 'overview_footer_widgets_alignment', array(
+        'type'              => 'theme_mod',
+        'capability'        => 'edit_theme_options',
+        'default'           => 'auto',
         'transport'         => 'refresh',
         'sanitize_callback' => 'esc_attr'
     ) );
@@ -354,6 +368,28 @@ function overview_customize_register( $wp_customize ) {
         )
     ) );
 
+    // footer widgets alignment
+    $wp_customize->add_control( 'overview_footer_widgets_alignment', array(
+        'type'        => 'select',
+        'priority'    => 22,
+        'section'     => 'overview_options',
+        'label'       => __( 'Footer widgets alignment', 'overview' ),
+        'description' => __( 'Note: might not display correctly on older browsers', 'overview' ),
+        'input_attrs' => array(
+            'class'      => 'overview-footer-widgets-alignment',
+            'style'      => 'border: 1px solid gray;'
+        ),
+        'choices' => array(
+            'auto'       => __('Automatic', 'overview'),
+            'baseline'   => __('Base line', 'overview'),
+            'center'     => __('Center', 'overview'),
+            'stretch'    => __('Stretch', 'overview'),
+            'flex_start' => __('Widgets start', 'overview'),
+            'flex_end'   => __('Widgets end', 'overview')
+        ),
+        'active_callback' => 'overview_footer_widgets_check'
+    ) );
+
     // WordPress credits
     $wp_customize->add_control( 'overview_wp_credits', array(
         'type'        => 'checkbox',
@@ -481,14 +517,15 @@ function overview_customize_register( $wp_customize ) {
     ) );
 
     /* default WP core settings */
-    $wp_customize->get_setting( 'blogname' )->transport           = 'postMessage';
-    $wp_customize->get_setting( 'blogdescription' )->transport    = 'postMessage';
-    $wp_customize->get_setting( 'header_textcolor' )->transport   = 'postMessage';
-    $wp_customize->get_setting( 'background_image' )->transport   = 'postMessage';
+    $wp_customize->get_setting( 'blogname' )->transport             = 'postMessage';
+    $wp_customize->get_setting( 'blogdescription' )->transport      = 'postMessage';
+    $wp_customize->get_setting( 'header_textcolor' )->transport     = 'postMessage';
+    $wp_customize->get_setting( 'background_image' )->transport     = 'postMessage';
     /* default WP core controls */
-    $wp_customize->get_control( 'custom_logo' )->description      = __( 'Note: OverView strongly suggests logos with a 16:9 ratio', 'overview' );
-    $wp_customize->get_control( 'header_textcolor' )->description = __( 'Set to \'Default\' to add the site title to the preview when switching color schemes: save and refresh the page to switch default colors', 'overview' );
-    $wp_customize->get_control( 'background_color' )->priority    = 20;
+    $wp_customize->get_control( 'custom_logo' )->description        = __( 'Note: OverView strongly suggests logos with a 16:9 ratio', 'overview' );
+    $wp_customize->get_control( 'header_textcolor' )->description   = __( 'Set to \'Default\' to add the site title to the preview when switching color schemes: save and refresh the page to switch default colors', 'overview' );
+    $wp_customize->get_control( 'background_color' )->priority      = 20;
+    $wp_customize->get_control( 'background_image' )->description   = __( 'Note: OverView will apply a fading effect on all pages when a background image is set', 'overview' );
     
 }
 add_action( 'customize_register', 'overview_customize_register' );

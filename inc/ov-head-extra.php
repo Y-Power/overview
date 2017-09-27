@@ -27,7 +27,7 @@ function overview_custom_background_styles(){
     <style id="overview-custom-background-extra-css" type="text/css">
      body, header#masthead, .site-title, header#masthead div.site-branding p.site-description, div.overview-indexed-content-main-container, article.overview-standard-indexed-entry, article.overview-standard-indexed-entry-no-featured-img, div#comments, div.page-content, div.overview-sidebar-main-container section.widget {background-color: #<?php echo esc_attr( $overview_custom_background_color ); ?>;}
      <?php
-     /* if there is a background image, add OverView content, sidebar and sticky posts adjustments */
+     /* if there is a background image, add html, OverView content, sidebar and sticky posts adjustments */
      if ( '' !== $overview_custom_background_img ){ ?>
      article.overview-standard-indexed-entry:not(.sticky),
      article.overview-standard-indexed-entry-no-featured-img:not(.sticky) {
@@ -42,6 +42,13 @@ function overview_custom_background_styles(){
      div.overview-sidebar-main-container {
          border-top: none;
          border-bottom: none;
+     }
+     html {
+         -webkit-transition: opacity 1s ease-in;
+         -moz-transition: opacity 1s ease-in;
+         -ms-transition: opacity 1s ease-in;
+         -o-transition: opacity 1s ease-in;
+         transition: opacity 1s ease-in;
      }
      .sticky {
          -webkit-box-shadow: 0 0 6px 0 #333 inset;
@@ -176,3 +183,32 @@ function overview_custom_background_styles(){
     <?php }
     }
     add_action( 'wp_head', 'overview_displays_extra_adjustments' );
+
+    // OverView footer widgets alignment
+    function overview_footer_widgets_alignment(){
+        if ( is_active_sidebar( 'ov-footer-1' ) ){
+            $ov_footer_alignment = get_theme_mod( 'overview_footer_widgets_alignment', 'auto' );
+            if ( 'auto' !== $ov_footer_alignment ){?>
+        <style type="text/css" id="overview-footer-widgets-alignment">
+         @supports (display: flex) {
+             footer.overview-footer-container div.overview-footer-widgets-container section.overview-footer-widget {
+                 align-self:
+                     <?php
+                     if ( 'flex_start' !== $ov_footer_alignment && 'flex_end' !== $ov_footer_alignment ){
+                         // standard alignment
+                         echo esc_attr( $ov_footer_alignment );
+                     }
+                     else {
+                         // extremities alignment
+                         $ov_flex_footer_extremities = ( 'flex_start' === $ov_footer_alignment ) ? 'flex-start' : 'flex-end';
+                         echo esc_attr( $ov_flex_footer_extremities );
+                     }
+                     ?>;
+             }
+         }
+        </style>
+    <?php }
+    }
+    
+    }
+    add_action( 'wp_head', 'overview_footer_widgets_alignment' );

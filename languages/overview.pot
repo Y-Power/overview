@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OverView\n"
 "Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
-"POT-Creation-Date: 2017-09-21 03:28+0100\n"
+"POT-Creation-Date: 2017-09-27 17:26+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: _Y_Power <youremail@example.com>\n"
 "Language-Team: Your Team <translations@example.com>\n"
@@ -67,16 +67,16 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
-#: footer.php:60
+#: footer.php:61
 msgid "https://wordpress.org/"
 msgstr ""
 
-#: footer.php:60
+#: footer.php:61
 #, php-format
 msgid "Empowered by %s"
 msgstr ""
 
-#: footer.php:66
+#: footer.php:67
 #, php-format
 msgid "Theme: %1$s by %2$s"
 msgstr ""
@@ -93,8 +93,8 @@ msgstr ""
 msgid "Social Menu"
 msgstr ""
 
-#: functions.php:115 header.php:78 header.php:82 inc/customizer.php:72
-#: inc/customizer.php:459
+#: functions.php:115 header.php:85 header.php:89 inc/customizer.php:77
+#: inc/customizer.php:495
 msgid ""
 "Use this space to describe your story, mission, branding and more in a "
 "longer form"
@@ -117,344 +117,380 @@ msgid "Footer"
 msgstr ""
 
 #: functions.php:159
-msgid "Add footer widgets here."
+msgid ""
+"Add footer widgets here. Once added, you can set the footer widgets "
+"alignment in the section "
 msgstr ""
 
-#: functions.php:607
-msgid "January"
-msgstr ""
-
-#: functions.php:608
-msgid "February"
-msgstr ""
-
-#: functions.php:609
-msgid "March"
-msgstr ""
-
-#: functions.php:610
-msgid "April"
-msgstr ""
-
-#: functions.php:611
-msgid "May"
-msgstr ""
-
-#: functions.php:612
-msgid "June"
-msgstr ""
-
-#: functions.php:613
-msgid "July"
-msgstr ""
-
-#: functions.php:614
-msgid "August"
-msgstr ""
-
-#: functions.php:615
-msgid "September"
-msgstr ""
-
-#: functions.php:616
-msgid "October"
-msgstr ""
-
-#: functions.php:617
-msgid "November"
-msgstr ""
-
-#: functions.php:618
-msgid "December"
-msgstr ""
-
-#: header.php:24
-msgid "Skip to content"
-msgstr ""
-
-#: header.php:35
-msgid "site logo image"
-msgstr ""
-
-#: header.php:42
-msgid "Toggle Menu"
-msgstr ""
-
-#: inc/customizer.php:208
+#: functions.php:159 inc/customizer.php:222
 msgid "OverView options"
 msgstr ""
 
-#: inc/customizer.php:209
+#: functions.php:282
+msgid "January"
+msgstr ""
+
+#: functions.php:283
+msgid "February"
+msgstr ""
+
+#: functions.php:284
+msgid "March"
+msgstr ""
+
+#: functions.php:285
+msgid "April"
+msgstr ""
+
+#: functions.php:286
+msgid "May"
+msgstr ""
+
+#: functions.php:287
+msgid "June"
+msgstr ""
+
+#: functions.php:288
+msgid "July"
+msgstr ""
+
+#: functions.php:289
+msgid "August"
+msgstr ""
+
+#: functions.php:290
+msgid "September"
+msgstr ""
+
+#: functions.php:291
+msgid "October"
+msgstr ""
+
+#: functions.php:292
+msgid "November"
+msgstr ""
+
+#: functions.php:293
+msgid "December"
+msgstr ""
+
+#: header.php:31
+msgid "Skip to content"
+msgstr ""
+
+#: header.php:42
+msgid "site logo image"
+msgstr ""
+
+#: header.php:49
+msgid "Toggle Menu"
+msgstr ""
+
+#: inc/customizer.php:223
 msgid ""
 "Note: if the page you are previewing has an active OverView Display page "
 "template, the OverView Display settings will be shown below the footer "
 "copyright option"
 msgstr ""
 
-#: inc/customizer.php:216
+#: inc/customizer.php:230
 msgid "About"
 msgstr ""
 
-#: inc/customizer.php:217
+#: inc/customizer.php:231
 msgid ""
 "Thank you for using OverView, a completely free (as in FREEDOM) WordPress "
 "theme!"
 msgstr ""
 
-#: inc/customizer.php:217
+#: inc/customizer.php:231
 msgid "Some useful links"
 msgstr ""
 
-#: inc/customizer.php:217
+#: inc/customizer.php:231
 msgid "using WordPress themes"
 msgstr ""
 
-#: inc/customizer.php:217
+#: inc/customizer.php:231
 msgid "OverView support forum"
 msgstr ""
 
-#: inc/customizer.php:217
+#: inc/customizer.php:231
 msgid "WordPress support"
 msgstr ""
 
-#: inc/customizer.php:217
+#: inc/customizer.php:231
 msgid "WordPress child themes"
 msgstr ""
 
-#: inc/customizer.php:217
+#: inc/customizer.php:231
 msgid "rate OverView"
 msgstr ""
 
-#: inc/customizer.php:217
+#: inc/customizer.php:231
 msgid ""
 "You can learn more about the wonderful world of Free Software and why it "
 "matters to you by visting the"
 msgstr ""
 
-#: inc/customizer.php:217
+#: inc/customizer.php:231
 msgid "Free Software Foundation"
 msgstr ""
 
-#: inc/customizer.php:229
+#: inc/customizer.php:243
 msgid "Site branding description"
 msgstr ""
 
-#: inc/customizer.php:230
+#: inc/customizer.php:244
 msgid "Describe your brand and/or mission"
 msgstr ""
 
-#: inc/customizer.php:239
+#: inc/customizer.php:253
 msgid "Text color"
 msgstr ""
 
-#: inc/customizer.php:249
+#: inc/customizer.php:263
 msgid "Colors scheme"
 msgstr ""
 
-#: inc/customizer.php:255
+#: inc/customizer.php:269
 msgid "Iced Lake"
 msgstr ""
 
-#: inc/customizer.php:256
+#: inc/customizer.php:270
 msgid "Amazon Rainforest"
 msgstr ""
 
-#: inc/customizer.php:257
+#: inc/customizer.php:271
 msgid "Chessnuts Field"
 msgstr ""
 
-#: inc/customizer.php:258
+#: inc/customizer.php:272
 msgid "Terracotta Road"
 msgstr ""
 
-#: inc/customizer.php:259
+#: inc/customizer.php:273
 msgid "Japanese Maple Hill"
 msgstr ""
 
-#: inc/customizer.php:260
+#: inc/customizer.php:274
 msgid "Sunset Desert"
 msgstr ""
 
-#: inc/customizer.php:261
+#: inc/customizer.php:275
 msgid "Orchid Cliff"
 msgstr ""
 
-#: inc/customizer.php:262
+#: inc/customizer.php:276
 msgid "Lavander Island"
 msgstr ""
 
-#: inc/customizer.php:263
+#: inc/customizer.php:277
 msgid "Mariana Trench"
 msgstr ""
 
-#: inc/customizer.php:264
+#: inc/customizer.php:278
 msgid "Countryside Oasis"
 msgstr ""
 
-#: inc/customizer.php:273
+#: inc/customizer.php:287
 msgid "Google&reg; font"
 msgstr ""
 
-#: inc/customizer.php:274
+#: inc/customizer.php:288
 msgid "See all available Google fonts"
 msgstr ""
 
-#: inc/customizer.php:274
+#: inc/customizer.php:288
 msgid "Google is a registred trademark and belongs to its owners."
 msgstr ""
 
-#: inc/customizer.php:274
+#: inc/customizer.php:288
 msgid "OverView's default font is "
 msgstr ""
 
-#: inc/customizer.php:274
+#: inc/customizer.php:288
 msgid "Enter the name of the Google font you have picked here:"
 msgstr ""
 
-#: inc/customizer.php:286
+#: inc/customizer.php:300
 msgid "Choose layout"
 msgstr ""
 
-#: inc/customizer.php:292
+#: inc/customizer.php:306
 msgid "Fixed"
 msgstr ""
 
-#: inc/customizer.php:293
+#: inc/customizer.php:307
 msgid "Full-width"
 msgstr ""
 
-#: inc/customizer.php:302
+#: inc/customizer.php:316
 msgid "Sidebar shown on"
 msgstr ""
 
-#: inc/customizer.php:303
+#: inc/customizer.php:317
 msgid "Note: older browsers may always show the sidebar on the right"
 msgstr ""
 
-#: inc/customizer.php:309
+#: inc/customizer.php:323
 msgid "Right"
 msgstr ""
 
-#: inc/customizer.php:310
+#: inc/customizer.php:324
 msgid "Left"
 msgstr ""
 
-#: inc/customizer.php:320
+#: inc/customizer.php:334
 msgid "Main font size"
 msgstr ""
 
-#: inc/customizer.php:321
+#: inc/customizer.php:335
 msgid "Note: OverView Display needs a page refresh after previewing changes"
 msgstr ""
 
-#: inc/customizer.php:327
+#: inc/customizer.php:341
 msgid "14 Pixels"
 msgstr ""
 
-#: inc/customizer.php:328
+#: inc/customizer.php:342
 msgid "15 Pixels"
 msgstr ""
 
-#: inc/customizer.php:329
+#: inc/customizer.php:343
 msgid "16 Pixels"
 msgstr ""
 
-#: inc/customizer.php:330
+#: inc/customizer.php:344
 msgid "17 Pixels"
 msgstr ""
 
-#: inc/customizer.php:331
+#: inc/customizer.php:345
 msgid "18 Pixels"
 msgstr ""
 
-#: inc/customizer.php:332
+#: inc/customizer.php:346
 msgid "19 Pixels"
 msgstr ""
 
-#: inc/customizer.php:333
+#: inc/customizer.php:347
 msgid "20 Pixels"
 msgstr ""
 
-#: inc/customizer.php:334
+#: inc/customizer.php:348
 msgid "21 Pixels"
 msgstr ""
 
-#: inc/customizer.php:335
+#: inc/customizer.php:349
 msgid "22 Pixels"
 msgstr ""
 
-#: inc/customizer.php:336
+#: inc/customizer.php:350
 msgid "23 Pixels"
 msgstr ""
 
-#: inc/customizer.php:337
+#: inc/customizer.php:351
 msgid "24 Pixels"
 msgstr ""
 
-#: inc/customizer.php:346
+#: inc/customizer.php:360
 msgid "Titles alignment"
 msgstr ""
 
-#: inc/customizer.php:352
+#: inc/customizer.php:366
 msgid "Standard"
 msgstr ""
 
-#: inc/customizer.php:353
+#: inc/customizer.php:367 inc/customizer.php:385
 msgid "Center"
 msgstr ""
 
-#: inc/customizer.php:362
-msgid "Show your support for WordPress!"
+#: inc/customizer.php:376
+msgid "Footer widgets alignment"
 msgstr ""
 
-#: inc/customizer.php:374
-msgid "Show your support for OverView!"
+#: inc/customizer.php:377
+msgid "Note: might not display correctly on older browsers"
+msgstr ""
+
+#: inc/customizer.php:383
+msgid "Automatic"
+msgstr ""
+
+#: inc/customizer.php:384
+msgid "Base line"
 msgstr ""
 
 #: inc/customizer.php:386
+msgid "Stretch"
+msgstr ""
+
+#: inc/customizer.php:387
+msgid "Widgets start"
+msgstr ""
+
+#: inc/customizer.php:388
+msgid "Widgets end"
+msgstr ""
+
+#: inc/customizer.php:398
+msgid "Show your support for WordPress!"
+msgstr ""
+
+#: inc/customizer.php:410
+msgid "Show your support for OverView!"
+msgstr ""
+
+#: inc/customizer.php:422
 msgid "Show footer copyright"
 msgstr ""
 
-#: inc/customizer.php:401
+#: inc/customizer.php:437
 msgid "Detected an active \"OverView Display\" template for this page"
 msgstr ""
 
-#: inc/customizer.php:402
+#: inc/customizer.php:438
 msgid "Set the OverView Display's options"
 msgstr ""
 
-#: inc/customizer.php:402
+#: inc/customizer.php:438
 msgid ""
 "This section is only visible on pages with an active \"OverView Display\" "
 "template: you can change templates in the specific page's editor."
 msgstr ""
 
-#: inc/customizer.php:402
+#: inc/customizer.php:438
 msgid "Display's title or description:"
 msgstr ""
 
-#: inc/customizer.php:415
+#: inc/customizer.php:451
 msgid "Standard background"
 msgstr ""
 
-#: inc/customizer.php:428
+#: inc/customizer.php:464
 msgid "Rotate featured images"
 msgstr ""
 
-#: inc/customizer.php:429
+#: inc/customizer.php:465
 msgid ""
 "Note: NO rotation will be applied on smaller devices and effect changes "
 "angle at different screen sizes"
 msgstr ""
 
-#: inc/customizer.php:489
+#: inc/customizer.php:525
 msgid "Note: OverView strongly suggests logos with a 16:9 ratio"
 msgstr ""
 
-#: inc/customizer.php:490
+#: inc/customizer.php:526
 msgid ""
 "Set to 'Default' to add the site title to the preview when switching color "
 "schemes: save and refresh the page to switch default colors"
+msgstr ""
+
+#: inc/customizer.php:528
+msgid ""
+"Note: OverView will apply a fading effect on all pages when a background "
+"image is set"
 msgstr ""
 
 #: inc/template-tags.php:28

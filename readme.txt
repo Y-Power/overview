@@ -51,6 +51,11 @@ OverView includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
+= 1.0.16 - September 27 2017 =
+* Fixed featured images for pages on mobile devices
+* Added footer widgets flex alignment control
+* Set document fade-in effect when background image is set
+
 = 1.0.15 - September 26 2017 =
 * Fixed support for several Google fonts
 * Fixed support for CodePen social icon

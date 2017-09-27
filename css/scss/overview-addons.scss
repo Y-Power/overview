@@ -724,11 +724,7 @@ div.overview-footer-widgets-container #wp-calendar > tbody {
 
 /* video */
 .mejs-container {
-  -o-box-shadow: 0 0 4px 0;
-  -ms-box-shadow: 0 0 4px 0;
-  -moz-box-shadow: 0 0 4px 0;
-  -webkit-box-shadow: 0 0 4px 0;
-  box-shadow: 0 0 4px 0;
+  @include ov-box-shadow(0 0 4px 0);
 }
 
 /* image */

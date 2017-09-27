@@ -156,7 +156,7 @@ function overview_widgets_init() {
     register_sidebar( array(
 	'name'          => esc_html__( 'Footer', 'overview' ),
 	'id'            => 'ov-footer-1',
-	'description'   => esc_html__( 'Add footer widgets here.', 'overview' ),
+	'description'   => esc_html__( 'Add footer widgets here. Once added, you can set the footer widgets alignment in the section ', 'overview' ) . '<em>' . esc_html__( 'OverView options', 'overview' ) . '</em>',
 	'before_widget' => '<section id="%1$s" class="widget %2$s overview-footer-widget">',
 	'after_widget'  => '</section>',
 	'before_title'  => '<h2 class="widget-title footer-widget-title">',
