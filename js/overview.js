@@ -31,18 +31,21 @@
         subMenusFormatSetup();
         overviewSocialNavSettings();
         galleriesCaptionsImgsLinks();
+        siteTitleOnHeader();
         /* re-adjust on window resize */
         jQ(window).resize(function(){
             overviewNavbarAdjust();
             subMenusFormatSetup();
+            siteTitleOnHeader();
         });
 
         /* html ready */
         jQ('html').removeClass('overview-html-not-ready');
 
         /* reset content offsets on mobile menu button click */
-        jQ('header#masthead nav#site-navigation button').click(function(){
+        jQ('header#masthead nav#site-navigation button.menu-toggle').click(function(){
             overviewNavbarAdjust();
+            siteTitleOnHeader();
         });
 
         /* WordPress Widgets */
@@ -164,6 +167,39 @@
             // if full layout
             else {
                 allNavMenuSubMenus.removeClass('overview-mobile-navbar-sub-menu').slideDown(0);
+            }
+        }
+
+        /* adjust title offset on header image */
+        function siteTitleOnHeader(){
+            if ('1' === OVThemeVars.OVBannerImage){
+                var headerContainer = jQ('div#overview-header-image-container'),
+                    siteTitleTagline = jQ('div.site-branding'),
+                    imgFilter = jQ('div#overview-header-image-filter'),
+                    imgOffset = headerContainer.offset(),
+                    imgHeight = headerContainer.outerHeight(),
+                    imgWidth  = headerContainer.outerWidth(),
+                    titlesHeight = siteTitleTagline.outerHeight();
+                /* set filter dimensions */
+                imgFilter.offset({
+                    top: imgOffset.top
+                }).css({
+                    width: imgWidth + 'px',
+                    height: imgHeight + 'px'
+                });
+                /* set titles offset */
+                // if in large layout
+                if ( 'absolute' === siteTitleTagline.css('position') ){
+                    siteTitleTagline.offset({
+                        top: imgOffset.top + ( imgHeight - titlesHeight )
+                    });
+                }
+                // smaller layout
+                else {
+                    siteTitleTagline.offset({
+                        top: imgOffset.top + imgHeight
+                    });
+                }
             }
         }
         

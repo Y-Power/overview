@@ -51,6 +51,13 @@ OverView includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
+= 1.1.0 - September 29 2017 =
+* Fixed hide/show title and tagline preview
+* Added site title on header image
+* Added header image filter control
+* Set header height at 680px
+* Various CSS improvements
+
 = 1.0.16 - September 27 2017 =
 * Fixed featured images for pages on mobile devices
 * Added footer widgets flex alignment control

@@ -96,7 +96,16 @@ function overview_customize_register( $wp_customize ) {
         'transport'         => 'refresh',
         'sanitize_callback' => 'esc_attr'
     ) );
-    
+
+    // header image filter
+    $wp_customize->add_setting( 'overview_header_image_filter', array(
+        'type'              => 'theme_mod',
+        'capability'        => 'edit_theme_options',
+        'default'           => 10,
+        'transport'         => 'postMessage',
+        'sanitize_callback' => 'esc_attr'
+    ) );
+
     // layouts
     $wp_customize->add_setting( 'overview_layout', array(
         'type'              => 'theme_mod',
@@ -279,6 +288,20 @@ function overview_customize_register( $wp_customize ) {
         )
     ) );
 
+    // header image filter opacity
+    $wp_customize->add_control( 'overview_header_image_filter', array(
+        'type'            => 'range',
+        'section'         => 'header_image',
+        'priority'        => 1,
+        'label'           => __( 'Filter opacity', 'overview' ),
+        'input_attrs' => array(
+            'min'   => 10,
+            'max'   => 90,
+            'step'  => 1
+        ),
+        'active_callback' => 'has_header_image'
+    ) );
+    
     // custom font
     $wp_customize->add_control( 'overview_custom_font', array(
         'type'        => 'text',
@@ -332,7 +355,7 @@ function overview_customize_register( $wp_customize ) {
         'priority'    => 15,
         'section'     => 'overview_options',
         'label'       => __( 'Main font size', 'overview' ),
-        'description' => __( 'Note: OverView Display needs a page refresh after previewing changes', 'overview' ),
+        'description' => __( 'Note: some elements need a page refresh', 'overview' ),
         'input_attrs' => array(
             'class'      => 'overview-main-font-size',
             'style'      => 'border: 1px solid gray;'

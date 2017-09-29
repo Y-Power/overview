@@ -12,7 +12,7 @@
 /* OverView custom font */
 function overview_custom_main_font_color(){
     $overview_custom_body_color = get_theme_mod( 'overview_custom_body_color', '#404040' );?>
-    <style id="overview-custom-body-color-css">
+    <style id="overview-custom-body-color-css" type="text/css">
      body, header#masthead div.site-branding p.site-description, header#masthead div.site-branding p.site-description, div.overview-indexed-content-main-container, article.overview-standard-indexed-entry, article.overview-standard-indexed-entry-no-featured-img, div#comments, div.page-content, div.overview-sidebar-main-container section.widget {color: <?php echo esc_attr( $overview_custom_body_color ); ?>}
     </style>
 <?php }
@@ -75,7 +75,7 @@ function overview_custom_background_styles(){
     }
     // background extra CSS
     add_action( 'wp_head','overview_custom_background_styles' );
-
+    
     /* site title color */
     function overview_custom_site_title_color(){
         $ov_default_site_color = overview_get_site_title_color();
@@ -91,7 +91,7 @@ function overview_custom_background_styles(){
     <?php }
     }
     add_action( 'wp_head', 'overview_custom_site_title_color' );
-    
+
     /* custom font head extra style */
     function overview_add_custom_font_style() {
         if ( get_theme_mod( 'overview_custom_font', '' ) !== '' ){

@@ -11,6 +11,12 @@
 }
 
 @media screen and (max-width: 767px){
+#masthead nav#site-navigation {
+        top: 46px;
+    }
+}
+
+@media screen and (max-width: 767px){
     #masthead nav#site-navigation {
         position: absolute;
     }

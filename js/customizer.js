@@ -20,9 +20,15 @@
     } );
     wp.customize( 'header_textcolor', function( value ) {
 	value.bind( function( to ) {
-	    $( '.site-title a' ).css({
-                color:  to
-            });
+            if ( 'blank' === to ) {
+                $( '.site-branding' ).hide();
+            }
+            else {
+                $( '.site-branding' ).show();
+	        $( '.site-title a' ).css({
+                    color:  to
+                });
+            }
 	} );
     } );
     wp.customize( 'blogdescription', function( value ) {
@@ -30,7 +36,7 @@
 	    $( '.site-description' ).text( to );
 	} );
     } );
-    
+
     // OverView site branding description
     wp.customize( 'overview_site_branding_description', function( value ) {
         value.bind( function( to ) {
@@ -40,6 +46,15 @@
         } );
     } );
 
+    // OverView header image filter
+    wp.customize( 'overview_header_image_filter', function( value ) {
+        value.bind( function( to ) {
+            $( 'div#overview-header-image-filter' ).css({
+                backgroundColor: 'rgba(0,0,0,0.' + to + ')'
+            });
+        } );
+    } );
+    
     // OverView custom font color
     wp.customize( 'overview_custom_body_color', function( value ) {
         value.bind( function( to ) {
@@ -66,7 +81,9 @@
     // OverView custom background color
     wp.customize( 'background_color', function( value ) {
         value.bind( function( to ) {
-            var OVSiteContentElements = $( 'header#masthead, .site-title, header#masthead div.site-branding p.site-description, div.overview-indexed-content-main-container, article.overview-standard-indexed-entry, article.overview-standard-indexed-entry-no-featured-img, div#comments, div.page-content, div.overview-sidebar-main-container section.widget' );
+            var OVHeaderEl = $( 'header#masthead' ).not('.site-title, p.site-description'),
+                OVSiteContentElements = $( 'div.overview-indexed-content-main-container, article.overview-standard-indexed-entry, article.overview-standard-indexed-entry-no-featured-img, div#comments, div.page-content, div.overview-sidebar-main-container section.widget' );
+            OVHeaderEl.css( 'background-color', to );
             OVSiteContentElements.css( 'background-color', to );
             // if OverView Display does NOT have the default background
             if ( '' !== wp.customize.settings.values.overview_display_bright_background ){

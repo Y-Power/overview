@@ -62,6 +62,8 @@ function overview_setup() {
 
     // Set up WordPress logo feature.
     add_theme_support( 'custom-logo', array(
+        'width'       => 640,
+        'height'      => 360,
         'flex-height' => true,
         'flex-width'  => true,
         'header-text' => array( 'site-title', 'site-description' ),
@@ -256,6 +258,13 @@ function overview_scripts() {
     /* OverView scripts */
     wp_enqueue_script( 'overview-scripts', get_template_directory_uri() . '/js/overview.js', array( 'jquery' ) );
 
+    /* OvwerView general theme variables */
+    $overview_theme_general_variables = array(
+        /* header image check */
+        'OVBannerImage' => has_header_image()
+    );
+    wp_localize_script( 'overview-scripts', 'OVThemeVars', $overview_theme_general_variables );
+    
     /* OverView Display scripts */
     $overview_display_check = overview_check_front_page_template();
     if ( $overview_display_check ) {
@@ -293,7 +302,7 @@ function overview_scripts() {
                 '12'                    => __('December', 'overview')
             )
         );
-        wp_localize_script( 'overview-scripts', 'OVAPIVars', $overview_JS_variables );
+        wp_localize_script( 'overview-display-scripts', 'OVAPIVars', $overview_JS_variables );
     }
 
     // admin

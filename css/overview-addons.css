@@ -151,6 +151,10 @@ nav#site-navigation a#overview-navbar-site-logo p.overview-navbar-nologo-fallbac
     nav#site-navigation a#overview-navbar-site-logo p.overview-navbar-nologo-fallback {
       font-size: 18px; } }
 
+/* header image filter */
+div#overview-header-image-filter {
+  display: none; }
+
 /* site title & description */
 header#masthead div.site-branding h1.site-title,
 header#masthead div.site-branding p.site-title,
@@ -660,7 +664,40 @@ div.overview-sidebar-main-container h2.widget-title {
 /* sidebar search max width */
 @supports (display: flex) {
   #secondary form.search-form label {
-    max-width: 70%; } }
+    max-width: 70%; }
+    #secondary form.search-form label input.search-field {
+      border: 1px solid #808080;
+      -webkit-border-radius: 3px 0 0 3px;
+      -moz-border-radius: 3px 0 0 3px;
+      -ms-border-radius: 3px 0 0 3px;
+      -o-border-radius: 3px 0 0 3px;
+      border-radius: 3px 0 0 3px; }
+  #secondary form.search-form input.search-submit {
+    width: 30%;
+    border: 1px solid #808080;
+    -webkit-border-radius: 0 3px 3px 0;
+    -moz-border-radius: 0 3px 3px 0;
+    -ms-border-radius: 0 3px 3px 0;
+    -o-border-radius: 0 3px 3px 0;
+    border-radius: 0 3px 3px 0;
+    border-left: none; } }
+/* footer search */
+section.overview-footer-widget form.search-form label input.search-field {
+  border: 1px solid #808080;
+  -webkit-border-radius: 3px 0 0 3px;
+  -moz-border-radius: 3px 0 0 3px;
+  -ms-border-radius: 3px 0 0 3px;
+  -o-border-radius: 3px 0 0 3px;
+  border-radius: 3px 0 0 3px; }
+section.overview-footer-widget form.search-form input.search-submit {
+  border: 1px solid #808080;
+  -webkit-border-radius: 0 3px 3px 0;
+  -moz-border-radius: 0 3px 3px 0;
+  -ms-border-radius: 0 3px 3px 0;
+  -o-border-radius: 0 3px 3px 0;
+  border-radius: 0 3px 3px 0;
+  border-left: none; }
+
 /* RSS */
 section.widget_rss ul li {
   margin: 12px auto 20px auto;
@@ -698,10 +735,7 @@ div.overview-footer-widgets-container #wp-calendar > tbody {
 /* image */
 /* image sidebar */
 aside#secondary section.widget_media_image {
-  /* tablet view */ }
-  @media screen and (max-width: 980px) {
-    aside#secondary section.widget_media_image {
-      text-align: center; } }
+  text-align: center; }
 
 /* image footer */
 footer.overview-footer-container div.overview-footer-widgets-container section.overview-footer-widget.widget_media_image {

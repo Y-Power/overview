@@ -61,6 +61,7 @@
                     <!-- OverView header image -->
                     <div id="overview-header-image-container">
                         <?php the_header_image_tag(); ?>
+                        <div id="overview-header-image-filter"></div>
                     </div>
                 <?php } ?>
                 
@@ -73,9 +74,9 @@
 		    <?php
 		    endif;
 
-		    $description = get_bloginfo( 'description', 'display' );
-		    if ( $description || is_customize_preview() ) : ?>
-		        <p class="site-description font-effect-3d-float"><?php echo $description; /* WPCS: xss ok. */ ?></p>
+		    $overview_site_description = get_bloginfo( 'description', 'display' );
+		    if ( $overview_site_description || is_customize_preview() ) : ?>
+		        <p class="site-description font-effect-3d-float"><?php echo $overview_site_description; /* WPCS: xss ok. */ ?></p>
 		    <?php
 		    endif;
                     ?>
