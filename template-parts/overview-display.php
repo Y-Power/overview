@@ -2,7 +2,7 @@
 
 $overview_front_page_title_check = get_theme_mod( 'overview_front_page_title', '' );
 if ( '' !== $overview_front_page_title_check ){?>
-    <h2 class="overview-front-page-title"><?php echo esc_textarea( $overview_front_page_title_check ); ?></h2>
+    <h2 class="overview-front-page-title"><?php echo esc_html( $overview_front_page_title_check ); ?></h2>
 <?php  }?>
 <!-- overview POSTS main container START -->
 <div id="overview-front-page-posts-section-container" class="overview-single-box-container

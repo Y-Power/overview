@@ -76,7 +76,7 @@ function overview_customize_register( $wp_customize ) {
         'capability'        => 'edit_theme_options',
         'default'           => __( 'Use this space to describe your story, mission, branding and more in a longer form', 'overview' ),
         'transport'         => 'postMessage',
-        'sanitize_callback' => 'esc_textarea'
+        'sanitize_callback' => 'esc_html'
     ) );
 
     // body main color
@@ -157,7 +157,7 @@ function overview_customize_register( $wp_customize ) {
         'capability'        => 'edit_theme_options',
         'default'           => '',
         'transport'         => 'postMessage',
-        'sanitize_callback' => 'esc_textarea'
+        'sanitize_callback' => 'esc_html'
     ) );
 
     // front page template display background
@@ -515,14 +515,14 @@ function overview_customize_register( $wp_customize ) {
 
     // get branding
     function ov_branding_output(){
-        $ov_branding_description = get_theme_mod( 'overview_site_branding_description', __( 'Use this space to describe your story, mission, branding and more in a longer form', 'overview' ) );
-        echo esc_textarea( $ov_branding_description );
+        $ov_branding_description =  get_theme_mod( 'overview_site_branding_description', __( 'Use this space to describe your story, mission, branding and more in a longer form', 'overview' ) );
+        echo esc_html( $ov_branding_description );
     }
 
     // get OverView Display title
     function ov_display_title_output(){
         $ov_display_title = get_theme_mod('overview_front_page_title', '');
-        echo esc_textarea( $ov_display_title );
+        echo esc_html( $ov_display_title );
     }
     
     // site branding output

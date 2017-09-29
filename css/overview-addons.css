@@ -193,6 +193,12 @@ header#masthead p.site-branding-description-p {
       margin: 0 0 3px 0;
       padding-top: 9px; } }
 
+/* header titles forced transparent background */
+header#masthead div.site-branding h1.site-title,
+header#masthead div.site-branding p.site-title,
+header#masthead div.site-branding p.site-description {
+  background-color: transparent !important; }
+
 /* main content separator border */
 @media screen and (max-width: 767px) {
   #main article:first-of-type {

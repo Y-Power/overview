@@ -112,10 +112,14 @@ function overview_header_style() { ?>
      p.site-description {
          padding: 0;
      }
-     
+
+     a.overview-site-title-a {
+         padding: 12px !important;
+     }
+
      div.site-branding .site-title,
      header#masthead div.site-branding p.site-description {
-         background-color: transparent;
+         background-color: transparent !important;
      }
 
      header#masthead p.site-branding-description-p {

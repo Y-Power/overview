@@ -19,7 +19,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 
 == Description ==
 
-A minimalist yet colorful responsive theme, OverView delivers a one-page browsing experience: all posts can be dinamically shown one by one on the OverView Display -available as page templates- by clicking on simple navigation buttons, helping engagement with your content.
+A minimalist yet colorful responsive theme, OverView delivers a one-page browsing experience: all posts can be dynamically shown one by one on the OverView Display -available as page templates- by clicking on simple navigation buttons, helping engagement with your content.
 
 OverView is based on Underscores, powered by the WordPress REST API and features an unlimited Google font selection, many color schemes and several styled widgets, wide layouts with CSS grid and flex support -including fallbacks for older devices.
 
@@ -50,6 +50,12 @@ Some plugin might be blocking the Display: it usually depends on security plugin
 OverView includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 1.1.1 - September 29 2017 =
+* Fixed site title alignment on header image
+* Fixed escaping of special characters for site branding and OverView Display title
+* Fixed site titles background color preview
+* Corrected a few typos
 
 = 1.1.0 - September 29 2017 =
 * Fixed hide/show title and tagline preview

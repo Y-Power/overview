@@ -87,7 +87,7 @@
                 if ( $overview_site_branding_description_text !== '' ){ ?>
                     <!-- OverView site branding description -->
                     <p class="site-branding-description-p">
-                        <?php echo esc_textarea( get_theme_mod( 'overview_site_branding_description', __( 'Use this space to describe your story, mission, branding and more in a longer form', 'overview' ) ) ); ?>
+                        <?php echo esc_html( get_theme_mod( 'overview_site_branding_description', __( 'Use this space to describe your story, mission, branding and more in a longer form', 'overview' ) ) ); ?>
                     </p>
                 <?php }
                 ?>

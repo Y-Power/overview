@@ -25,7 +25,7 @@ function overview_custom_background_styles(){
     $overview_custom_background_color = get_background_color();
     $overview_display_custom_background_check = get_theme_mod( 'overview_display_bright_background', '' );?>
     <style id="overview-custom-background-extra-css" type="text/css">
-     body, header#masthead, .site-title, header#masthead div.site-branding p.site-description, div.overview-indexed-content-main-container, article.overview-standard-indexed-entry, article.overview-standard-indexed-entry-no-featured-img, div#comments, div.page-content, div.overview-sidebar-main-container section.widget {background-color: #<?php echo esc_attr( $overview_custom_background_color ); ?>;}
+     body, header#masthead, div.overview-indexed-content-main-container, article.overview-standard-indexed-entry, article.overview-standard-indexed-entry-no-featured-img, div#comments, div.page-content, div.overview-sidebar-main-container section.widget {background-color: #<?php echo esc_attr( $overview_custom_background_color ); ?>;}
      <?php
      /* if there is a background image, add html, OverView content, sidebar and sticky posts adjustments */
      if ( '' !== $overview_custom_background_img ){ ?>
