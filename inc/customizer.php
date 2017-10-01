@@ -46,6 +46,12 @@ function overview_customize_register( $wp_customize ) {
         return $overview_sidebar_layout_ouput;
     }
 
+    /* OverView titles background opacity check */
+    function overview_site_titles_background_opacity_check(){
+        $ov_titles_background_visibility_check = get_theme_mod( 'overview_site_titles_background_visibility', 0 );
+        return has_header_image() && $ov_titles_background_visibility_check;
+    }
+    
     /* OverView sidebar check */
     function ov_sidebar_check(){
         return is_active_sidebar( 'ov-sidebar-1' );
@@ -69,6 +75,24 @@ function overview_customize_register( $wp_customize ) {
     
 
     /* OverView WordPress customizer SETTINGS */
+
+    // site title and description background visibility
+    $wp_customize->add_setting( 'overview_site_titles_background_visibility', array(
+        'type'              => 'theme_mod',
+        'capability'        => 'edit_theme_options',
+        'default'           => 0,
+        'transport'         => 'refresh',
+        'sanitize_callback' => 'esc_attr'
+    ) );
+
+    // site title and description background opacity
+    $wp_customize->add_setting( 'overview_site_titles_background_opacity', array(
+        'type'              => 'theme_mod',
+        'capability'        => 'edit_theme_options',
+        'default'           => 50,
+        'transport'         => 'postMessage',
+        'sanitize_callback' => 'esc_attr'
+    ) );
 
     // site branding
     $wp_customize->add_setting( 'overview_site_branding_description', array(
@@ -244,10 +268,38 @@ function overview_customize_register( $wp_customize ) {
     
     /* OverView WordPress customizer CONTROLS */
 
+    // site titles background visibility
+    $wp_customize->add_control( 'overview_site_titles_background_visibility', array(
+        'type'            => 'checkbox',
+        'priority'        => 45,
+        'section'         => 'title_tagline',
+        'label'           => __( 'Site Titles background', 'overview' ),
+        'input_attrs'     => array(
+            'class' => 'overview-site-titles-background-visibility',
+            'style' => 'border: 1px solid gray;'
+        ),
+        'active_callback' => 'has_header_image'
+    ) );
+
+    // site titles background opacity
+    $wp_customize->add_control( 'overview_site_titles_background_opacity', array(
+        'type'            => 'range',
+        'priority'        => 45,
+        'section'         => 'title_tagline',
+        'label'           => __( 'Site Titles background opacity ', 'overview' ),
+        'input_attrs'     => array(
+            'class' => 'overview-site-titles-background-opacity',
+            'min'   => 10,
+            'max'   => 95,
+            'step'  => 1
+        ),
+        'active_callback' => 'overview_site_titles_background_opacity_check'
+    ) );
+
     // site branding
     $wp_customize->add_control( 'overview_site_branding_description', array(
         'type'        => 'textarea',
-        'priority'    => 40,
+        'priority'    => 50,
         'section'     => 'title_tagline',
         'label'       => __( 'Site branding description', 'overview' ),
         'description' => __( 'Describe your brand and/or mission', 'overview' ),
@@ -294,6 +346,7 @@ function overview_customize_register( $wp_customize ) {
         'section'         => 'header_image',
         'priority'        => 1,
         'label'           => __( 'Filter opacity', 'overview' ),
+        'description'     => __( 'Note: you can now also use the <strong>Site titles background</strong> option in the <em>Site Identity</em> section to enhance contrast with titles.', 'overview' ),
         'input_attrs' => array(
             'min'   => 10,
             'max'   => 90,
@@ -544,6 +597,8 @@ function overview_customize_register( $wp_customize ) {
     $wp_customize->get_setting( 'blogdescription' )->transport      = 'postMessage';
     $wp_customize->get_setting( 'header_textcolor' )->transport     = 'postMessage';
     $wp_customize->get_setting( 'background_image' )->transport     = 'postMessage';
+    /* default WP sections */
+    $wp_customize->get_section( 'header_image' )->description       = '<em>' . __( 'Once an header image is selected, a "Filter opacity" control will appear just below', 'overview' ) . '.</em>';
     /* default WP core controls */
     $wp_customize->get_control( 'custom_logo' )->description        = __( 'Note: OverView strongly suggests logos with a 16:9 ratio', 'overview' );
     $wp_customize->get_control( 'header_textcolor' )->description   = __( 'Set to \'Default\' to add the site title to the preview when switching color schemes: save and refresh the page to switch default colors', 'overview' );

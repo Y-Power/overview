@@ -44,11 +44,13 @@ function overview_header_style() { ?>
      .site-branding {
          display: none;
      }
+     /*
      .site-title,
      .site-description {
 	 position: absolute;
 	 clip: rect(1px, 1px, 1px, 1px);
      }
+     */
      header#masthead p.site-branding-description-p {
          display: block;
          float: none;
@@ -65,6 +67,8 @@ function overview_header_style() { ?>
      else :
      if ( has_header_image() ) {
          $ov_header_image_filter_value = get_theme_mod( 'overview_header_image_filter', 10 );
+         $ov_site_titles_background_visibility = get_theme_mod( 'overview_site_titles_background_visibility', 0 );
+         $ov_site_titles_background_opacity_value = get_theme_mod( 'overview_site_titles_background_opacity', 50 );
      ?>
      /*
         .site-title a {
@@ -92,14 +96,25 @@ function overview_header_style() { ?>
      }
      div#overview-header-image-filter {
          display: block;
-         position: absolute;
-         background-color: rgba(0,0,0,0.<?php echo esc_attr(intval($ov_header_image_filter_value)); ?>);
+         background-color: rgba(0,0,0,0.<?php echo esc_attr( intval( $ov_header_image_filter_value ) ); ?>);
      }
+         <?php
+         if ( $ov_site_titles_background_visibility ){?>
+     .site-branding {
+         background-color: rgba(255,255,255,0.<?php echo esc_attr( intval( $ov_site_titles_background_opacity_value ) ); ?>);
+     }
+     @media screen and (max-width: 767px){
+         .site-branding {
+             padding-bottom: 12px;
+         }
+     }
+         <?php }
+         ?>
      h1.site-title,
      p.site-title,
      p.site-description {
          text-align: center;
-         background-color: none !important;
+         background-color: transparent !important;
      }
      h1.site-title a,
      p.site-title a,

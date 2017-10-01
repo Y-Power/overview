@@ -51,6 +51,11 @@ OverView includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
+= 1.2.0 - October 1 2017 =
+* Fixed site titles padding in mobile view
+* Fixed site titles print styles
+* Added header image site titles background and relative opacity control
+
 = 1.1.1 - September 29 2017 =
 * Fixed site title alignment on header image
 * Fixed escaping of special characters for site branding and OverView Display title

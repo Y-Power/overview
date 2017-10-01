@@ -25,7 +25,7 @@
     jQ(document).ready(function(){
 
         /* OverView admin UI adjustments */
-
+        
         /* custom font copy/paste auto-focus */
         jQ('input#overview-custom-font-text-input').on('paste', function(fontName){
             setTimeout(function(){

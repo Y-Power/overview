@@ -134,6 +134,7 @@ nav#site-navigation a#overview-navbar-site-logo p.overview-navbar-nologo-fallbac
 /* header image filter */
 div#overview-header-image-filter {
   display: none;
+  position: absolute;
   }
 
 
@@ -158,6 +159,12 @@ header#masthead div.site-branding h1.site-title {
   }
 }
 
+@media screen and (max-width: 767px){
+  a.overview-site-title-a {
+    display: block;
+    }
+  }
+  
 header#masthead div.site-branding p.site-description {
   @media screen and (max-width: 767px){
     padding: 0 12px 3px 12px;
@@ -695,6 +702,14 @@ div.overview-sidebar-main-container h2.widget-title {
   border-bottom: 1px dotted;
 }
 
+/* core widgets default font sizes */
+/* search form */
+form.search-form,
+/* inputs */
+option {
+  font-size: 18px;
+  }
+  
 /* sidebar search max width */
 @supports (display: flex){
   #secondary form.search-form {
@@ -822,6 +837,50 @@ div.overview-footer-copyright-container {
   @include ov-box-shadow(0 0 6px 0 #333 inset !important);
   }
 
+/* site titles positioning preview */
+header#masthead div.site-branding.overview-site-titles-preview-header-image {
+  display: block;
+  position: absolute !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  text-align: center;
+  @media screen and (max-width: 767px) {
+    position: relative !important;
+    }
+  }
+header#masthead div.site-branding.overview-site-titles-preview-NO-header-image {
+  display: inline-block;
+  position: relative;
+  width: unset;
+  max-width: 60%;
+  text-align: unset;
+  @media screen and (max-width: 767px) {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    }
+  }
+/* site branding description */
+header#masthead p.site-branding-description-p.overview-branding-p-preview-header-image,
+header#masthead p.site-branding-description-p.overview-branding-p-preview-NO-header-image.overview-branding-p-preview-solo {
+  float: none;
+  width: 100%;
+  margin: 0 auto;
+  @include ov-border-radius(0);
+  }
+header#masthead p.site-branding-description-p.overview-branding-p-preview-NO-header-image {
+  float: right;
+  width: 39%;
+  margin: 40px 1% 12px 0;
+  @include ov-border-radius(6px);
+  @media screen and (max-width: 767px) {
+    float: none;
+    width: 100%;
+    margin: 0 auto;
+    }
+  }
+
 
 /* OverView html not ready */
 .overview-html-not-ready {
@@ -842,6 +901,23 @@ div.overview-footer-copyright-container {
     display: none;
     }
 
+  #overview-header-image-filter {
+    display: none !important;
+    }
+      
+  .site-branding {
+    display: block;
+    float: none;
+    position: relative;
+    top: 0 !important;
+    left: 0 !important;
+    .site-title,
+    .site-description {
+      display: block;
+      position: relative;
+      }
+    }
+      
   img {
     page-break-inside: avoid; 
     page-break-after: avoid;
@@ -868,6 +944,11 @@ div.overview-footer-copyright-container {
   #content,
   .overview-sidebar-layout{
     display: block;
+    }
+
+  /* Widgets */
+  form.search-form {
+    display: none !important;
     }
 
   /* OverView Display */
