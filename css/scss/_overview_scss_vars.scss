@@ -250,6 +250,108 @@ box-shadow: $box-shadow;
   }
 }
 
+/* OverView blog page template */
+@mixin ov-blog-page-container(){
+  display: grid;
+  grid-template-columns: 1fr;
+  /**
+  *align-items: stretch;
+  *justify-items: stretch;
+  */
+  margin: 12px 0;
+  div.overview-blog-frames-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    @media screen and ( max-width: 1399px ){
+      grid-template-columns: repeat(2, 1fr);
+      }
+    @media screen and ( max-width: 600px ){
+      grid-template-columns: 1fr;
+      }
+    }
+  @media screen and ( min-width: 1700px ){
+    max-width: 1280px;
+    margin: 0 auto;
+    }
+  nav.posts-navigation {
+    margin: 24px 0 0 0;
+    }
+  }
+
+/* OverView Blog page standard single entry */
+@mixin ov-blog-page-single-entry(){
+  padding: 12px;
+  header.overview-blog-entry-header {
+    a.overview-single-entry-link {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: minmax(min-content, 220px);
+      grid-template-areas: 'figure';
+      width: 100%;
+      div.overview-single-entry-image {
+        grid-area: figure;
+        align-self: stretch;
+        width: 100%;
+        height: 220px;
+        margin: 0 auto;
+        background-position: center center;
+        background-size: cover;
+        @include ov-box-shadow(0 0 3px 0 $ov-structure-dark-color);
+        /* no image fallback */
+        h5.overview-blog-entry-no-image-fallback {
+          text-align: center;
+          i.overview-blog-no-img-icon {
+            display: block;
+            }
+          }
+        }
+      h4.overview-blog-entry-title {
+        grid-area: figure;
+        align-self: end;
+        width: 100%;
+        margin: 0;
+        text-align: center;
+        color: $ov-structure-light-color;
+        background-color: rgba(0,0,0,.85);
+        @include ov-text-shadow(0 0 1px);
+        }
+      }
+    }
+    div.overview-blog-post-entry-meta {
+      padding: 6px;
+      color: $ov-structure-dark-color;
+      background-color: $ov-main-dark-color;
+      span.posted-on {
+        i.fa-calendar {
+          margin: 0 6px;
+          font-size: 1em;
+          }
+        }
+      }
+    article.overview-blog-post-content{
+      p {
+        display: flex;
+        flex-direction: column;
+        a.read-more {
+          align-self: center;
+          margin-top: 12px;
+          padding: 4px 6px 8px 6px;
+          @media screen and (max-width: 767px){
+            padding: 4px 6px;
+            }
+          text-align: center;
+          border: 1px solid $ov-structure-dark-color;
+          background-color: $ov-structure-light-color;
+          @include ov-border-radius(3px);
+          &:hover {
+            background-color: transparent;
+            }
+          }
+        }
+      }
+  }
+
+    
 /* meta icons */
 @mixin overview-meta-icon(){
       width: 40px;

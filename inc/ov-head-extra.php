@@ -25,12 +25,15 @@ function overview_custom_background_styles(){
     $overview_custom_background_color = get_background_color();
     $overview_display_custom_background_check = get_theme_mod( 'overview_display_bright_background', '' );?>
     <style id="overview-custom-background-extra-css" type="text/css">
-     body, header#masthead, div.overview-indexed-content-main-container, article.overview-standard-indexed-entry, article.overview-standard-indexed-entry-no-featured-img, div#comments, div.page-content, div.overview-sidebar-main-container section.widget {background-color: #<?php echo esc_attr( $overview_custom_background_color ); ?>;}
+     body, header#masthead, div.overview-indexed-content-main-container, article.overview-standard-indexed-entry, article.overview-standard-indexed-entry-no-featured-img, main.overview-blog-container, h1.overview-blog-page-title, div.overview-blog-page-content, div#comments, div.page-content, div.overview-sidebar-main-container section.widget {background-color: #<?php echo esc_attr( $overview_custom_background_color ); ?>;}
      <?php
-     /* if there is a background image, add html, OverView content, sidebar and sticky posts adjustments */
+     /* if there is a background image, add html, OverView content, sidebar, page templates and sticky posts adjustments */
      if ( '' !== $overview_custom_background_img ){ ?>
      article.overview-standard-indexed-entry:not(.sticky),
-     article.overview-standard-indexed-entry-no-featured-img:not(.sticky) {
+     article.overview-standard-indexed-entry-no-featured-img:not(.sticky),
+     main.overview-blog-container,
+     h1.overview-blog-page-title,
+     div.overview-blog-page-content {
          border-top: none;
          border-bottom: none;
          -webkit-box-shadow: 0 0 6px 0 #333;
@@ -92,10 +95,32 @@ function overview_custom_background_styles(){
     }
     add_action( 'wp_head', 'overview_custom_site_title_color' );
 
+
+    /* print OverView custom fonts head styles */
+    function overview_print_head_google_fonts_link(){
+        $overview_site_title_font_check = get_theme_mod( 'overview_site_title_custom_font', '' );
+        $overview_custom_font_check = get_theme_mod( 'overview_custom_font', '' );
+        $overview_site_title_custom_font_name = ( $overview_site_title_font_check === '' ) ? '' : overview_get_custom_font_name( $overview_site_title_font_check, 'not_pretty' ) . '|';
+        $overview_custom_font_name = ( $overview_custom_font_check === '' ) ? 'Muli' : overview_get_custom_font_name( $overview_custom_font_check, 'not_pretty' );
+        $overview_blog_font_effect_check = ( is_page_template( 'overview-blog-page.php' ) ) ? '|outline' : '';
+    ?>
+        <!-- Google Font -->
+        <link href="<?php echo esc_url( 'https://fonts.googleapis.com/css?family=' . esc_attr( $overview_site_title_custom_font_name ) . esc_attr( $overview_custom_font_name ) . ':400,500,600,700&effect=emboss|3d-float' . $overview_blog_font_effect_check ); ?>" rel="stylesheet"> 
+    <?php }
+    
     /* custom font head extra style */
     function overview_add_custom_font_style() {
-        if ( get_theme_mod( 'overview_custom_font', '' ) !== '' ){
-            $overview_font_head_style = overview_get_custom_font_name( esc_attr( get_theme_mod( 'overview_custom_font', '' ) ), 'pretty'); ?>
+        $overview_site_title_font = overview_get_custom_font_name( esc_attr( get_theme_mod( 'overview_site_title_custom_font', '' ) ), 'pretty' );
+        if ( '' !== $overview_site_title_font ) { ?>
+        <style id="overview-site-title-custom-font-css" type="text/css">
+         .site-title,
+         .overview-navbar-nologo-fallback {
+             font-family: "<?php echo esc_attr( $overview_site_title_font ); ?>", sans-serif;
+         }
+        </style>
+    <?php }
+    $overview_font_head_style = overview_get_custom_font_name( esc_attr( get_theme_mod( 'overview_custom_font', '' ) ), 'pretty');
+    if ( $overview_font_head_style !== '' ){ ?>
         <style id="overview-custom-font-css" type="text/css">
          body {
              font-family: "<?php echo esc_attr( $overview_font_head_style ); ?>", sans-serif;

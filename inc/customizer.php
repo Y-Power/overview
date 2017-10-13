@@ -139,6 +139,15 @@ function overview_customize_register( $wp_customize ) {
         'sanitize_callback' => 'ov_escape_layout'
     ) );
 
+    // blog layout
+    $wp_customize->add_setting( 'overview_blog_layout', array(
+        'type'              => 'theme_mod',
+        'capability'        => 'edit_theme_options',
+        'default'           => 'frames',
+        'transport'         => 'refresh',
+        'sanitize_callback' => 'esc_attr'
+    ) );
+    
     // sidebar layout
     $wp_customize->add_setting( 'overview_sidebar_layout', array(
         'type'              => 'theme_mod',
@@ -147,8 +156,17 @@ function overview_customize_register( $wp_customize ) {
         'transport'         => 'refresh',
         'sanitize_callback' => 'ov_escape_sidebar_layout'
     ) );    
+
+    // site title custom font
+    $wp_customize->add_setting( 'overview_site_title_custom_font', array(
+        'type'              => 'theme_mod',
+        'capability'        => 'edit_theme_options',
+        'default'           => '',
+        'transport'         => 'refresh',
+        'sanitize_callback' => 'esc_textarea'
+    ) );
     
-    // custom fonts
+    // body custom font
     $wp_customize->add_setting( 'overview_custom_font', array(
         'type'              => 'theme_mod',
         'capability'        => 'edit_theme_options',
@@ -253,7 +271,7 @@ function overview_customize_register( $wp_customize ) {
     // general options
     $wp_customize->add_section( 'overview_options', array(
         'title'       => __( 'OverView options', 'overview' ),
-        'description' => '<em>' . __( 'Note: if the page you are previewing has an active OverView Display page template, the OverView Display settings will be shown below the footer copyright option', 'overview' ) . '</em>',
+        'description' => '<em>' . __( 'Note: if the page you are previewing has an active OverView Display page template, the OverView Display settings will be shown below the control', 'overview' ) . ' <a id="customizer-ov-options-footer-copyright-redirect">' . __( 'Footer Copyright', 'overview' ) . '</em></a>.',
         'priority'    => 80,
         'capability'  => 'edit_theme_options'
     ) );
@@ -287,6 +305,7 @@ function overview_customize_register( $wp_customize ) {
         'priority'        => 45,
         'section'         => 'title_tagline',
         'label'           => __( 'Site Titles background opacity ', 'overview' ),
+        'description'     => __( 'Note: to enhance contrast, also use the <strong>Filter opacity</strong> control, in the section', 'overview' ) . '<a id="overview-customizer-header-img-filter-redirect"><em>' . ' ' . __( 'Header Image', 'overview' ) . '</em></a>.',
         'input_attrs'     => array(
             'class' => 'overview-site-titles-background-opacity',
             'min'   => 10,
@@ -346,13 +365,26 @@ function overview_customize_register( $wp_customize ) {
         'section'         => 'header_image',
         'priority'        => 1,
         'label'           => __( 'Filter opacity', 'overview' ),
-        'description'     => __( 'Note: you can now also use the <strong>Site titles background</strong> option in the <em>Site Identity</em> section to enhance contrast with titles.', 'overview' ),
+        'description'     => __( 'Note: to enhance contrast with titles, also use the <strong>Site titles background opacity</strong> control, now visible in the section', 'overview' ) . '<a id="overview-customizer-titles-filter-redirect"><em>' . ' ' . __( 'Site Identity', 'overview' ) . '</em></a>.',
         'input_attrs' => array(
             'min'   => 10,
             'max'   => 90,
             'step'  => 1
         ),
         'active_callback' => 'has_header_image'
+    ) );
+
+    // site title custom font
+    $wp_customize->add_control( 'overview_site_title_custom_font', array(
+        'type'        => 'text',
+        'priority'    => 45,
+        'section'     => 'title_tagline',
+        'label'       => __( 'Site Title Google&reg; font', 'overview' ),
+        'description' => '<a href="' . esc_url( 'https://fonts.google.com' ) . '" target="_blank">' . __( 'See all available Google fonts', 'overview' ) . '</a><br /><p><strong>' . __( 'Google is a registred trademark and belongs to its owners.', 'overview' ) . '</strong></p><p>' . __( 'OverView\'s default font is ', 'overview' ) . '<a href="' . esc_url( 'https://fonts.google.com/specimen/Muli' ) . '" target="_blank">Muli</a>. '. __( 'Enter the name of the Google font you have picked here:', 'overview' ) .'</p>',
+        'input_attrs' => array(
+            'id'         => 'overview-site-title-custom-font-text-input',
+            'style'      => 'border: 1px solid gray;'
+        ),
     ) );
     
     // custom font
@@ -384,10 +416,27 @@ function overview_customize_register( $wp_customize ) {
         )
     ) );
 
+    // blog layout
+    $wp_customize->add_control( 'overview_blog_layout', array(
+        'type'        => 'radio',
+        'priority'    => 11,
+        'section'     => 'overview_options',
+        'label'       => __( 'Blog layout', 'overview' ),
+        __( 'Note: older browsers may always show a list', 'overview' ),
+        'input_attrs' => array(
+            'class'      => 'overview-blog-layouts',
+            'style'      => 'border: 1px solid gray;'
+        ),
+        'choices' => array(
+            'frames' => __( 'Frames' , 'overview' ),
+            'list'  => __( 'List' , 'overview' )
+        )
+    ) );
+    
     // sidebar layout
     $wp_customize->add_control( 'overview_sidebar_layout', array(
         'type'            => 'radio',
-        'priority'        => 10,
+        'priority'        => 12,
         'section'         => 'overview_options',
         'label'           => __( 'Sidebar shown on', 'overview' ),
         'description'     => __( 'Note: older browsers may always show the sidebar on the right', 'overview' ),

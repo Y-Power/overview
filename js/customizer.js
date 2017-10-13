@@ -181,7 +181,7 @@
     wp.customize( 'background_color', function( value ) {
         value.bind( function( to ) {
             var OVHeaderEl = $( 'header#masthead' ).not('.site-title, p.site-description'),
-                OVSiteContentElements = $( 'div.overview-indexed-content-main-container, article.overview-standard-indexed-entry, article.overview-standard-indexed-entry-no-featured-img, div#comments, div.page-content, div.overview-sidebar-main-container section.widget' );
+                OVSiteContentElements = $( 'div.overview-indexed-content-main-container, article.overview-standard-indexed-entry, article.overview-standard-indexed-entry-no-featured-img, main.overview-blog-container, h1.overview-blog-page-title, div.overview-blog-page-content, div#comments, div.page-content, div.overview-sidebar-main-container section.widget' );
             OVHeaderEl.css( 'background-color', to );
             OVSiteContentElements.css( 'background-color', to );
             // if OverView Display does NOT have the default background
@@ -209,19 +209,19 @@
             switch( ovBackgroundImgCheck ){
                 //if there IS an img
             case true:
-                $( 'article.overview-standard-indexed-entry, article.overview-standard-indexed-entry-no-featured-img' ).removeClass('ov-background-switch-default').addClass('ov-background-switch-changes');
+                $( 'article.overview-standard-indexed-entry, article.overview-standard-indexed-entry-no-featured-img, main.overview-blog-container, h1.overview-blog-page-title, div.overview-blog-page-content' ).removeClass('ov-background-switch-default').addClass('ov-background-switch-changes');
                 $( 'div.overview-sidebar-main-container' ).removeClass('ov-background-switch-sidebar-default').addClass('ov-background-switch-sidebar-changes');
                 $( '.sticky' ).removeClass('ov-background-switch-sticky-default').addClass('ov-background-switch-sticky-changes');
                 break;
                 // if there is NO img
             case false:
-                $( 'article.overview-standard-indexed-entry, article.overview-standard-indexed-entry-no-featured-img' ).removeClass('ov-background-switch-changes').addClass('ov-background-switch-default');
+                $( 'article.overview-standard-indexed-entry, article.overview-standard-indexed-entry-no-featured-img, main.overview-blog-container, h1.overview-blog-page-title, div.overview-blog-page-content' ).removeClass('ov-background-switch-changes').addClass('ov-background-switch-default');
                 $( 'div.overview-sidebar-main-container' ).removeClass('ov-background-switch-sidebar-changes').addClass('ov-background-switch-sidebar-default');
                 $( '.sticky' ).removeClass('ov-background-switch-sticky-changes').addClass('ov-background-switch-sticky-default');
                 break;
-                // default: remove special (background img)
+                // default: remove special ( NO background img)
             default:
-                $( 'article.overview-standard-indexed-entry, article.overview-standard-indexed-entry-no-featured-img' ).removeClass('ov-background-switch-changes').addClass('ov-background-switch-default');
+                $( 'article.overview-standard-indexed-entry, article.overview-standard-indexed-entry-no-featured-img, main.overview-blog-container, h1.overview-blog-page-title, div.overview-blog-page-content' ).removeClass('ov-background-switch-changes').addClass('ov-background-switch-default');
                 $( 'div.overview-sidebar-main-container' ).removeClass('ov-background-switch-sidebar-changes').addClass('ov-background-switch-sidebar-default');
                 $( '.sticky' ).removeClass('ov-background-switch-sticky-changes').addClass('ov-background-switch-sticky-default');
             }

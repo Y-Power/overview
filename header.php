@@ -16,14 +16,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="profile" href="http://gmpg.org/xfn/11">
         <?php
-        /* OverView Google font */
-        $overview_custom_font_check = get_theme_mod( 'overview_custom_font', '' );
-        $overview_custom_font_name = ( $overview_custom_font_check === '' ) ? 'Muli' : overview_get_custom_font_name( $overview_custom_font_check, 'not_pretty' );
+        /* OverView Google fonts */
+        overview_print_head_google_fonts_link();
+        wp_head();
         ?>
-        <!-- Google Font -->
-        <link href="<?php echo esc_url( 'https://fonts.googleapis.com/css?family=' . esc_attr( $overview_custom_font_name ) . ':400,500,600,700&effect=emboss|3d-float' ); ?>" rel="stylesheet"> 
-
-        <?php wp_head(); ?>
     </head>
 
     <body <?php body_class(); ?>>
@@ -39,7 +35,7 @@
                     <a id="overview-navbar-site-logo" title="<?php bloginfo( 'name' ); ?>" href="<?php echo esc_url( home_url( '/' ) ); ?>">
                         <?php
                         if ( get_theme_mod( 'custom_logo' ) ) {?>
-                            <img alt="<?php echo esc_attr( __('site logo image', 'overview') ); ?>" src="<?php echo esc_url( overview_custom_logo() ); ?>" />
+                            <img alt="<?php echo bloginfo( 'name' ) . ' '  . esc_attr__( 'logo', 'overview' ); ?>" src="<?php echo esc_url( overview_custom_logo() ); ?>" />
                         <?php }
                         else {?>
                             <p class="overview-navbar-nologo-fallback"><?php bloginfo( 'name' ); ?></p>

@@ -37,6 +37,8 @@ _______________________________________ */
 /* standard post list content */
 /* standard posts format */
 /* standard posts format - no featured image */
+/* OverView blog page template */
+/* OverView Blog page standard single entry */
 /* meta icons */
 /* post meta */
 /* post categories and tags */
@@ -458,6 +460,115 @@ article.overview-standard-indexed-entry a.overview-default-post-entry-featured-i
 article.overview-standard-indexed-entry-no-featured-img header.overview-standard-indexed-entry-header h2.entry-title, article.overview-standard-indexed-entry-no-featured-img header.entry-header h1.entry-title {
   margin: 12px 0; }
 
+/* OverView blog page template */
+/* OverView Blog WP standard page content */
+h1.overview-blog-page-title {
+  padding: 0 12px; }
+
+div.overview-blog-page-content {
+  width: 100%;
+  max-width: 100%;
+  padding: 0 12px 22px 12px;
+  overflow: auto;
+  border-bottom: 1px solid rgba(220, 220, 220, 0.8); }
+
+@media screen and (min-width: 1700px) {
+  h1.overview-blog-page-title,
+  div.overview-blog-page-content {
+    max-width: 1280px;
+    margin: 0 auto; } }
+/* OverView blog entries */
+@supports (display: grid) {
+  main.overview-blog-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    /**
+    *align-items: stretch;
+    *justify-items: stretch;
+    */
+    margin: 12px 0; }
+    main.overview-blog-container div.overview-blog-frames-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); }
+      @media screen and (max-width: 1399px) {
+        main.overview-blog-container div.overview-blog-frames-container {
+          grid-template-columns: repeat(2, 1fr); } }
+      @media screen and (max-width: 600px) {
+        main.overview-blog-container div.overview-blog-frames-container {
+          grid-template-columns: 1fr; } }
+    @media screen and (min-width: 1700px) {
+      main.overview-blog-container {
+        max-width: 1280px;
+        margin: 0 auto; } }
+    main.overview-blog-container nav.posts-navigation {
+      margin: 24px 0 0 0; }
+    main.overview-blog-container div.overview-blog-indexed-entry {
+      padding: 12px; }
+      main.overview-blog-container div.overview-blog-indexed-entry header.overview-blog-entry-header a.overview-single-entry-link {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: minmax(min-content, 220px);
+        grid-template-areas: 'figure';
+        width: 100%; }
+        main.overview-blog-container div.overview-blog-indexed-entry header.overview-blog-entry-header a.overview-single-entry-link div.overview-single-entry-image {
+          grid-area: figure;
+          align-self: stretch;
+          width: 100%;
+          height: 220px;
+          margin: 0 auto;
+          background-position: center center;
+          background-size: cover;
+          -webkit-box-shadow: 0 0 3px 0 #808080;
+          -moz-box-shadow: 0 0 3px 0 #808080;
+          -ms-box-shadow: 0 0 3px 0 #808080;
+          -o-box-shadow: 0 0 3px 0 #808080;
+          box-shadow: 0 0 3px 0 #808080;
+          /* no image fallback */ }
+          main.overview-blog-container div.overview-blog-indexed-entry header.overview-blog-entry-header a.overview-single-entry-link div.overview-single-entry-image h5.overview-blog-entry-no-image-fallback {
+            text-align: center; }
+            main.overview-blog-container div.overview-blog-indexed-entry header.overview-blog-entry-header a.overview-single-entry-link div.overview-single-entry-image h5.overview-blog-entry-no-image-fallback i.overview-blog-no-img-icon {
+              display: block; }
+        main.overview-blog-container div.overview-blog-indexed-entry header.overview-blog-entry-header a.overview-single-entry-link h4.overview-blog-entry-title {
+          grid-area: figure;
+          align-self: end;
+          width: 100%;
+          margin: 0;
+          text-align: center;
+          color: rgba(220, 220, 220, 0.8);
+          background-color: rgba(0, 0, 0, 0.85);
+          -webkit-text-shadow: 0 0 1px;
+          -moz-text-shadow: 0 0 1px;
+          -ms-text-shadow: 0 0 1px;
+          -o-text-shadow: 0 0 1px;
+          text-shadow: 0 0 1px; }
+      main.overview-blog-container div.overview-blog-indexed-entry div.overview-blog-post-entry-meta {
+        padding: 6px;
+        color: #808080;
+        background-color: #222; }
+        main.overview-blog-container div.overview-blog-indexed-entry div.overview-blog-post-entry-meta span.posted-on i.fa-calendar {
+          margin: 0 6px;
+          font-size: 1em; }
+      main.overview-blog-container div.overview-blog-indexed-entry article.overview-blog-post-content p {
+        display: flex;
+        flex-direction: column; }
+        main.overview-blog-container div.overview-blog-indexed-entry article.overview-blog-post-content p a.read-more {
+          align-self: center;
+          margin-top: 12px;
+          padding: 4px 6px 8px 6px;
+          text-align: center;
+          border: 1px solid #808080;
+          background-color: rgba(220, 220, 220, 0.8);
+          -webkit-border-radius: 3px;
+          -moz-border-radius: 3px;
+          -ms-border-radius: 3px;
+          -o-border-radius: 3px;
+          border-radius: 3px; }
+          @media screen and (max-width: 767px) {
+            main.overview-blog-container div.overview-blog-indexed-entry article.overview-blog-post-content p a.read-more {
+              padding: 4px 6px; } }
+          main.overview-blog-container div.overview-blog-indexed-entry article.overview-blog-post-content p a.read-more:hover {
+            background-color: transparent; } }
+
 /* archive / search pages */
 header.page-header h1.page-title {
   overflow-wrap: break-word;
@@ -665,31 +776,40 @@ div#comments {
       padding-left: 0; } }
 
 /* Widgets */
+/* widgets sidebar */
+@supports (display: grid) {
+  div.overview-sidebar-main-container {
+    float: none; } }
 /* titles */
 div.overview-sidebar-main-container h2.widget-title {
   font-size: 1.1em;
-  color: #555;
   border-bottom: 1px dotted; }
 
 /* core widgets default font sizes */
 /* search form */
+form.search-form label,
+form.search-form label input.search-field {
+  width: 100%; }
+
+input.search-submit {
+  width: 30%; }
+
 form.search-form,
 option {
   font-size: 18px; }
 
 /* sidebar search max width */
 @supports (display: flex) {
-  #secondary form.search-form label {
-    max-width: 70%; }
-    #secondary form.search-form label input.search-field {
-      border: 1px solid #808080;
-      -webkit-border-radius: 3px 0 0 3px;
-      -moz-border-radius: 3px 0 0 3px;
-      -ms-border-radius: 3px 0 0 3px;
-      -o-border-radius: 3px 0 0 3px;
-      border-radius: 3px 0 0 3px; }
+  #secondary form.search-form label input.search-field {
+    border: 1px solid #808080;
+    -webkit-border-radius: 3px 0 0 3px;
+    -moz-border-radius: 3px 0 0 3px;
+    -ms-border-radius: 3px 0 0 3px;
+    -o-border-radius: 3px 0 0 3px;
+    border-radius: 3px 0 0 3px; }
   #secondary form.search-form input.search-submit {
-    width: 30%;
+    font-family: FontAwesome;
+    font-size: inherit;
     border: 1px solid #808080;
     -webkit-border-radius: 0 3px 3px 0;
     -moz-border-radius: 0 3px 3px 0;
@@ -706,6 +826,8 @@ section.overview-footer-widget form.search-form label input.search-field {
   -o-border-radius: 3px 0 0 3px;
   border-radius: 3px 0 0 3px; }
 section.overview-footer-widget form.search-form input.search-submit {
+  font-family: FontAwesome;
+  font-size: inherit;
   border: 1px solid #808080;
   -webkit-border-radius: 0 3px 3px 0;
   -moz-border-radius: 0 3px 3px 0;
@@ -741,7 +863,7 @@ div.overview-footer-widgets-container #wp-calendar > tbody {
   color: rgba(90, 90, 90, 0.95); }
 
 /* video */
-.mejs-container {
+.wp-video {
   -webkit-box-shadow: 0 0 4px 0;
   -moz-box-shadow: 0 0 4px 0;
   -ms-box-shadow: 0 0 4px 0;
@@ -751,7 +873,10 @@ div.overview-footer-widgets-container #wp-calendar > tbody {
 /* image */
 /* image sidebar */
 aside#secondary section.widget_media_image {
-  text-align: center; }
+  display: flex;
+  flex-direction: column; }
+  aside#secondary section.widget_media_image img.image {
+    align-self: center; }
 
 /* image footer */
 footer.overview-footer-container div.overview-footer-widgets-container section.overview-footer-widget.widget_media_image {

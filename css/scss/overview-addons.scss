@@ -477,6 +477,39 @@ article.overview-standard-indexed-entry-no-featured-img header.overview-standard
   margin: 12px 0;
   }
 
+
+/* OverView blog page template */
+
+/* OverView Blog WP standard page content */
+h1.overview-blog-page-title {
+  padding: 0 12px;
+  }
+div.overview-blog-page-content {
+  width: 100%;
+  max-width: 100%;
+  padding: 0 12px 22px 12px;
+  overflow: auto;
+  border-bottom: 1px solid $ov-structure-light-color;  
+  }
+@media screen and ( min-width: 1700px ){
+  h1.overview-blog-page-title,
+  div.overview-blog-page-content {
+    max-width: 1280px;
+    margin: 0 auto;
+    }
+  }
+
+/* OverView blog entries */
+main.overview-blog-container {
+  @supports (display: grid){
+    @include ov-blog-page-container();
+    div.overview-blog-indexed-entry {
+      @include ov-blog-page-single-entry();
+      }
+    }
+  }
+
+    
 /* archive / search pages */
 header.page-header h1.page-title {
   overflow-wrap: break-word;
@@ -695,15 +728,29 @@ div#comments {
 
 /* Widgets */
 
+/* widgets sidebar */
+@supports (display: grid){
+  div.overview-sidebar-main-container {
+    float: none;
+    }
+  }
+  
 /* titles */
 div.overview-sidebar-main-container h2.widget-title {
   font-size: 1.1em;
-  color: #555;
   border-bottom: 1px dotted;
 }
 
 /* core widgets default font sizes */
+
 /* search form */
+form.search-form label,
+form.search-form label input.search-field {
+width: 100%;
+}
+input.search-submit {
+width: 30%;
+}
 form.search-form,
 /* inputs */
 option {
@@ -714,14 +761,14 @@ option {
 @supports (display: flex){
   #secondary form.search-form {
     label {
-      max-width: 70%;
       input.search-field {
         border: 1px solid $ov-structure-dark-color;
         @include ov-border-radius(3px 0 0 3px);
         }
       }
     input.search-submit {
-      width: 30%;
+      font-family: FontAwesome;
+      font-size: inherit;
       border: 1px solid $ov-structure-dark-color;
       @include ov-border-radius(0 3px 3px 0);
       border-left: none;
@@ -738,6 +785,8 @@ section.overview-footer-widget form.search-form {
         }
       }
     input.search-submit {
+      font-family: FontAwesome;
+      font-size: inherit;
       border: 1px solid $ov-structure-dark-color;
       @include ov-border-radius(0 3px 3px 0);
       border-left: none;
@@ -780,7 +829,7 @@ div.overview-footer-widgets-container #wp-calendar > tbody {
 }
 
 /* video */
-.mejs-container {
+.wp-video {
   @include ov-box-shadow(0 0 4px 0);
 }
 
@@ -788,7 +837,11 @@ div.overview-footer-widgets-container #wp-calendar > tbody {
 
 /* image sidebar */
 aside#secondary section.widget_media_image {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  img.image {
+    align-self: center;
+    }
   }
 
 /* image footer */
@@ -986,4 +1039,3 @@ header#masthead p.site-branding-description-p.overview-branding-p-preview-NO-hea
 @page {
     margin: 30px 15px !important;
   }
-

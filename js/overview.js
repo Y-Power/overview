@@ -202,7 +202,7 @@
                 }
             }
         }
-        
+
         /* OverView social nav menu */
         function overviewSocialNavSettings(){
             var allSocialLinks = jQ('ul#ov-social-menu > li > div > a');

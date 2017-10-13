@@ -167,7 +167,6 @@ function overview_widgets_init() {
 }
 add_action( 'widgets_init', 'overview_widgets_init' );
 
-
 /* retrieve logo */
 function overview_custom_logo() {
     $overview_custom_logo_id = get_theme_mod( 'custom_logo' );
@@ -185,6 +184,16 @@ function overview_check_front_page_template(){
     ) ? true : false;
     return $display_template_check;
 }
+
+
+/* OverView blog continue reading tag */
+function overview_excerpt_more( $more ) {
+    return sprintf( '... <a class="read-more" href="%1$s">%2$s</a>',
+                    get_permalink( get_the_ID() ),
+                    esc_html__( 'Read more', 'overview' )
+    );
+}
+add_filter( 'excerpt_more', 'overview_excerpt_more' );
 
 
 /* OverView TinyMCE font */
@@ -319,9 +328,11 @@ add_action( 'wp_enqueue_scripts', 'overview_scripts' );
  */
 function overview_admin_files(){
     // register admin JS
-    wp_register_script( 'overview-admin-js', get_template_directory_uri() . '/js/admin/overview-admin.js', array( 'jquery', 'customize-controls' ) );
-    // enqueue
-    wp_enqueue_script( 'overview-admin-js' );
+    if ( is_user_logged_in() && is_customize_preview() ) {
+        wp_register_script( 'overview-admin-js', get_template_directory_uri() . '/js/admin/overview-admin.js', array( 'jquery', 'customize-controls' ) );
+        // enqueue
+        wp_enqueue_script( 'overview-admin-js' );
+    }
 }
 add_action( 'admin_enqueue_scripts', 'overview_admin_files' );
 
