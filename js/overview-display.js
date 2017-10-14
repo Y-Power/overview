@@ -208,22 +208,6 @@
                             search: OVPostData.author
                         };
                         
-                        /* query post categories */
-                        var categoriesAmount =  OVPostData.categories.length,
-                            allCategoriesIds =  OVPostData.categories.join(', ');
-                        overviewPostsDisplayCategoriesQueryArgs['data'] = {
-                            id: allCategoriesIds,
-                            per_page: categoriesAmount
-                        };
-
-                        /* query post tags */
-                        var tagsAmount = OVPostData.tags.length,
-                            allTagsIds = OVPostData.tags.join(', ');
-                        overviewPostsDisplayTagsQueryArgs['data'] = {
-                            id: allTagsIds,
-                            per_page: tagsAmount
-                        };
-                        
                         /* fetch data and add extras */
 
                         /* date data */
@@ -237,57 +221,63 @@
                             jQ('div.overview-front-page-posts-section-metas-author').append(authorHtml);
                         });
 
-                        /* tags data */
-                        if ( tagsAmount > 0 ){ // if there are tags
-                            postsManagerTags.fetch(overviewPostsDisplayTagsQueryArgs).done(function(allTags){
-                                /* define initial icon */
-                                var tagsHtml = '<i class="fa fa-tags" aria-hidden="true"></i>';
-                                /* create html elements for each tag and append them to output html */
-                                allTags.forEach(function(postTag){
-                                    tagsHtml += '<a href="' + postTag.link + '">' + postTag.name + '</a>';
-                                });
-                                /* append tags and fade elements in */
-                                jQ('div#overview-front-page-posts-section-tags').append(tagsHtml).fadeIn(250);
-                                /* compute elements height */
-                                setContentHeight();
-                            });
-                        }
-                        
-                        /* categories data */
-                        postsManagerCategories.fetch(overviewPostsDisplayCategoriesQueryArgs).done(function(allCategories){
-                            /* create categories html */
-                            var categoriesHtml = '<i class="fa fa-folder-open" aria-hidden="true"></i>';
-                            allCategories.forEach(function(category){
-                                /* if NOT only uncategorized */
-                                if (category.name !== 'aciform'){
-                                    /* create html elements for each category and append them to output html */
-                                    categoriesHtml += '<a class="overview-front-page-posts-category-link" style="display:none;" href="' + category.link + '">' + category.name + '</a>';
+                        /* assign post categories and tags */
+                        var postsCatsAndTags = new wp.api.models.Post({id: OVPostData.id});
+                        postsCatsAndTags.fetch().done(function(){
+                            /* set categories */
+                            postsCatsAndTags.getCategories().done(function(allCategories){
+                                if ( 0 < allCategories.length){
+                                    /* create categories html */
+                                    var categoriesHtml = '<i class="fa fa-folder-open" aria-hidden="true"></i>';
+                                    allCategories.forEach(function(category){
+                                        /* if NOT only uncategorized */
+                                        if (category.name !== 'Uncategorized'){
+                                            /* create html elements for each category and append them to output html */
+                                            categoriesHtml += '<a class="overview-front-page-posts-category-link" style="display:none;" href="' + category.link + '">' + category.name + '</a>';
+                                        }
+                                        else {
+                                            /* if only category is uncategorized, remove icon */
+                                            if (allCategories.length === 1){
+                                                categoriesHtml  = '';
+                                            }
+                                        }
+                                    });
+                                    /* add categories html */
+                                    jQ('div.overview-front-page-posts-section-metas-categories').append(categoriesHtml);
+                                    /* fade categories in */
+                                    var fadeInDelay = 0;
+                                    jQ('a.overview-front-page-posts-category-link').each(function(categoryLink){
+                                        var thisLink = jQ(this);
+                                        fadeInDelay += 300;
+                                        setTimeout(function(){
+                                            thisLink.fadeIn(250);
+                                            setContentHeight();
+                                        }, fadeInDelay);
+                                    });
                                 }
-                                else {
-                                    /* if only category is uncategorized, remove icon */
-                                    if (allCategories.length === 1){
-                                        categoriesHtml  = '';
-                                    }
-                                }
-                            });
-                            /* add categories html */
-                            jQ('div.overview-front-page-posts-section-metas-categories').append(categoriesHtml);
-                            /* fade categories in */
-                            var fadeInDelay = 0;
-                            jQ('a.overview-front-page-posts-category-link').each(function(categoryLink){
-                                var thisLink = jQ(this);
-                                fadeInDelay += 300;
+                                /* fade-in all other meta */
                                 setTimeout(function(){
-                                    thisLink.fadeIn(250);
-                                    setContentHeight();
-                                }, fadeInDelay);
+                                    jQ('div.overview-front-page-posts-section-metas-date, div.overview-front-page-posts-section-metas-categories, div.overview-front-page-posts-section-metas-author').fadeIn(250);
+                                }, 300);
                             });
-                            /* fade-in all other meta */
-                            setTimeout(function(){
-                                jQ('div.overview-front-page-posts-section-metas-date, div.overview-front-page-posts-section-metas-categories, div.overview-front-page-posts-section-metas-author').fadeIn(250);
-                            }, 300);
+                            /* set tags */
+                            postsCatsAndTags.getTags().done(function(allTags){
+                                if ( 0 < allTags.length){
+                                    /* define initial icon */
+                                    var tagsHtml = '<i class="fa fa-tags" aria-hidden="true"></i>';
+                                    /* create html elements for each tag and append them to output html */
+                                    allTags.forEach(function(postTag){
+                                        tagsHtml += '<a href="' + postTag.link + '">' + postTag.name + '</a>';
+                                    });
+                                    /* append tags and fade elements in */
+                                    jQ('div#overview-front-page-posts-section-tags').append(tagsHtml).fadeIn(250);
+                                    /* compute elements height */
+                                    setContentHeight();
+                                }
+                            });
                         });
                         
+                        /* build html */
                         html = '<div class="overview-front-page-posts-section-img-container"><a href="' + OVPostData.link + '"><img id="overview-front-page-posts-section-img" style="display: none;" alt="featured image"></img></a></div><div class="overview-front-page-display-navigation-mobile-container"><div class="overview-front-page-display-navigation-mobile"><div class="overview-front-page-display-navigation-mobile-prev"><button id="overview-front-page-display-navigation-mobile-prev-button"><i class="fa fa-2x fa-angle-left" aria-hidden="true"></i></button></div><div class="overview-front-page-display-navigation-mobile-next"><button id="overview-front-page-display-navigation-mobile-next-button"><i class="fa fa-2x fa-angle-right" aria-hidden="true"></i></button></div></div></div><div class="overview-front-page-section-content-container"><a href="' + OVPostData.link + '"><h2 id="overview-front-page-posts-section-title" class="overview-front-page-section-title">' + OVPostData.title.rendered + '</h2></a><div id="overview-front-page-posts-section-tags" style="display: none;"></div><div id="overview-front-page-posts-section-metas"><div class="overview-front-page-posts-section-metas-date" style="display: none;"><a href="' + OVPostData.link + '">' + OVPostDate + '</a></div><div class="overview-front-page-posts-section-metas-author" style="display: none;"></div><div class="overview-front-page-posts-section-metas-categories" style="display: none;"></div></div><div id="overview-front-page-posts-section-content" class="overview-front-page-section-content">' + OVPostData.content.rendered + '</div></div>';
 		    }
                     
@@ -307,12 +297,12 @@
                             /* set splash delay */
                             setTimeout(function(){
 				splashScreen.launch( jQ('div#overview-front-page-posts-section-splash-screen'), splashScreen.classes );
-			    }, 500);
+			    }, 200);
                             /* set focus delay */
                             setTimeout(function(){
                                 /* assign focus to post's content div */
 		                jQ('div#overview-front-page-display-posts-container').focus();
-                            }, 600);
+                            }, 300);
 			}
 			/* navigation buttons */
 			postsNavigationSetup(postsPageCounter);
@@ -347,7 +337,6 @@
 		    featImgQuery.fetch().done(function(featImg){
 			postImgEl.attr('src', featImg.source_url);
 			postImgEl.on('load', function(){
-                            //console.log(postImgEl.parent('a').siblings('i.fa-spinner'));
                             postImgEl.parent('a').siblings('i.fa-spinner').fadeOut(0);
                             jQ(this).fadeIn(1000);
 			});

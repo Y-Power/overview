@@ -51,6 +51,9 @@ OverView includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
+= 1.3.1 - October 14 2017 =
+* Fixed OverView Display faulty posts categories and tags
+
 = 1.3.0 - October 13 2017 =
 * Added new OverView Blog layout option and page template
 * Added Google font option for Site Title
