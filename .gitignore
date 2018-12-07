@@ -2,3 +2,7 @@
 *.js~
 *.css~
 *.scss~
+
+*.map
+
+css/scss

@@ -3,7 +3,7 @@
 Author: _Y_Power
 Tags: blog, education, one-column, two-columns, right-sidebar, left-sidebar, flexible-header, custom-background, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, full-width-template, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
 Requires at least: 4.7
-Tested up to: 4.8
+Tested up to: 5.0
 Requires PHP: 5.2
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
@@ -19,9 +19,9 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 
 == Description ==
 
-A minimalist yet colorful responsive theme, OverView delivers a one-page browsing experience: all posts can be dynamically shown one by one on the OverView Display -available as page templates- by clicking on simple navigation buttons, helping engagement with your content.
+A minimalist yet colorful Gutenberg ready responsive theme, OverView delivers a one-page browsing experience: all posts can be dynamically shown one by one on the OverView Display -available as page templates- by clicking on simple navigation buttons, helping engagement with your content.
 
-OverView is based on Underscores, powered by the WordPress REST API and features a grid or list blog layout, a page and blog template, an unlimited Google font selection for Site Title and document, many color schemes, several styled widgets, social menus and wide layouts with CSS grid and flex support -including fallbacks for older devices.
+OverView is based on Underscores, powered by the WordPress REST API and features a grid or list blog layout, a page and blog template, an unlimited Google font selection for Site Title and document, many color schemes, several styled widgets, social menus and wide layouts with CSS grid and flex support -including fallbacks for older devices. All free (GNU GPL), because the best things in life are.
 
 All free (GNU GPL), because the best things in life are.
 
@@ -34,7 +34,7 @@ All free (GNU GPL), because the best things in life are.
 == Frequently Asked Questions ==
 
 = How do I set the social icons? =
-Create a [WordPress menu](https://codex.wordpress.org/Appearance_Menus_Screen) and add a [custom link](https://codex.wordpress.org/Appearance_Menus_Screen#Custom_Links) for each of your social accounts URL's. Cool fact: you can re-use the menu you created on any WordPress theme that uses social navigation menus.
+Create a [WordPress menu](https://codex.wordpress.org/Appearance_Menus_Screen) and add a [custom link](https://codex.wordpress.org/Appearance_Menus_Screen#Custom_Links) for each of your social accounts URL's. Cool fact: you can re-use the menu you created on any WordPress theme that supports social navigation menus.
 
 = How can I activate the OverView Display? =
 The Display is available as a WordPress page template, available in the page editor -> Page Attributes.
@@ -47,9 +47,38 @@ Some plugin might be blocking the Display: it usually depends on security plugin
 
 = Does OverView support any plugins? =
 
-OverView includes support for Infinite Scroll in Jetpack.
+OverView includes basic support for Gutenberg, Atomic Blocks and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 2.1.0 - December 7 2018 =
+* Fixed posts and pages titles margins
+* Updated support for the Block Editor (Gutenberg)
+
+= 2.0.5 - August 15 2018 =
+* Fixed Gutenberg editor styles margins with and without active widgets sidebar
+
+= 2.0.4 - August 12 2018 =
+* Fixed Blog and Page template Gutenberg margins
+* Fixed Gutenberg images wide and full widths
+* Fixed Gutenberg galleries margin in pocket layout
+* Removed search form from 404 template
+
+= 2.0.3 - August 10 2018 =
+* Fixed Gutenberg latest post floatings
+* Added complete Gutenberg full width support
+* Minor CSS changes
+
+= 2.0.2 - August 8 2018 =
+* Fixed several Gutenberg alignments
+
+= 2.0.1 - July 28 2018 =
+* Updated broken theme and theme author URLs
+
+= 2.0.0 - July 27 2018 =
+* Added Gutenberg support for basic blocks
+* New, faster OverView Display
+* Several CSS styles improvements
 
 = 1.3.1 - October 14 2017 =
 * Fixed OverView Display faulty posts categories and tags

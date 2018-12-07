@@ -1,22 +1,22 @@
 /*
-    Copyright (C) 2017 _Y_Power ( http://ypower.nouveausiteweb.fr )
+ Copyright (C) 2017-2018 _Y_Power ( ypower.nouveausiteweb.fr )
 
-    This file is part of the OverView WordPress theme package.
+ This file is part of the OverView WordPress theme package.
 
-    The JavaScript code in this page is free software: you can
-    redistribute it and/or modify it under the terms of the GNU
-    General Public License (GNU GPL) as published by the Free Software
-    Foundation, either version 3 of the License, or (at your option)
-    any later version.  The code is distributed WITHOUT ANY WARRANTY;
-    without even the implied warranty of MERCHANTABILITY or FITNESS
-    FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ The JavaScript code in this page is free software: you can
+ redistribute it and/or modify it under the terms of the GNU
+ General Public License (GNU GPL) as published by the Free Software
+ Foundation, either version 3 of the License, or (at your option)
+ any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ without even the implied warranty of MERCHANTABILITY or FITNESS
+ FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
 
-    As additional permission under GNU GPL version 3 section 7, you
-    may distribute non-source (e.g., minimized or compacted) forms of
-    that code without the copy of the GNU GPL normally required by
-    section 4, provided you include this license notice and a URL
-    through which recipients can access the Corresponding Source.
-*/
+ As additional permission under GNU GPL version 3 section 7, you
+ may distribute non-source (e.g., minimized or compacted) forms of
+ that code without the copy of the GNU GPL normally required by
+ section 4, provided you include this license notice and a URL
+ through which recipients can access the Corresponding Source.
+ */
 
 (function(){
 
@@ -514,40 +514,40 @@
 	/* on backbone ready START */
 	wp.api.loadPromise.done(function(){
 
-	    // console.log('Backbone JS obj: (Backbone)\n', Backbone, '\nWP REST API obj: (wp.api)\n', wp.api, '\nWP API Settings: (wpApiSettings)\n', wpApiSettings, '\nWP localized vars:\n', OVAPIVars);
+	    //console.log('Backbone JS obj: (Backbone)\n', Backbone, '\nWP REST API obj: (wp.api)\n', wp.api, '\nWP API Settings: (wpApiSettings)\n', wpApiSettings, '\nWP localized vars:\n', OVAPIVars);
 
 	    /* OverView page controller var */
 	    var overviewPageController;
 
-		/* create new page controller obj */
-		overviewPageController = new OverView_Page_Controller;
+	    /* create new page controller obj */
+	    overviewPageController = new OverView_Page_Controller;
 
-		/* define splash css classes */
-		var splashClasses = {
-		    OVSplashActiveClass: 'overview-splash-active',
-		    OVSplashFadeOutClass: 'overview-splash-active-fadeout'
-		};
+	    /* define splash css classes */
+	    var splashClasses = {
+		OVSplashActiveClass: 'overview-splash-active',
+		OVSplashFadeOutClass: 'overview-splash-active-fadeout'
+	    };
 
-		/* define splash functions obj */
-		var splashBox = {
-		    launch: overviewPageController.splash,
-		    set: overviewPageController.setSplash,
-		    classes: splashClasses
-		};
+	    /* define splash functions obj */
+	    var splashBox = {
+		launch: overviewPageController.splash,
+		set: overviewPageController.setSplash,
+		classes: splashClasses
+	    };
 
-		/* define init functions */
-		var overviewInitParams = [
-		    // posts manager
+	    /* define init functions */
+	    var overviewInitParams = [
+		// posts manager
+		[
+		    overviewPageController.frontPagePostsManager,
+		    // arguments
 		    [
-			overviewPageController.frontPagePostsManager,
-			// arguments
-			[
-			    splashBox
-			]
+			splashBox
 		    ]
-		];
-		/* page controller init */
-		overviewPageController.init(overviewInitParams);
+		]
+	    ];
+	    /* page controller init */
+	    overviewPageController.init(overviewInitParams);
 
 	    /* if front-page END */
 	    

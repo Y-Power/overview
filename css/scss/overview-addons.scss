@@ -1,7 +1,7 @@
-/*
-    Copyright (C) 2017 _Y_Power ( http://ypower.nouveausiteweb.fr )
-
-    This file is part of the OverView WordPress theme package.
+/**
+*  Copyright (C) 2017-2018 _Y_Power ( http://ypower.nouveausiteweb.fr )
+*
+*  This file is part of the OverView WordPress theme package.
 */
 
 @import 'overview_scss_vars';
@@ -100,10 +100,52 @@ nav#site-navigation div {
 }
 
 /* navbar menu links */
-nav#site-navigation div ul.nav-menu li a {
+nav#site-navigation div ul.nav-menu li,
+nav#site-navigation div[data-customize-partial-type="nav_menu_instance"] ul.menu li {
+  /* first menu level */
+  &.current-menu-item {
+    a {
+      font-weight: bold;
+      border-bottom: 3px solid;
+      }
+    & > ul li a,
+    & > ul li ul li a {
+      font-weight: normal;
+      border-bottom: 1px solid;
+      }
+    }
+  /* second menu level */
+  & ul li.current-menu-item {
+    a {
+      font-weight: bold;
+      font-style: italic;
+      border-bottom: 3px solid;
+      }
+    & > ul li a {
+      font-weight: normal;
+      border-bottom: 1px solid;
+      }
+    }
+  /* third menu level */
+  & > ul li ul li.current-menu-item {
+    a {
+      font-weight: bold;
+      font-style: italic;
+      border-bottom: 3px solid;
+      }
+    }
+  }
+nav#site-navigation div ul.nav-menu li a,
+nav#site-navigation div[data-customize-partial-type="nav_menu_instance"] ul.menu li a {
   border-bottom: 1px solid;
   }
-nav#site-navigation div ul.nav-menu li ul > li:last-of-type a {
+nav#site-navigation div[data-customize-partial-type="nav_menu_instance"] ul.menu li a {
+  padding: 6px;
+  color: inherit;
+  background-color: transparent;
+  }
+nav#site-navigation div ul.nav-menu li ul > li:last-of-type a,
+nav#site-navigation div[data-customize-partial-type="nav_menu_instance"] ul.menu li ul > li:last-of-type a {
   border-bottom: none;
   }
 
@@ -149,14 +191,23 @@ header#masthead div.site-branding p.site-description {
     padding-right: 0;
     }
   }
-header#masthead div.site-branding h1.site-title {
-  @media screen and (max-width: 767px){
-    padding: 12px 20px 4px 20px;
-    line-height: 1.1;
-  }
-  a.overview-site-title-a {
-    padding-left: 0;
-  }
+header#masthead div.site-branding {
+  h1.site-title {
+    @media screen and (max-width: 767px){
+      padding: 12px 20px 4px 20px;
+      line-height: 1.1;
+      }
+    /* home h1 title */
+    a.overview-site-title-a {
+      padding-left: 0;
+      }
+    }
+  /* standard title */
+  p.site-title {
+    a.overview-site-title-a {
+      padding-left: 0;
+      }
+    }
 }
 
 @media screen and (max-width: 767px){
@@ -198,7 +249,44 @@ header#masthead div.site-branding p.site-description {
     }
   }
 
+/* OverView grid blog */
+header.overview-blog-entry-header {
+  a.overview-single-entry-link {
+    h4.overview-blog-entry-title {
+      padding: 1px 3px;
+      }
+    }
+  }
 
+/* Gutenberg default content */
+article.overview-standard-indexed-entry,
+article.overview-standard-indexed-entry-no-featured-img {
+  &.ov-gutenberg-entry {
+    padding-left: 0;
+    padding-right: 0;
+    div.entry-content {
+      padding: 0;
+      }
+    div.entry-meta,
+    footer.entry-footer {
+      padding: 0 30px;
+      }
+    & table:not(#wp-calendar){
+      max-width: 94%;
+      @media screen and ( min-width: 768px ){
+        max-width: 70%;
+        }
+      }
+    }
+  /* standard tables */
+  &:not(.ov-gutenberg-entry) table:not(#wp-calendar){
+    max-width: 94%;
+    @media screen and ( min-width: 768px ){
+      max-width: 70%;
+      }
+    }
+  }
+    
 /* entry editing */
 span.edit-link {
   display: block;
@@ -269,18 +357,18 @@ nav#site-navigation.toggled {
 }
 
 nav#site-navigation div {
-    max-width: 80%;
-    @media screen and (max-width: 767px){
-      width: 100%;
-      max-width: 100%;
-      }
+  max-width: 80%;
+  @media screen and (max-width: 767px){
+    width: 100%;
+    max-width: 100%;
+    }
 }
   
 nav#site-navigation.toggled div {
   @media screen and (max-width: 767px){
     float: none;
   }
-  .overview-mobile-navbar-sub-menu{
+  .overview-mobile-navbar-sub-menu {
     position: relative;
     float: none;
     top: 0;
@@ -289,10 +377,12 @@ nav#site-navigation.toggled div {
    }
 }
 
-nav#site-navigation div ul.nav-menu li {
+nav#site-navigation div ul.nav-menu li,
+nav#site-navigation div[data-customize-partial-type="nav_menu_instance"] ul.menu li {
   display: inline-block;
   float: left;
   margin: 0 0 0 20px;
+  color: $ov-main-bright-color;
   @include ov-border-radius(4px 4px 0 0);
   @media screen and (max-width: 767px){
     display: block;
@@ -307,7 +397,8 @@ nav#site-navigation div ul.nav-menu li {
     }
   }
 
-nav#site-navigation div ul.nav-menu li ul.children, nav#site-navigation div ul.nav-menu li ul.sub-menu {
+nav#site-navigation div ul.nav-menu li ul.children, nav#site-navigation div ul.nav-menu li ul.sub-menu,
+nav#site-navigation div[data-customize-partial-type="nav_menu_instance"] ul.menu li ul.children, nav#site-navigation div ul.nav-menu li ul.sub-menu {
   @media screen and (max-width: 767px){
     width: 80%;
     max-width: 80%;
@@ -322,14 +413,16 @@ li.menu-item-has-children:hover button.overview-sub-menu-down-arrow {
 /* fallback menu */
 
 /* sub-menus */
-nav#site-navigation div ul.nav-menu li.page_item_has_children ul.children li {
+nav#site-navigation div ul.nav-menu li.page_item_has_children ul.children li,
+nav#site-navigation div[data-customize-partial-type="nav_menu_instance"] ul.menu li.page_item_has_children ul.children li {
     margin-left: 0;
     font-size: .9em;
     color: $ov-main-dark-color;
     background-color: $ov-main-bright-color;
     @include ov-border-radius(0);
 }
-nav#site-navigation div ul.nav-menu li.page_item_has_children ul.children li:hover {
+nav#site-navigation div ul.nav-menu li.page_item_has_children ul.children li:hover,
+nav#site-navigation div[data-customize-partial-type="nav_menu_instance"] ul.menu li.page_item_has_children ul.children li:hover {
     color: $ov-main-dark-color;
     background-color: $ov-structure-light-color;
 }
@@ -424,6 +517,128 @@ div.overview-dark-display div#overview-front-page-section-content-container div.
   @include ov-border-radius(3px 3px 0 0);
   }
 
+/* OverView Gutenberg Display - OverView version >= 2 */
+/* main Display container */
+@media screen and ( max-width: 767px ){
+  div.overview-single-box-container {
+      min-height: 500px;
+      }
+    }
+  
+/* splash */
+#overview-front-page-posts-section-splash-screen.overview-display-splash {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  z-index: -1;
+  background-color: transparent;
+  @supports ( display: grid ){
+    display: grid;
+    grid-template-columns: auto min-content auto;
+    grid-template-rows: auto min-content auto;
+    }
+  i.fa {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    visibility: hidden;
+    @include ov-transform( translate(-50%, -50%) );
+    @supports ( display: grid ){
+      top: -40px;
+      left: -40px;
+      @include ov-transform( translate(0%, 0%) );
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+      }
+    }
+  &.overview-display-splash-active {
+    @include ov-animation( ov_display_active_splash .6s ease-in 0s 1 normal forwards running );
+    i.fa {
+      visibility: visible;
+      }
+    }
+  &.overview-display-splash-fadeout {
+    @include ov-animation( ov_display_fadeout_splash .6s ease-in 0s 1 normal forwards running );
+    i.fa {
+      visibility: visible;
+      }
+    }
+  }
+
+@-webkit-keyframes ov_display_active_splash {
+  0% {
+    opacity: 0;
+    z-index: 20;
+    background-color: $ov-main-dark-color;
+    }
+  100% {
+    opacity: 1;
+    z-index: 20;
+    background-color: $ov-main-dark-color;
+    }
+  }
+@-webkit-keyframes ov_display_fadeout_splash {
+  0% {
+    opacity: 1;
+    z-index: 20;
+    background-color: $ov-main-dark-color;
+    }
+  99% {
+    opacity: 0;
+    z-index: 20;
+    background-color: $ov-main-dark-color;
+    }
+  100% {
+    z-index: 0;
+    background-color: transparent;
+    }
+  }
+@keyframes ov_display_active_splash {
+  0% {
+    opacity: 0;
+    z-index: 20;
+    background-color: $ov-main-dark-color;
+    }
+  100% {
+    opacity: 1;
+    z-index: 20;
+    background-color: $ov-main-dark-color;
+    }
+  }
+@keyframes ov_display_fadeout_splash {
+  0% {
+    opacity: 1;
+    z-index: 20;
+    background-color: $ov-main-dark-color;
+    }
+  99% {
+    opacity: 0;
+    z-index: 20;
+    background-color: $ov-main-dark-color;
+    }
+  100% {
+    z-index: 0;
+    background-color: transparent;
+    }
+  }
+
+/* OverView Display navigation animations >= 2.0 */
+.overview-front-page-display-navigation-next,
+.overview-front-page-display-navigation-mobile-next {
+  @include ov-transition( padding-left .1s ease-out );
+  &.overview-display-nav-animation-next {
+    padding-left: 20px;
+    }
+  }
+.overview-front-page-display-navigation-prev,
+.overview-front-page-display-navigation-mobile-prev {
+  @include ov-transition( padding-right .1s ease-out );
+  &.overview-display-nav-animation-prev {
+    padding-right: 20px;
+    }
+  }
+    
 /* Featured images */
 
 /* mobile feature imgs */
@@ -497,7 +712,13 @@ div.overview-blog-page-content {
     max-width: 1280px;
     margin: 0 auto;
     }
+  /* blog and page template Gutenberg full-width */
+  body.ov-gutenberg-blog-and-page-entry div#page div#content div#primary div.overview-blog-page-content,
+  body.ov-gutenberg-blog-and-page-entry div#page div#content main.overview-blog-container {
+    max-width: none;
+    }
   }
+      
 
 /* OverView blog entries */
 main.overview-blog-container {
@@ -725,6 +946,185 @@ div#comments {
     }
   }
 
+
+/* GUTENBERG */
+
+/* Gutenberg alignments */
+.alignright {
+    padding-right: 3%;
+    @media screen and ( min-width: 768px ){
+      padding-right: 0;
+      }
+    }
+/* blog and page template margins */
+body.ov-gutenberg-blog-and-page-entry div#page div#content div#primary div.overview-blog-page-content {
+  padding-left:0;
+  padding-right: 0;
+  /* blog and page images */
+  figure.wp-block-image {
+    &.alignleft,
+    &.aligncenter,
+    &.alignright {
+      width: unset;
+      }
+    }
+  }
+/* pocket layout */
+  div.entry-content > *:not( .alignwide ):not( .alignfull ),
+
+  div.overview-default-entry-content *[class^='wp-block-']:not( .alignwide ):not( .alignfull ),
+body.ov-gutenberg-blog-and-page-entry div#page div#content div#primary div.overview-blog-page-content > *:not( .alignwide ),
+body.ov-gutenberg-blog-and-page-entry div#page div#content div#primary div.overview-blog-page-content > *:not( .alignfull ) {
+  max-width: 94%;
+  margin-left: 3%;
+  }
+div.overview-default-entry-content .alignwide,
+body.ov-gutenberg-blog-and-page-entry div#page div#content div#primary div.overview-blog-page-content .alignwide,
+div.entry-content .alignwide,
+div.overview-default-entry-content .alignfull,
+body.ov-gutenberg-blog-and-page-entry div#page div#content div#primary div.overview-blog-page-content .alignfull,
+div.entry-content .alignfull {
+  width: 100%;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  clear: both;
+  }
+/* standard layout  */
+@media screen and( min-width: 768px ){
+  div.entry-content > *:not( .alignwide ):not( .alignfull ),
+
+  div.overview-default-entry-content *[class^='wp-block-']:not( .alignwide ):not( .alignfull ),
+
+  body.ov-gutenberg-blog-and-page-entry div#page div#content div#primary div.overview-blog-page-content > *:not( .alignwide ),
+  body.ov-gutenberg-blog-and-page-entry div#page div#content div#primary div.overview-blog-page-content > *:not( .alignfull ) {
+    max-width: 70%;
+    margin-left: 15%;
+    }
+  div.overview-default-entry-content .alignwide,
+  body.ov-gutenberg-blog-and-page-entry div#page div#content div#primary div.overview-blog-page-content .alignwide,
+  div.entry-content .alignwide {
+    max-width: 85%;
+    margin-left: 7.5%;
+    clear: both;
+    }
+  div.overview-default-entry-content .alignfull,
+  body.ov-gutenberg-blog-and-page-entry div#page div#content div#primary div.overview-blog-page-content .alignfull,
+  div.entry-content .alignfull {
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    clear: both;
+    }
+  }
+
+/* GUTENBERG separator */
+div.entry-content .wp-block-separator {
+  margin-left: auto;
+  margin-right: auto;
+  }
+
+/* GUTENBERG cover images */
+.wp-block-cover-image {
+  position: relative;
+  background-size: cover;
+  background-position: 50%;
+  min-height: 430px;
+  width: 100%;
+  margin: 0 0 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+
+/* GUTENBERG images */
+figure.wp-block-image {
+  &.alignfull {
+    width: 100%;
+    img {
+      width: 100%;
+      }
+    }
+  }
+@media screen and( min-width: 768px ){
+  figure.wp-block-image {
+    &.alignleft {
+      width: inherit;
+      margin-left: 15%;
+      margin-right: inherit;
+      padding-right: 1.5em;
+      padding-left: 0;
+      img {
+        max-width: 100%;
+        }
+      }
+    &.alignright {
+      width: inherit;
+      margin-left: inherit;
+      margin-right: 15%;
+      padding-left: 1.5em;
+      padding-right: 0;
+      img {
+        max-width: 100%;
+        }
+      }
+    &.aligncenter {
+      width: inherit;
+      margin-left: auto;
+      margin-right: auto;
+      img {
+        max-width: 100%;
+        }
+      }
+    }
+  }
+    
+/* GUTENBERG galleries */
+.wp-block-gallery.aligncenter,
+.wp-block-gallery.alignleft,
+.wp-block-gallery.alignright {
+  display: flex;
+  }
+
+/* GUTNEBERG latest posts */
+.wp-block-latest-posts {
+  &.aligncenter,
+  &.aligncleft,
+  &.alignright {
+    clear: inherit;
+    display: inherit;
+    }
+  &.alignleft,
+  &.alignright {
+    margin-left: inherit;
+    margin-right: auto;
+    }  
+  &.alignwide,
+  &.alignfull {
+    display: block;
+    clear: both;
+    }
+  }
+
+/* GUTNEBERG archives */
+@media screen and( min-width: 768px ){
+  .wp-block-archives {
+    &.alignright {
+      margin-left: inherit !important;
+      margin-right: 15%;
+      }
+    &.aligncenter {
+      margin-left: auto !important;
+      margin-right: auto;
+      select {
+        margin-left: auto;
+        margin-right: auto;
+        display: inherit;
+        }
+      }
+    }
+  }
 
 /* Widgets */
 
@@ -1005,9 +1405,9 @@ header#masthead p.site-branding-description-p.overview-branding-p-preview-NO-hea
     }
 
   /* OverView Display */
-    div#overview-front-page-section-content-container {
-      overflow-y: hidden;
-      }
+  div#overview-front-page-section-content-container {
+    overflow-y: hidden;
+    }
     
   div.overview-sidebar-main-container {
     display: block;

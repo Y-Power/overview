@@ -38,6 +38,16 @@
             subMenusFormatSetup();
             siteTitleOnHeader();
         });
+	/* selective refresh */
+	jQ(document).on( 'customize-preview-menu-refreshed', function( e, params ){
+            if ( 'primary' === params.wpNavMenuArgs.theme_location ){
+		overviewNavbarSettings();
+		overviewNavbarAdjust();
+		subMenusFormatSetup();
+		overviewSocialNavSettings();
+		/* optionally sync a previous menu state from params.oldContainer... */
+            }
+	});
 
         /* html ready */
         jQ('html').removeClass('overview-html-not-ready');

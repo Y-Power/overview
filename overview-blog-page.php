@@ -24,7 +24,7 @@ else { ?>
 <?php 
 // WP standard page Loop
 if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-    <div class="overview-blog-page-content"><?php the_content(); ?></div>
+    <div <?php post_class('overview-blog-page-content'); ?>><?php the_content(); ?></div>
 <?php
 endwhile;
 else : ?>

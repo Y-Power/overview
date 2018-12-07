@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2017 _Y_Power ( http://ypower.nouveausiteweb.fr )
+    Copyright (C) 2018 _Y_Power ( http://ypower.nouveausiteweb.fr )
 
     This file is part of the OverView WordPress theme package.
 
@@ -25,7 +25,7 @@
     jQ(document).ready(function(){
 
         /* OverView admin UI adjustments */
-
+	
         /* assess header image filter tip visibility */
         function setHeadImgFilterTip(ovHeaderImgCheck){
             if ( 'remove-header' === ovHeaderImgCheck ){

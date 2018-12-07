@@ -152,6 +152,15 @@ function overview_custom_background_styles(){
          .entry-title {text-align:center;}
         </style>
     <?php }
+    // default titles
+    else {?>
+	<style type="text/css" id="overview-standard-titles">
+	 .entry-title {text-align: center;}
+         @media screen and ( min-width: 768px ){
+	     .entry-title {text-align:inherit; padding-left:20px; margin-right:20px;}
+	 }
+        </style>
+	<?php }
     if ( is_single() || is_page() ){?>
         <style id="overview-single-entry-title-adjustments-css" type="text/css">
          article.overview-standard-indexed-entry header.entry-header,
